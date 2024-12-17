@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family:"Montserrat", "Poppins", sans-serif;
+  list-style: none;
+  scroll-behavior: smooth;
+}
+:root {
+
+    /* some examples */
+  /* --light-bg-color: #e5e9f4;
+  --dark-bg-color: #1d1e24; */
+ 
+  --max-width: 1600px;
+  --fluid-width: 95vw;
+}
+
