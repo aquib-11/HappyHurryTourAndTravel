@@ -1,6 +1,10 @@
+import DesktopNav from "./Navbar/DesktopNav"
+
 const Header = () => {
   return (
-    <div>Header</div>
+    <>
+    <DesktopNav />
+    </>
   )
 }
 export default Header
