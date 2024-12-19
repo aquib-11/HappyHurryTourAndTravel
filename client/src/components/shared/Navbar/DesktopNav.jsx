@@ -37,7 +37,10 @@ const DesktopNav = () => {
         lg:flex flex-col
         overflow-hidden
         hidden 
+        z-50
       `}
+      onMouseEnter={toggleNavExpansion}
+      onMouseLeave={toggleNavExpansion}
     >
       {/* Logo Area */}
       <div className={`
