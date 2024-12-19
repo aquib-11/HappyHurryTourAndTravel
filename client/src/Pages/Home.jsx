@@ -1,6 +1,8 @@
+import { HeroSection } from "../components"
+
 const Home = () => {
   return (
-    <div>Home</div>
+<HeroSection style={{height:'1000px'}}/>
   )
 }
 export default Home
