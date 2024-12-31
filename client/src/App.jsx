@@ -1,20 +1,9 @@
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import { HomeOutlet } from "./outlets";
-import { Home } from "./Pages";
+import { routes } from "./routes";
+import React, { useMemo } from "react";
 
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <HomeOutlet />,
-    errorElement: <h1>1234 error</h1>,
-    children: [
-      {
-        index: true,
-        element: <Home/>,
-      }
-    ]}
-]);
 const App = () => {
+  const router = useMemo(() => createBrowserRouter(routes), []);
   return <RouterProvider router={router} />;
 };
 export default App;
