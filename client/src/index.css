@@ -1,6 +1,136 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+:root {
+  --bs-blue: #1d3b53;
+  --bs-indigo: #6610f2;
+  --bs-purple: #6f42c1;
+  --bs-pink: #e83e8c;
+  --bs-red: #d6293e;
+  --bs-yellow: #f7c32e;
+  --bs-green: #0cbc9a;
+  --bs-teal: #20c997;
+  --bs-cyan: #17a2b8;
+  --bs-black: #000;
+  --bs-gray: #747579;
+  --bs-gray-dark: #0b0a12;
+  --bs-gray-100: #f5f5f6;
+  --bs-gray-200: #dfdfe3;
+  --bs-gray-300: #c5c5c7;
+  --bs-gray-400: #96969a;
+  --bs-gray-500: #85878a;
+  --bs-gray-600: #747579;
+  --bs-gray-700: #5e5e5f;
+  --bs-gray-800: #0b0a12;
+  --bs-gray-900: #0b0a12;
+  --bs-primary: #5143d9;
+  --bs-white: #fff;
+  --bs-secondary: #85878a;
+  --bs-success: #0cbc87;
+  --bs-info: #17a2b8;
+  --bs-warning: #f7c32e;
+  --bs-danger: #d6293e;
+  --bs-light: #f5f5f6;
+  --bs-dark: #0b0a12;
+  --bs-orange: #fd7e14;
+  --bs-mode: #fff;
+  --bs-primary-rgb: 81, 67, 217;
+  --bs-secondary-rgb: 133, 135, 138;
+  --bs-success-rgb: 12, 188, 135;
+  --bs-info-rgb: 23, 162, 184;
+  --bs-warning-rgb: 247, 195, 46;
+  --bs-danger-rgb: 214, 41, 62;
+  --bs-light-rgb: 245, 245, 246;
+  --bs-dark-rgb: 11, 10, 18;
+  --bs-orange-rgb: 253, 126, 20;
+  --bs-mode-rgb: 255, 255, 255;
+  --bs-primary-text-emphasis: #392f98;
+  --bs-secondary-text-emphasis: #5d5f61;
+  --bs-success-text-emphasis: #08845f;
+  --bs-info-text-emphasis: #107181;
+  --bs-warning-text-emphasis: #ad8920;
+  --bs-danger-text-emphasis: #961d2b;
+  --bs-light-text-emphasis: #5e5e5f;
+  --bs-dark-text-emphasis: #08070d;
+  --bs-primary-bg-subtle: #dcd9f7;
+  --bs-secondary-bg-subtle: #e7e7e8;
+  --bs-success-bg-subtle: #cef2e7;
+  --bs-info-bg-subtle: #d1ecf1;
+  --bs-warning-bg-subtle: #fdf3d5;
+  --bs-danger-bg-subtle: #f7d4d8;
+  --bs-light-bg-subtle: #fafafb;
+  --bs-dark-bg-subtle: #ceced0;
+  --bs-primary-border-subtle: #b9b4f0;
+  --bs-secondary-border-subtle: #cecfd0;
+  --bs-success-border-subtle: #9ee4cf;
+  --bs-info-border-subtle: #a2dae3;
+  --bs-warning-border-subtle: #fce7ab;
+  --bs-danger-border-subtle: #efa9b2;
+  --bs-light-border-subtle: #dfdfe3;
+  --bs-dark-border-subtle: #9d9da0;
+  --bs-white-rgb: 255, 255, 255;
+  --bs-black-rgb: 0, 0, 0;
+  --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --bs-gradient: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.15),
+    rgba(255, 255, 255, 0)
+  );
+  --bs-body-font-family: "DM Sans", sans-serif;
+  --bs-body-font-size: 1rem;
+  --bs-body-font-weight: 400;
+  --bs-body-line-height: 1.5;
+  --bs-body-color: #747579;
+  --bs-body-color-rgb: 116, 117, 121;
+  --bs-body-bg: #222529;
+  --bs-body-bg-rgb: 255, 255, 255;
+  --bs-emphasis-color: #000;
+  --bs-emphasis-color-rgb: 0, 0, 0;
+  --bs-secondary-color: #c5c5c7;
+  --bs-secondary-color-rgb: 197, 197, 199;
+  --bs-secondary-bg: #dfdfe3;
+  --bs-secondary-bg-rgb: 223, 223, 227;
+  --bs-tertiary-color: rgba(116, 117, 121, 0.5);
+  --bs-tertiary-color-rgb: 116, 117, 121;
+  --bs-tertiary-bg: #f5f5f6;
+  --bs-tertiary-bg-rgb: 245, 245, 246;
+  --bs-heading-color: var(--bs-gray-900);
+  --bs-link-color: #5143d9;
+  --bs-link-color-rgb: 81, 67, 217;
+  --bs-link-decoration: none;
+  --bs-link-hover-color: #4136ae;
+  --bs-link-hover-color-rgb: 65, 54, 174;
+  --bs-code-color: #d63384;
+  --bs-highlight-color: #212529;
+  --bs-highlight-bg: #fff3cd;
+  --bs-border-width: 1px;
+  --bs-border-style: solid;
+  --bs-border-color: var(--bs-gray-200);
+  --bs-border-color-translucent: rgba(0, 0, 0, 0.175);
+  --bs-border-radius: 0.5rem;
+  --bs-border-radius-sm: 0.4rem;
+  --bs-border-radius-lg: 1rem;
+  --bs-border-radius-xl: 1.5rem;
+  --bs-border-radius-xxl: 2rem;
+  --bs-border-radius-2xl: var(--bs-border-radius-xxl);
+  --bs-border-radius-pill: 50rem;
+  --bs-box-shadow: 0px 0px 40px rgba(29, 58, 83, 0.1);
+  --bs-box-shadow-sm: 0 0.125rem 0.25rem rgba(29, 58, 83, 0.15);
+  --bs-box-shadow-lg: 0 1rem 3rem rgba(29, 58, 83, 0.15);
+  --bs-box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+  --bs-focus-ring-width: 0.25rem;
+  --bs-focus-ring-opacity: 0.25;
+  --bs-focus-ring-color: rgba(13, 110, 253, 0.25);
+  --bs-form-valid-color: #198754;
+  --bs-form-valid-border-color: #198754;
+  --bs-form-invalid-color: #dc3545;
+  --bs-form-invalid-border-color: #dc3545;
+}
+/* Reset */
 * {
   padding: 0;
   margin: 0;
@@ -10,12 +140,216 @@
   list-style: none;
   scroll-behavior: smooth;
 }
+html {
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+  font-family: sans-serif;
+  /* overflow-x: hidden; Added to prevent horizontal overflow */
+}
 
-:root {
-  /* some examples */
-  /* --light-bg-color: #e5e9f4;
-  --dark-bg-color: #1d1e24; */
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+  font-family: var(--bs-body-font-family);
+  font-size: var(--bs-body-font-size);
+  font-weight: var(--bs-body-font-weight);
+  line-height: var(--bs-body-line-height);
+  overflow-x: hidden;
+  width: 100%;
+}
 
-  --max-width: 1600px;
-  --fluid-width: 95vw;
+/* Variable colors */
+
+h1 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Lora", serif;
+  font-style: normal;
+  font-size: clamp(24px, 5vw, 38px);
+  /* Made font size responsive */
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h2 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Lora", serif;
+  font-style: normal;
+  font-size: clamp(20px, 4vw, 32px);
+  /* Made font size responsive */
+  font-weight: 400;
+  line-height: 1.4;
+}
+
+h3 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: clamp(18px, 3vw, 24px);
+  /* Made font size responsive */
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h4 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: clamp(16px, 2.5vw, 18px);
+  /* Made font size responsive */
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h5 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Lora", serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+p {
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-family: "Inter-samibold";
+}
+
+/* Buttons  */
+.btn-1,
+.btn-2,
+.btn-3,
+.btn-4,
+.btn-red {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+  transition: all 0.2s ease-in-out;
+}
+
+@media (min-width: 768px) {
+  .btn-1,
+  .btn-2,
+  .btn-3,
+  .btn-4,
+  .btn-red {
+    padding: 0.625rem 1rem;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .btn-1,
+  .btn-2,
+  .btn-3,
+  .btn-4,
+  .btn-red {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+}
+
+.btn-1 {
+  background-color: var(--bs-primary);
+  color: var(--white);
+}
+
+.btn-1:hover {
+  background-color: var(--primary-hover);
+  transform: scale(1.03);
+}
+
+.btn-2 {
+  background-color: var(--secondary);
+  color: var(--primary);
+}
+
+.btn-2:hover {
+  background-color: var(--secondary-hover);
+  transform: scale(1.03);
+}
+
+.btn-3 {
+  background-color: var(--ternery);
+  color: var(--white);
+}
+
+.btn-3:hover {
+  background-color: var(--ternery-hover);
+  transform: scale(1.03);
+}
+
+.btn-4 {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.btn-4:hover {
+  background-color: var(--green-hover);
+  transform: scale(1.03);
+}
+
+.cancel-btn {
+  background-color: transparent;
+  color: var(--red--600);
+  border: 1px solid var(--red--200);
+  transition-property: background-color;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+  will-change: background-color;
+}
+
+.cancel-btn:hover {
+  background-color: var(--red--700);
+  transform: scale(1.03);
+  color: var(--white);
+}
+
+/* Animators  */
+.animate-spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.animate-pulse {
+  animation: pulse 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
 }
