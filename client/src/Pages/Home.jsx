@@ -1,6 +1,11 @@
-import { HeroSection } from "../components";
+import { HeroSection, SpecialOffers } from "../components";
 
 const Home = () => {
-  return <HeroSection style={{ height: "1000px" }} />;
+  return (
+    <section className="lg:pl-20 space-y-10" >
+      <HeroSection />
+      <SpecialOffers />
+    </section>
+  );
 };
 export default Home;
