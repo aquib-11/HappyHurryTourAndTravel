@@ -4,8 +4,8 @@ import MobileNav from "./Navbar/MobileNav"
 const Header = () => {
   return (
     <>
-    <DesktopNav />
-    <MobileNav/>
+    {/* <DesktopNav />
+    <MobileNav/> */}
     </>
   )
 }
