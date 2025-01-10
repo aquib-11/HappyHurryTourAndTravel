@@ -15,13 +15,9 @@ import cloudinary from "cloudinary";
 // import axios from "axios";
 
 // //routers
-// import jobRouter from "./routes/jobrouter.js";
-// import authRouter from "./routes/authRouter.js";
-// import projectRouter from "./routes/projectRouter.js";
-// import techstackRouter from "./routes/techstackroutes.js";
-// import inboxRouter from "./routes/inboxRouter.js";
-// import exprienceRouter from "./routes/exprienceRouter.js";
-// import certificationRouter from "./routes/certificationRouter.js";
+
+import authRouter from "./routes/authRouter.js";
+import destinationRouter from "./routes/destinationRoutes.js";
 
 //public
 import path, { dirname } from "path";
@@ -57,13 +53,8 @@ app.use(cookieParser());
 //   }
 // });
 
-// app.use("/api/v1/auth", authRouter);
-// app.use("/api/v1/jobs", jobRouter);
-// app.use("/api/v1/projects", projectRouter);
-// app.use("/api/v1/techstacks", techstackRouter);
-// app.use("/api/v1/inboxs", inboxRouter);
-// app.use("/api/v1/expriences", exprienceRouter);
-// app.use("/api/v1/certifications", certificationRouter);
+app.use("/api/v1/auth", authRouter);
+app.use("/api/v1/destination", destinationRouter);
 
 // entry point prod...
 app.get("*", (req, res) => {
