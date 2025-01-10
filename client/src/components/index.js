@@ -6,7 +6,7 @@ export { default as ImageSlider } from "./shared/ImageSlider";
 
 // Home
 export { default as HeroSection } from "./Home/HeroSection";
-
+// export { default as SpecialOffers } from "./Home/SpecialOffers";
 // Loader
 export { default as Loader } from "./shared/Loader";
 

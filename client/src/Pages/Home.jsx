@@ -1,10 +1,10 @@
-import { HeroSection, SpecialOffers } from "../components";
+import { HeroSection,  } from "../components";
 
 const Home = () => {
   return (
     <section className="lg:pl-20 space-y-10" >
       <HeroSection />
-      <SpecialOffers />
+      {/* <SpecialOffers /> */}
     </section>
   );
 };
