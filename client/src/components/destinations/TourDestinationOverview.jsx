@@ -17,27 +17,7 @@ const TourDestinationOverview = () => {
 
         <div className="space-y-6">
           <div>
-            <h3 className="text-xl font-semibold mb-2">Tour Info</h3>
-            <div className="space-y-2">
-              <p>
-                <span className="font-medium">Place Covered:</span> Bali - Ubud
-              </p>
-              <p>
-                <span className="font-medium">Duration:</span> 5 Days, 4 Nights
-              </p>
-              <p>
-                <span className="font-medium">Start Point:</span> Ngurah
-                International Airport
-              </p>
-              <p>
-                <span className="font-medium">End Point:</span> Ngurah
-                International Airport
-              </p>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-semibold mb-2">Tour Highlights</h3>
+            <h2 className="text-xl font-semibold mb-2">Tour Highlights</h2>
             <ul className="list-disc pl-5 space-y-2 text-gray-300">
               <li className="flex items-center gap-2">
                 <FaLongArrowAltRight /> Experience a delightful tropical getaway
@@ -56,9 +36,9 @@ const TourDestinationOverview = () => {
           </div>
 
           <div>
-            <h3 className="text-xl font-semibold mb-2">
+            <h2 className="text-xl font-semibold mb-2">
               More About The Beautiful Bali with Malaysia Tour
-            </h3>
+            </h2>
             <ul className="list-disc pl-5 space-y-2 text-gray-300">
               <li className="flex items-center gap-2">
                 <FaLongArrowAltRight />

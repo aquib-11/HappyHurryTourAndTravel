@@ -2,7 +2,6 @@ import React, { lazy, Suspense } from "react";
 import { Loader } from "../components";
 import { destinationsRoutes } from "./destinationsRoutes";
 import { homeRoutes } from "./homeRoutes.";
-
 const HomeOutlet = lazy(() => import("../outlets/HomeOutlet"));
 
 export const routes = [
