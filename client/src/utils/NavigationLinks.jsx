@@ -40,7 +40,7 @@ const quickLinks = [
 const adminLinks = [
   {
     name: "Add Destination",
-    address: "/add-destination",
+    address: "add-destination",
   },
   {
     name: "Contact Us",
@@ -50,6 +50,23 @@ const adminLinks = [
     name: "Cart",
     address: "/cart",
   },
+  {
+    name: "Cart",
+    address: "/cart",
+  },
+  {
+    name: "Cart",
+    address: "/cart",
+  },
+  {
+    name: "Cart",
+    address: "/cart",
+  },
+
+  {
+    name: "Cart",
+    address: "/cart",
+  },
 ];
 
-export { quickLinks, navLinks };
+export { quickLinks, navLinks, adminLinks };
