@@ -13,12 +13,12 @@ const navLinks = [
   },
   {
     name: "Cabs",
-    address: "/cabs",
+    address: "/cab-home",
     icon: <FaCar />,
   },
   {
     name: "Blogs",
-    address: "/Blogs",
+    address: "/blogs",
     icon: <FaNewspaper />,
   },
 ];

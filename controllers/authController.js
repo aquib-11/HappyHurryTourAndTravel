@@ -12,11 +12,11 @@ export const register = async (req, res) => {
 
   const user = await User.create(req.body);
   res.status(StatusCodes.CREATED).json({
-    msg: "success! please check your email to verify account",
+    msg: "success! user registered",
   });
 };
 
-
+// const boolean = 7 === 3 
 
 export const login = async (req, res) => {
   const user = await User.findOne({ email: req.body.email });

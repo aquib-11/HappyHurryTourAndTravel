@@ -21,3 +21,7 @@ export { default as FeaturedBlog } from "./blogs/FeaturedBlog";
 export { default as RecentBlogs } from "./blogs/RecentBlogs";
 export { default as AllLatestblogsCard } from "./blogs/AllLatestblogsCard";
 
+// Cabs
+export { default as OneWay } from "./cabCards/OneWay";
+export { default as Roundtrip } from "./cabCards/Roadtrip";
+export { default as CarCard } from "./cabCards/CarCard";
