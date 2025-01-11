@@ -25,6 +25,7 @@ export const routes = [
       ...destinationsRoutes,
       ...blogRoutes,
       ...adminRoutes,
+      ,...cabRoutes
     ],
   },
   // Routes that dont need the header and footer
