@@ -2,7 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 :root {
-  --bs-text: #8e85e6;
+
+  --bs-card-bg: #191b1d;
+  --bs-text: #8e85e6 ;
   --bs-blue: #1d3b53;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;

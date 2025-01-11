@@ -1,6 +1,8 @@
 import React, { lazy, Suspense } from "react";
 import { Loader } from "../components";
-import { Home } from "../Pages";
+import { About, Contact, Home } from "../Pages";
+
+
 
 export const homeRoutes = [
   {
@@ -11,4 +13,23 @@ export const homeRoutes = [
       </Suspense>
     ),
   },
+  {
+    element: (
+      <Suspense fallback={<Loader />}>
+        <About />
+      </Suspense>
+    ),
+    path: "/about",
+  },
+  // Contact
+  {
+    element: (
+      <Suspense fallback={<Loader />}>
+        <Contact />
+      </Suspense>
+    ),
+    path: "/contact",
+  }
+  
+
 ];
