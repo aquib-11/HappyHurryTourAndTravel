@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 :root {
+  --bs-text: #8e85e6 ;
   --bs-blue: #1d3b53;
   --bs-indigo: #6610f2;
   --bs-purple: #6f42c1;
@@ -412,5 +413,21 @@ p {
   .container-sm,
   .container {
     max-width: 1200px;
+  }
+}
+
+/* inputs */
+.inputText {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #1a202c;
+  border: 1px solid #2d3748;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    border-color: #6366f1;
   }
 }

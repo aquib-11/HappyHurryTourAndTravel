@@ -14,3 +14,10 @@ export { default as Loader } from "./shared/Loader";
 export { default as TourDestinationOverview } from "./destinations/TourDestinationOverview";
 export { default as AllDestinaitonBanner } from "./destinations/AllDestinaitonBanner";
 export { default as AllDestinationCard } from "./destinations/AllDestinationCard";
+
+
+// Blogs
+export { default as FeaturedBlog } from "./blogs/FeaturedBlog";
+export { default as RecentBlogs } from "./blogs/RecentBlogs";
+export { default as AllLatestblogsCard } from "./blogs/AllLatestblogsCard";
+

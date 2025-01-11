@@ -2,7 +2,7 @@ import React from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
 const TourDestinationOverview = () => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+    <div className="container grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
       {/* Left Section */}
       <div className="md:col-span-2">
         <h2 className="text-2xl font-bold mb-4">Overview</h2>
