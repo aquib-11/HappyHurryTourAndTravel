@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 const destinationScheme = mongoose.Schema(
   {
+    destinationName: String,
     title: String,
     images: [{
       image: String,

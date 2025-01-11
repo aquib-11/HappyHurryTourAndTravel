@@ -9,7 +9,7 @@ const ImageSlider = ({ slides, heroImage, handleImageHover }) => {
         <img
           src={heroImage}
           alt="Wat Arun at night"
-          className="w-full h-full object-cover"
+          className="w-full md:h-full h-[230px] object-cover"
         />
       </div>
       {/* Slider */}
@@ -30,11 +30,11 @@ const ImageSlider = ({ slides, heroImage, handleImageHover }) => {
         >
           {slides.map((slide, index) => (
             <SplideSlide key={index}>
-              <div className="sm:h-[3rem] cursor-pointer md:h-48 rounded-lg overflow-hidden  border-[var(--bs-primary)] hover:border-[6px] transition-transform duration-300 ease-in-out">
+              <div className="sm:h-[3rem] cursor-pointer md:h-48 rounded-lg overflow-hidden  border-[var(--bs-primary)] md:hover:border-[6px] transition-transform duration-300 ease-in-out">
                 <img
                   src={slide}
                   alt={`Travel destination ${index + 1}`}
-                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
+                  className="w-full md:h-full h-[140px] object-cover hover:scale-105 transition-transform duration-300 ease-in-out"
                   onMouseEnter={() => handleImageHover(slide)}
                 />
               </div>

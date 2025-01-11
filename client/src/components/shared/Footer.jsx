@@ -78,7 +78,7 @@ const Footer = () => {
                   </li>
                   <li>
                     <NavLink
-                      to={"/auth/admin-things"}
+                      to={"/admin"}
                       className={({ isActive }) =>
                         `text-gray-400 hover:text-white transition-colors duration-300 ${
                           isActive ? "text-white" : "text-gray-400"
