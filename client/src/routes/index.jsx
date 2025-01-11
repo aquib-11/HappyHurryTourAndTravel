@@ -19,8 +19,14 @@ export const routes = [
     ),
     loader: homeLayoutLoader,
     // Routes that need homeOutlet, meaning pages that need header and footer
-    children: [...homeRoutes, ...destinationsRoutes, ...blogRoutes ,...cabRoutes],
-  
+    
+    children: [
+      ...homeRoutes,
+      ...destinationsRoutes,
+      ...blogRoutes,
+      ...adminRoutes,
+      ,...cabRoutes
+    ],
   },
   // Routes that dont need the header and footer
   // ...destinationsRoutes,
