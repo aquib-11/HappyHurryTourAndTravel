@@ -21,4 +21,4 @@ export { default as LoginPage } from "./auth/LoginPage";
 
 // Admin things
 export { default as AddDestination } from "./admin/AddDestination";
-
+export { default as AddDestinationImages } from "./admin/AddDestinationImages";

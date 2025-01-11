@@ -1,18 +1,28 @@
 import React, { useState } from "react";
 
 import { ImageSlider, TourDestinationOverview } from "../../components";
+import customFetch from "../../utils/customFetch";
+import { toast } from "react-toastify";
+import { useLoaderData } from "react-router-dom";
+import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
 
+export const getDestinationDetailsLoader = async ({ params }) => {
+  try {
+    const { data } = await customFetch.get(`/destination/${params.id}`);
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 const Destination = () => {
+  const data = useLoaderData();
+  const { user } = useHomeLayoutContext();
+  console.log({ dataB: data.destinations });
   const [heroImage, setHeroImage] = useState(
-    "https://img.freepik.com/free-photo/digital-lavender-natural-landscape_23-2150538378.jpg?semt=ais_hybrid"
+    data?.destinations?.images?.[0]?.image
   );
-  const slides = [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR__zJOFi3ef7eGRIlVWo2DKdUXKrCq8dBwtQ&s",
-    "https://img.freepik.com/free-photo/digital-lavender-natural-landscape_23-2150538378.jpg?semt=ais_hybrid",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR__zJOFi3ef7eGRIlVWo2DKdUXKrCq8dBwtQ&s",
-    "https://img.freepik.com/free-photo/digital-lavender-natural-landscape_23-2150538378.jpg?semt=ais_hybrid",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR__zJOFi3ef7eGRIlVWo2DKdUXKrCq8dBwtQ&s",
-  ];
+  const slides = data?.destinations?.images?.map((image) => image.image);
 
   const handleImageHover = (image) => {
     setHeroImage(image);
@@ -24,7 +34,7 @@ const Destination = () => {
         {/* Header */}
         <div className="py-6">
           <h1 className="text-4xl font-bold text-white mb-2">
-            Beautiful Bali with Malaysia
+            {data?.destinations?.title}
           </h1>
         </div>
 
@@ -36,7 +46,7 @@ const Destination = () => {
         />
 
         {/* Overview  */}
-        <TourDestinationOverview />
+        <TourDestinationOverview destination={data?.destinations} user={user} />
       </div>
     </div>
   );

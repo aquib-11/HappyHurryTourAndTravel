@@ -29,7 +29,9 @@ export const addImage = async (req, res) => {
   if (destinations.images.length >= 4) {
     throw new Error("Maximum limit of 4 images reached for this destination");
   }
-
+if(!req.file) {
+  throw new Error("Please upload an image");
+}
   if (req.file) {
     const file = formatImage(req.file);
     const response = await cloudinary.v2.uploader.upload(file);
