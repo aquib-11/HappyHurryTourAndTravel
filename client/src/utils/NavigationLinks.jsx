@@ -37,5 +37,19 @@ const quickLinks = [
     address: "/cart",
   },
 ];
+const adminLinks = [
+  {
+    name: "Add Destination",
+    address: "/add-destination",
+  },
+  {
+    name: "Contact Us",
+    address: "/contact",
+  },
+  {
+    name: "Cart",
+    address: "/cart",
+  },
+];
 
 export { quickLinks, navLinks };
