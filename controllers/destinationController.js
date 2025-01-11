@@ -25,6 +25,11 @@ export const addImage = async (req, res) => {
   const destinations = await destination.findById(id);
   if (!destinations) throw new NotFoundErr(`no destination with id ${id}`);
 
+  // Check if already has 4 images
+  if (destinations.images.length >= 4) {
+    throw new Error("Maximum limit of 4 images reached for this destination");
+  }
+
   if (req.file) {
     const file = formatImage(req.file);
     const response = await cloudinary.v2.uploader.upload(file);
@@ -85,7 +90,15 @@ export const deleteDestination = async (req, res) => {
   if (req.user.role !== "admin")
     throw new UnauthorizedErr("you are not authorized to access this route");
   const { id } = req.params;
-  const destinations = await destination.findByIdAndDelete(id);
+  const destinations = await destination.findById(id);
   if (!destinations) throw new NotFoundErr(`no destination with id ${id}`);
-  res.status(StatusCodes.OK).json({ msg: "destination deleted", destinations });
+
+  // Delete all images from Cloudinary
+  for (const image of destinations.images) {
+    await cloudinary.v2.uploader.destroy(image.imageId);
+  }
+
+  // Delete destination from database
+  await destination.findByIdAndDelete(id);
+  res.status(StatusCodes.OK).json({ msg: "destination and all related images deleted" });
 };
