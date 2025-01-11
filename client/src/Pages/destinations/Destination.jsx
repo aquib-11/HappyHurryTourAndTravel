@@ -20,7 +20,7 @@ const Destination = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="container  px-4">
         {/* Header */}
         <div className="py-6">
           <h1 className="text-4xl font-bold text-white mb-2">
