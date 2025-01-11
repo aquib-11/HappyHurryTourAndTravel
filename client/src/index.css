@@ -414,3 +414,19 @@ p {
     max-width: 1200px;
   }
 }
+
+/* inputs */
+.inputText {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background-color: #1a202c;
+  border: 1px solid #2d3748;
+  border-radius: 0.5rem;
+  color: #ffffff;
+  outline: none;
+  transition: all 0.2s ease-in-out;
+
+  &:focus {
+    border-color: #6366f1;
+  }
+}
