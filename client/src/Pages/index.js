@@ -32,3 +32,6 @@ export { default as EditDestination } from "./admin/editPages/EditDestination";
 export { default as AddHotel } from "./admin/hotels/AddHotel";
 export { default as AddHotelImages } from "./admin/hotels/AddHotelImages";
 export { default as EditHotel } from "./admin/editPages/EditHotel";
+
+// Cabs
+export { default as AddCab } from "./admin/cabs/AddCab";
