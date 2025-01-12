@@ -1,12 +1,12 @@
 import React from "react";
 import logo from "../../../assets/images/logo.png";
 import { quickLinks, navLinks } from "../../../utils/NavigationLinks";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 const DesktopNav = () => {
+
   return (
     <nav className="hidden container lg:flex justify-between items-center py-2 text-[var(--bs-white)] h-20 w-full bg-[var(--bs-body-bg)] z-50 sticky top-0 ">
-     
       <div className=" flex items-center space-x-6">
         <img src={logo} alt="Logo" className="h-20 object-cover" />
         <ul className="flex items-center space-x-4">

@@ -13,12 +13,12 @@ const navLinks = [
   },
   {
     name: "Cabs",
-    address: "/cabs",
+    address: "/cab-home",
     icon: <FaCar />,
   },
   {
     name: "Blogs",
-    address: "/Blogs",
+    address: "/blogs",
     icon: <FaNewspaper />,
   },
 ];
@@ -37,5 +37,36 @@ const quickLinks = [
     address: "/cart",
   },
 ];
+const adminLinks = [
+  {
+    name: "Add Destination",
+    address: "add-destination",
+  },
+  {
+    name: "Contact Us",
+    address: "/contact",
+  },
+  {
+    name: "Cart",
+    address: "/cart",
+  },
+  {
+    name: "Cart",
+    address: "/cart",
+  },
+  {
+    name: "Cart",
+    address: "/cart",
+  },
+  {
+    name: "Cart",
+    address: "/cart",
+  },
 
-export { quickLinks, navLinks };
+  {
+    name: "Cart",
+    address: "/cart",
+  },
+];
+
+export { quickLinks, navLinks, adminLinks };

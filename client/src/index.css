@@ -2,6 +2,8 @@
 @tailwind components;
 @tailwind utilities;
 :root {
+
+  --bs-card-bg: #191b1d;
   --bs-text: #8e85e6 ;
   --bs-blue: #1d3b53;
   --bs-indigo: #6610f2;
@@ -430,4 +432,34 @@ p {
   &:focus {
     border-color: #6366f1;
   }
+}
+.submitButton {
+  background-color: #6335e7;
+  color: #ffffff;
+  font-weight: 500;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.submitButton:hover {
+  background-color: #6366f1;
+}
+
+.uploadImageInput {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #6b7280;
+  color: #ffffff;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  outline: none;
+  transition-duration: 200ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.uploadImageInput:focus {
+  border-color: #6366f1;
 }

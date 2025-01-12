@@ -1,14 +1,28 @@
 import React, { useState } from "react";
 import { Eye, EyeOff } from "lucide-react";
 import loginImage from "../../assets/images/loginImage.jpg";
+import { Form } from "react-router-dom";
 
+import { toast } from "react-toastify";
+import { redirect } from "react-router-dom";
+import customFetch from "../../utils/customFetch";
+export const LoginAction = async ({ request }) => {
+  const formData = await request.formData();
+  const data = Object.fromEntries(formData);
+  try {
+    const response = await customFetch.post("/auth/login", data);
+    toast.success("Logged in");
+    return redirect("/");
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
 const LoginPage = () => {
   const [showPassword, setShowPassword] = useState(false);
-
   const togglePassword = () => {
     setShowPassword(!showPassword);
   };
-
   return (
     <div className="min-h-screen flex items-center justify-center ">
       <div className="border-r-2 w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-4 p-8 bg-[var(--bs-border-color-translucent)] rounded-[20px]">
@@ -29,7 +43,7 @@ const LoginPage = () => {
             </h1>
           </div>
 
-          <form className="space-y-6">
+          <Form className="space-y-6" method="post">
             <div>
               <label
                 htmlFor="email"
@@ -40,6 +54,7 @@ const LoginPage = () => {
               <input
                 type="email"
                 id="email"
+                name="email"
                 className="inputText"
                 placeholder="user@email.com"
               />
@@ -56,6 +71,7 @@ const LoginPage = () => {
                 <input
                   type={showPassword ? "text" : "password"}
                   id="password"
+                  name="password"
                   className="inputText"
                   placeholder="password"
                 />
@@ -94,7 +110,7 @@ const LoginPage = () => {
             >
               Login
             </button>
-          </form>
+          </Form>
         </div>
       </div>
     </div>
