@@ -35,3 +35,4 @@ export { default as EditHotel } from "./admin/editPages/EditHotel";
 
 // Cabs
 export { default as AddCab } from "./admin/cabs/AddCab";
+export { default as EditCab } from "./admin/editPages/EditCab";

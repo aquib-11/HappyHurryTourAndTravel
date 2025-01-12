@@ -8,6 +8,7 @@ import { homeLayoutLoader } from "../outlets/HomeOutlet";
 import { cabRoutes } from "./cabRoutes";
 import { adminRoutes } from "./adminRoutes";
 import { hotelRoutes } from "./hotelRoutes";
+
 const HomeOutlet = lazy(() => import("../outlets/HomeOutlet"));
 
 export const routes = [

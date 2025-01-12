@@ -27,6 +27,10 @@ import EditHotel, {
   editHotelLoader,
 } from "../Pages/admin/editPages/EditHotel";
 import { addCabAction } from "../Pages/admin/cabs/AddCab";
+import EditCab, {
+  editCabAction,
+  editCabLoader,
+} from "../Pages/admin/editPages/EditCab";
 
 export const adminRoutes = [
   {
@@ -72,12 +76,13 @@ export const adminRoutes = [
         path: "add-cab",
         element: <AddCab />,
         action: addCabAction,
-        
+      },
+      {
+        path: "edit-cab/:id",
+        element: <EditCab />,
+        action: editCabAction,
+        loader: editCabLoader,
       },
     ],
   },
-  // {
-  //   path: "delete-destination-image/:id/:imageId",
-  //   action: deleteImageAction,
-  // },
 ];
