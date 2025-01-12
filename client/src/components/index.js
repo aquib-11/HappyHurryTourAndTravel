@@ -28,7 +28,7 @@ export { default as OneWay } from "./cabCards/OneWay";
 export { default as Roundtrip } from "./cabCards/Roadtrip";
 export { default as CarCard } from "./cabCards/CarCard";
 export { default as DestinaitonPrices } from "./cabCards/DestinaitonPrices";
-
+export { default as CarDetailModel } from "./cabCards/CarDetailModel";
 
 
 // hotels
