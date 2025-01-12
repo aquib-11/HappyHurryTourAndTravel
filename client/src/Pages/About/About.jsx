@@ -6,10 +6,10 @@ import img1 from "../../assets/images/bg3.jpg";
 
 const About = () => {
   return (
-    <div className="text-white p-4 md:p-8">
+    <div className="container text-white p-4 md:p-8">
       {/* Header Section */}
       <div className="max-w-6xl mx-auto text-center mb-12">
-        <h1 className="text-2xl md:text-5xl font-bold mb-4">
+        <h1 className="font-sans font-bold mb-4">
           If You Want To See The World We
           <br />
           Will Help You
@@ -45,7 +45,7 @@ const About = () => {
       </div>
 
       {/* Image Grid */}
-      <div className="container rounded-xl">
+      <div className=" rounded-xl">
         <img
           src={img1}
           alt="Beach resort"
@@ -54,8 +54,8 @@ const About = () => {
       </div>
 
       {/* Our Story Section */}
-      <div className="max-w-6xl mx-auto mb-12">
-        <h2 className="text-3xl font-bold mb-6">Our Story</h2>
+      <div className=" mx-auto mb-12">
+        <h2 className="font-sans font-bold my-6">Our Story</h2>
         <p className="text-gray-400 mb-4">
           Founded in 2005, passage its ten led hearted removal cordial.
           Preference any astonished unreserved Mrs. Prosperous understood

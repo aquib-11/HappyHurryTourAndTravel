@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { CarCard, OneWay } from "../../components";
+import { CarCard, DestinaitonPrices, OneWay } from "../../components";
 import Roadtrip from "../../components/cabCards/Roadtrip";
 import img1 from "../../assets/images/bg6.jpg";
 import { Zap, Leaf, Shield, Car, Wifi, Accessibility } from "lucide-react";
@@ -55,7 +55,7 @@ const CabHome = () => {
   return (
     <div className="container">
         {/* Booking Form container */}
-      <div className="relative  mx-auto min-h-screen md:min-h-screen flex items-center justify-center">
+      <div className="relative  mx-auto min-h-screen md:min-h-screen flex items-center justify-center px-4">
         <img
           src={img1}
           alt=""
@@ -98,7 +98,7 @@ const CabHome = () => {
 
       {/* Our vehicles */}
       <div >
-        <h1 className="text-center text-[var(--bs-white)] font-sans font-semibold">
+        <h1 className="text-center text-[var(--bs-white)] font-sans font-semibold my-8">
           Our Awesome Vehicles
         </h1>
       </div>
@@ -108,9 +108,15 @@ const CabHome = () => {
         ))}{" "}
       </div>
       
+      {/* Destinaiton Pricing */}
+      <div className="container w-full md:py-16">
+      <h1 className="text-[--bs-white] text-center  font-sans font-bold my-8" >Cab Pricing</h1>
+      <DestinaitonPrices/>
+      </div>
+
       {/* why choose us */}
-      <div className="container w-full  px-4 py-16">
-        <h1 className="text-4xl font-bold text-white text-center mb-12">
+      <div className="container w-full md:py-16">
+        <h1 className=" font-bold font-sans text-white text-center my-8">
           Why Choose Us
         </h1>
 

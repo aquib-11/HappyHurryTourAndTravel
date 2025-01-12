@@ -20,8 +20,9 @@ export { default as AllDestinationCard } from "./destinations/AllDestinationCard
 export { default as FeaturedBlog } from "./blogs/FeaturedBlog";
 export { default as RecentBlogs } from "./blogs/RecentBlogs";
 export { default as AllLatestblogsCard } from "./blogs/AllLatestblogsCard";
-
+export { default as SingleBlog } from "./blogs/SingleBlog";
 // Cabs
 export { default as OneWay } from "./cabCards/OneWay";
 export { default as Roundtrip } from "./cabCards/Roadtrip";
 export { default as CarCard } from "./cabCards/CarCard";
+export { default as DestinaitonPrices } from "./cabCards/DestinaitonPrices";

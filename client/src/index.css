@@ -463,3 +463,28 @@ p {
 .uploadImageInput:focus {
   border-color: #6366f1;
 }
+.cabInputs {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #4a5568; /* Gray border */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 0.75rem; /* Padding */
+  color: #a0aec0; /* Text color */
+  outline: none; /* Remove focus outline */
+  transition: border-color 0.2s ease-in-out; /* Smooth border transition */
+}
+
+.cabInputs:focus {
+  border-color: #2d3748; /* Change border color on focus */
+}
+
+.cabInputs::placeholder {
+  color: #85878abd; /* Custom gray placeholder color */
+  opacity: 1; /* Ensure full opacity */
+}
+
+.cabInputs::-webkit-calendar-picker-indicator {
+  background-color: #4a5568; /* Background for calendar picker indicator */
+  border-radius: 50%; /* Make it circular */
+  padding: 5px; /* Add padding */
+}

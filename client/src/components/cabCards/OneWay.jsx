@@ -12,7 +12,7 @@ const OneWay = () => {
           <input
             type="text"
             placeholder="Select location"
-            className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
+            className="cabInputs"
           />
         </div>
 
@@ -22,7 +22,7 @@ const OneWay = () => {
           <input
             type="text"
             placeholder="Select Location"
-            className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
+            className="cabInputs"
           />
         </div>
       </div>
@@ -34,23 +34,13 @@ const OneWay = () => {
           <label className="text-sm text-[var(--bs-400)]mb-2">
             Pickup Date
           </label>
-          <input
-            type="date"
-            placeholder="Select Date"
-            className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
-          />
+          <input type="date" placeholder="Select Date" className="cabInputs" />
         </div>
 
         {/* Pickup Time */}
         <div className="flex flex-col">
-          <label className="text-sm text-[var(--bs-400)] ">
-            Pickup time
-          </label>
-          <input
-            type="time"
-            placeholder="Select Date"
-            className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
-          />
+          <label className="text-sm text-[var(--bs-400)] ">Pickup time</label>
+          <input type="time" placeholder="Select Date" className="cabInputs" />
         </div>
       </div>
 
