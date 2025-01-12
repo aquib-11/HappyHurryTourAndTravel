@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AdminOutlet from "../outlets/AdminOutlet";
 import {
+  AddCab,
   AddDestination,
   AddDestinationImages,
   AddHotel,
@@ -25,6 +26,7 @@ import EditHotel, {
   editHotelAction,
   editHotelLoader,
 } from "../Pages/admin/editPages/EditHotel";
+import { addCabAction } from "../Pages/admin/cabs/AddCab";
 
 export const adminRoutes = [
   {
@@ -65,6 +67,12 @@ export const adminRoutes = [
         element: <EditHotel />,
         action: editHotelAction,
         loader: editHotelLoader,
+      },
+      {
+        path: "add-cab",
+        element: <AddCab />,
+        action: addCabAction,
+        
       },
     ],
   },

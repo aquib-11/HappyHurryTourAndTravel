@@ -68,12 +68,20 @@ const Roadtrip = () => {
             placeholder="Select Time"
             className="cabInputs"          />
         </div>
+        <select className="cabInputs" defaultValue={"select car"}>
+          <option value="select car" disabled>
+            Select Car
+          </option>
+          <option value="sedan">Sedan</option>
+          <option value="swift">Swift</option>
+        </select>
+        {/* Search Button */}
+        <button className="w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold py-3 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors">
+          Book Now
+        </button>
       </div>
 
-      {/* Search Button */}
-      <button className="w-full bg-[var(--bs-black)] text-white font-semibold py-3 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors">
-        Search Cabs
-      </button>
+      
     </div>
   );
 };
