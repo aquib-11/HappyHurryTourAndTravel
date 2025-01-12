@@ -4,16 +4,10 @@ const cabSchema = mongoose.Schema(
   {
     // Vehicle details
     name: String,
-    type: {
-      type: String,
-    },
     seatingCapacity: Number,
     image: String,
     imageId: String,
 
-    // Service details
-    pricePerKm: Number,
-    basePrice: Number,
     features: Array,
 
     // Booking details

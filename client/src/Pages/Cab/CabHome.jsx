@@ -3,8 +3,22 @@ import { CarCard, DestinaitonPrices, OneWay } from "../../components";
 import Roadtrip from "../../components/cabCards/Roadtrip";
 import img1 from "../../assets/images/bg6.jpg";
 import { Zap, Leaf, Shield, Car, Wifi, Accessibility } from "lucide-react";
+import customFetch from "../../utils/customFetch";
+import { useLoaderData } from "react-router-dom";
+
+export const cabHomeLoader = async () => {
+  try {
+    const { data } = await customFetch.get("/cab");
+    return data;
+  } catch (error) {
+    console.log({ error });
+    return error;
+  }
+};
 
 const CabHome = () => {
+  const { cabs } = useLoaderData();
+  console.log({ cabs });
   const [tripType, setTripType] = useState("oneway");
   const features = [
     {
@@ -31,17 +45,16 @@ const CabHome = () => {
     {
       icon: <Car className="w-6 h-6 text-red-500" />,
       title: "Vehicle Options",
-      description:
-        "Choose from a variety of vehicles to suit your needs, from sedans to SUVs.",
+      description: "Choose from a variety of vehicles to suit your needs.",
       bgColor: "bg-red-950/40",
     },
-    {
-      icon: <Wifi className="w-6 h-6 text-amber-500" />,
-      title: "Cab Entertainment",
-      description:
-        "Stay connected on the go with complimentary Wi-Fi and entertainment options.",
-      bgColor: "bg-amber-950/40",
-    },
+    // {
+    //   icon: <Wifi className="w-6 h-6 text-amber-500" />,
+    //   title: "Cha",
+    //   description:
+    //     "Stay connected on the go with complimentary Wi-Fi and entertainment options.",
+    //   bgColor: "bg-amber-950/40",
+    // },
     {
       icon: <Accessibility className="w-6 h-6 text-teal-500" />,
       title: "Polite Driver",
@@ -50,11 +63,10 @@ const CabHome = () => {
       bgColor: "bg-teal-950/40",
     },
   ];
-  
 
   return (
     <div className="container">
-        {/* Booking Form container */}
+      {/* Booking Form container */}
       <div className="relative  mx-auto min-h-screen md:min-h-screen flex items-center justify-center px-4">
         <img
           src={img1}
@@ -97,21 +109,23 @@ const CabHome = () => {
       </div>
 
       {/* Our vehicles */}
-      <div >
+      <div>
         <h1 className="text-center text-[var(--bs-white)] font-sans font-semibold my-8">
           Our Awesome Vehicles
         </h1>
       </div>
-      <div className="container  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 py-4">
-        {[1, 2, 3, 4].map((item, index) => (
-          <CarCard key={index} />
+      <div className="container flex items-center justify-center flex-wrap gap-4 py-4 ">
+        {cabs.map((cab, index) => (
+          <CarCard key={index} cab={cab} />
         ))}{" "}
       </div>
-      
+
       {/* Destinaiton Pricing */}
       <div className="container w-full md:py-16">
-      <h1 className="text-[--bs-white] text-center  font-sans font-bold my-8" >Cab Pricing</h1>
-      <DestinaitonPrices/>
+        <h1 className="text-[--bs-white] text-center  font-sans font-bold my-8">
+          Cab Pricing
+        </h1>
+        <DestinaitonPrices />
       </div>
 
       {/* why choose us */}
