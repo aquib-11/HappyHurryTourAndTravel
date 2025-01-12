@@ -12,8 +12,7 @@ const Roadtrip = () => {
             <input
               type="text"
               placeholder="Select Location"
-              className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
-            />
+              className="cabInputs"            />
           </div>
         </div>
 
@@ -23,8 +22,7 @@ const Roadtrip = () => {
           <input
             type="text"
             placeholder="Select Location"
-            className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
-          />
+            className="cabInputs"          />
         </div>
       </div>
 
@@ -37,8 +35,7 @@ const Roadtrip = () => {
           <input
             type="date"
             placeholder="Select Date"
-            className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
-          />
+            className="cabInputs"          />
         </div>
         <div className="flex flex-col">
           <label className="text-sm text-[var(--bs-400)] mb-2">
@@ -47,8 +44,7 @@ const Roadtrip = () => {
           <input
             type="time"
             placeholder="Select Time"
-            className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
-          />
+            className="cabInputs"          />
         </div>
       </div>
 
@@ -61,8 +57,7 @@ const Roadtrip = () => {
           <input
             type="date"
             placeholder="Select Date"
-            className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
-          />
+            className="cabInputs"          />
         </div>
         <div className="flex flex-col">
           <label className="text-sm text-[var(--bs-400)] mb-2">
@@ -71,8 +66,7 @@ const Roadtrip = () => {
           <input
             type="time"
             placeholder="Select Time"
-            className="w-full bg-transparent border border-gray-700 rounded-lg p-3 text-gray-400 placeholder-gray-500 focus:outline-none focus:border-gray-600"
-          />
+            className="cabInputs"          />
         </div>
       </div>
 

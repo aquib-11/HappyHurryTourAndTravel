@@ -8,7 +8,7 @@ const DesktopNav = () => {
   return (
     <nav className="hidden container lg:flex justify-between items-center py-2 text-[var(--bs-white)] h-20 w-full bg-[var(--bs-body-bg)] z-50 sticky top-0 ">
       <div className=" flex items-center space-x-6">
-        <img src={logo} alt="Logo" className="h-20 object-cover" />
+        <img src={logo} alt="Logo" className="h-20 object-cover p-2" />
         <ul className="flex items-center space-x-4">
           {quickLinks?.map((link, index) => (
             <li key={index}>

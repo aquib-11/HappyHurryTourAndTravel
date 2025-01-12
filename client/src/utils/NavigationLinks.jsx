@@ -18,7 +18,7 @@ const navLinks = [
   },
   {
     name: "Blogs",
-    address: "/blogs",
+    address: "/blog-grid",
     icon: <FaNewspaper />,
   },
 ];
