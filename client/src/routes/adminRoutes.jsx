@@ -1,13 +1,30 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AdminOutlet from "../outlets/AdminOutlet";
-import { AddDestination, AddDestinationImages } from "../Pages";
+import {
+  AddDestination,
+  AddDestinationImages,
+  AddHotel,
+  EditDestination,
+} from "../Pages";
 import { addDestinationAction } from "../Pages/admin/AddDestination";
 import {
-  deleteImageAction,
   uploadDestinationImagesAction,
   uploadDestinationImagesLoader,
 } from "../Pages/admin/AddDestinationImages";
+import {
+  editDestinationAction,
+  editDestinationLoader,
+} from "../Pages/admin/editPages/EditDestination";
+import { addHotelAction } from "../Pages/admin/hotels/AddHotel";
+import AddHotelImages, {
+  uploadHotelImagesAction,
+  uploadHotelImagesLoader,
+} from "../Pages/admin/hotels/AddHotelImages";
+import EditHotel, {
+  editHotelAction,
+  editHotelLoader,
+} from "../Pages/admin/editPages/EditHotel";
 
 export const adminRoutes = [
   {
@@ -26,9 +43,33 @@ export const adminRoutes = [
         loader: uploadDestinationImagesLoader,
       },
       {
-        path: "delete-destination-image/:id/:imageId",
-        action: deleteImageAction,
+        path: "edit-destination/:id",
+        element: <EditDestination />,
+        action: editDestinationAction,
+        loader: editDestinationLoader,
+      },
+
+      {
+        path: "add-hotel",
+        element: <AddHotel />,
+        action: addHotelAction,
+      },
+      {
+        path: "add-hotel-images/:id",
+        element: <AddHotelImages />,
+        action: uploadHotelImagesAction,
+        loader: uploadHotelImagesLoader,
+      },
+      {
+        path: "edit-hotel/:id",
+        element: <EditHotel />,
+        action: editHotelAction,
+        loader: editHotelLoader,
       },
     ],
   },
+  // {
+  //   path: "delete-destination-image/:id/:imageId",
+  //   action: deleteImageAction,
+  // },
 ];

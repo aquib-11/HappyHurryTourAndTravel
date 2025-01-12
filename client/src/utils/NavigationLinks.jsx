@@ -43,8 +43,8 @@ const adminLinks = [
     address: "add-destination",
   },
   {
-    name: "Contact Us",
-    address: "/contact",
+    name: "Add Hotel",
+    address: "add-hotel",
   },
   {
     name: "Cart",

@@ -14,7 +14,6 @@ const homeLayoutContext = createContext();
 export const homeLayoutLoader = async () => {
   try {
     const { data: user } = await customFetch.get("/auth/userRole");
-    console.log({ user });
     return { user };
   } catch (error) {
     return error;
@@ -31,7 +30,7 @@ export const logoutAction = async () => {
   }
 };
 const HomeOutlet = () => {
-  const { user } = useLoaderData();
+  const { user = "visitor" } = useLoaderData();
 
   return (
     <>

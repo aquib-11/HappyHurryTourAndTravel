@@ -64,7 +64,7 @@ const Footer = () => {
                   </NavLink>
                 </li>
               ))}
-              {user?.userRole === "admin" ? (
+              {user && user?.userRole === "admin" ? (
                 <>
                   <li>
                     <Form method="post" action="/auth/logout">

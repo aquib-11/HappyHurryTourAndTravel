@@ -7,10 +7,12 @@ export { default as AllDestination } from "./destinations/AllDestination";
 
 // Cab
 export { default as CabHome } from "./Cab/CabHome";
+// Hotels
+export { default as AllHotels } from "./hotels/AllHotels";
+export { default as Hotel } from "./hotels/Hotel";
 
 // Blogs
 export { default as BlogsGrid } from "./blogs/BlogsGrid";
-
 
 // Auth
 
@@ -20,6 +22,13 @@ export { default as LoginPage } from "./auth/LoginPage";
 
 
 // Admin things
+// Destinations
 export { default as AddDestination } from "./admin/AddDestination";
 
 export { default as AddDestinationImages } from "./admin/AddDestinationImages";
+export { default as EditDestination } from "./admin/editPages/EditDestination";
+
+// Hotels
+export { default as AddHotel } from "./admin/hotels/AddHotel";
+export { default as AddHotelImages } from "./admin/hotels/AddHotelImages";
+export { default as EditHotel } from "./admin/editPages/EditHotel";
