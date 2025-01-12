@@ -20,6 +20,7 @@ import authRouter from "./routes/authRouter.js";
 import destinationRouter from "./routes/destinationRoutes.js";
 import cabRouter from "./routes/cabRoutes.js";
 import hotelRouter from "./routes/hotelRoutes.js";
+import priceListRouter from "./routes/priceListRoutes.js";
 
 //public
 import path, { dirname } from "path";
@@ -59,14 +60,15 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/destination", destinationRouter);
 app.use("/api/v1/cab", cabRouter);
 app.use("/api/v1/hotel", hotelRouter);
+app.use("/api/v1/price-lists", priceListRouter);
 
 
 // entry point prod...
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./public", "index.html"));
-});
+ });
 
-//not found
+//not found `
 app.use("*", (req, res) => {
   res.status(404).json({ msg: "route not found " });
 });
