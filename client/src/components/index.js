@@ -2,6 +2,8 @@
 export { default as Footer } from "./shared/Footer";
 export { default as Header } from "./shared/Header";
 export { default as ImageSlider } from "./shared/ImageSlider";
+export { default as DeleteModal } from "./shared/DeleteModal";
+
 
 
 // Home
@@ -26,3 +28,10 @@ export { default as OneWay } from "./cabCards/OneWay";
 export { default as Roundtrip } from "./cabCards/Roadtrip";
 export { default as CarCard } from "./cabCards/CarCard";
 export { default as DestinaitonPrices } from "./cabCards/DestinaitonPrices";
+
+
+
+// hotels
+export { default as AllHotelsBanner } from "./hotels/AllHotelsBanner";
+export { default as AllHotelsCard } from "./hotels/AllHotelsCard";
+export { default as HotelOverView } from "./hotels/HotelOverView";

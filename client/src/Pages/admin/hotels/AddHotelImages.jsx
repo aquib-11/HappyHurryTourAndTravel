@@ -6,27 +6,27 @@ import {
   useNavigation,
   useParams,
 } from "react-router-dom";
-import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
 import { redirect } from "react-router-dom";
-import { DeleteModal } from "../../components";
+import customFetch from "../../../utils/customFetch";
+import { DeleteModal } from "../../../components";
 
-export const uploadDestinationImagesAction = async ({ params, request }) => {
+export const uploadHotelImagesAction = async ({ params, request }) => {
   const formData = await request.formData();
   console.log({ formData });
   try {
-    await customFetch.post(`/destination/${params.id}/images`, formData);
+    await customFetch.post(`/hotel/${params.id}/images`, formData);
     toast.success("Image added successfully");
-    return redirect(`/admin/add-destination-images/${params.id}`);
+    return redirect(`/admin/add-hotel-images/${params.id}`);
   } catch (error) {
     toast.error(error?.response?.data?.msg);
     return error;
   }
 };
 
-export const uploadDestinationImagesLoader = async ({ params }) => {
+export const uploadHotelImagesLoader = async ({ params }) => {
   try {
-    const { data } = await customFetch.get(`/destination/${params.id}/images`);
+    const { data } = await customFetch.get(`/hotel/${params.id}/images`);
     return data;
   } catch (error) {
     toast.error(error?.response?.data?.msg);
@@ -34,7 +34,7 @@ export const uploadDestinationImagesLoader = async ({ params }) => {
   }
 };
 
-const AddDestinationImages = () => {
+const AddHotelImages = () => {
   const [isDeleting, setIsDeleting] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [deleteImageId, setDeleteImageId] = useState(null);
@@ -52,9 +52,9 @@ const AddDestinationImages = () => {
   const confirmDelete = async () => {
     try {
       setIsDeleting(true);
-      await customFetch.delete(`/destination/${id}/images/${deleteImageId}`);
+      await customFetch.delete(`/hotel/${id}/images/${deleteImageId}`);
       toast.success("Image deleted successfully");
-      navigate(`/admin/add-destination-images/${id}`);
+      navigate(`/admin/add-hotel-images/${id}`);
     } catch (error) {
       toast.error(error?.response?.data?.msg);
       return error;
@@ -84,6 +84,7 @@ const AddDestinationImages = () => {
             <button
               className="bg-red-500 text-white px-4 py-2 rounded-md"
               onClick={() => handleDelete(image?.imageId)}
+              disabled={isDeleting}
             >
               Delete
             </button>
@@ -101,4 +102,4 @@ const AddDestinationImages = () => {
   );
 };
 
-export default AddDestinationImages;
+export default AddHotelImages;
