@@ -18,7 +18,8 @@ export { default as BlogsGrid } from "./blogs/BlogsGrid";
 
 export { default as LoginPage } from "./auth/LoginPage";
 
-
+// Packages
+export { default as AllPackages } from "./package/AllPackages";
 
 
 // Admin things
@@ -37,5 +38,7 @@ export { default as EditHotel } from "./admin/editPages/EditHotel";
 export { default as AddCab } from "./admin/cabs/AddCab";
 export { default as EditCab } from "./admin/editPages/EditCab";
 export { default as AddDestinationPricing } from "./admin/AddDestinationPricing";
+
 export { default as EditCabPrice } from "./admin/editPages/EditCabPrice"
+
 

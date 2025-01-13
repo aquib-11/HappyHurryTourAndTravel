@@ -14,7 +14,7 @@ const MobileNav = () => {
   return (
     <nav className="container flex justify-between items-center py-2 text-[var(--bs-white)] h-20 lg:hidden  ">
       <img src={logo} alt="Logo" className=" h-16 object-cover" />
-      <div className="fixed bottom-0 left-0 w-full bg-[var(--bs-body-bg)] flex justify-around items-center py-3">
+      <div className="fixed bottom-0 left-0 w-full bg-[var(--bs-body-bg)] flex justify-around items-center z-50 py-3">
         {navLinks?.map((link, index) => (
           <NavLink
             key={index}
