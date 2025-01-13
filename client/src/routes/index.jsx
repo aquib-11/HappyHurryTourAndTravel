@@ -8,6 +8,7 @@ import { homeLayoutLoader } from "../outlets/HomeOutlet";
 import { cabRoutes } from "./cabRoutes";
 import { adminRoutes } from "./adminRoutes";
 import { hotelRoutes } from "./hotelRoutes";
+import { packageRoutes } from "./packageRoutes";
 
 const HomeOutlet = lazy(() => import("../outlets/HomeOutlet"));
 
@@ -29,6 +30,7 @@ export const routes = [
       ...adminRoutes,
       ...cabRoutes,
       ...hotelRoutes,
+      ...packageRoutes,
     ],
   },
   // Routes that dont need the header and footer
