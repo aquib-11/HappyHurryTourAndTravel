@@ -15,10 +15,10 @@ const cabSchema = mongoose.Schema(
       type: Boolean,
       default: true
     },
-    driverDetails: {
-      name: String,
-      phone: String
-    },
+
+    driverName: String,
+    driverPhone: String,
+ 
 
     // Administrative
     createdBy: {

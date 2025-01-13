@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from "react";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
+import { Link } from "react-router-dom";
+import { Edit2, Trash2, ChevronLeft, ChevronRight, Search } from "lucide-react";
+import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
+import DeleteModal from "../shared/DeleteModal";
 
-const TableHeader = ({ cabs }) => (
+const TableHeader = ({ cabs, searchTerm, onSearchChange }) => (
   <thead>
     <tr className="bg-[var(--bs-gray-800)] rounded-xl text-[var(--bs-white)]">
       <th className="py-4 px-6 text-left text-[var(--bs-white)] font-semibold rounded-tl-lg border-[#4a55684b] border">
@@ -17,17 +21,47 @@ const TableHeader = ({ cabs }) => (
         </th>
       ))}
       <th className="py-4 px-6 text-center text-[var(--bs-white)] font-semibold rounded-tr-lg border-[#4a55684b] border">
-        <input
-          type="search"
-          placeholder="Search Route..."
-          className="px-3 py-2 placeholder:font-thin w-full rounded-lg bg-[#4a55684b] border-none"
-        />
+        <div className="relative">
+          <input
+            type="search"
+            placeholder="Search by destination..."
+            value={searchTerm}
+            onChange={(e) => onSearchChange(e.target.value)}
+            className="pl-10 pr-3 py-2 placeholder:font-thin w-full rounded-lg bg-[#4a55684b] border-none"
+          />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+        </div>
       </th>
     </tr>
   </thead>
 );
 
-const TableRow = ({ destination, cabs, index }) => {
+const TableRow = ({ destination, cabs, index, fetchDestinations }) => {
+  const [priceID, setPriceID] = useState(null);
+  const { user } = useHomeLayoutContext();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
+
+  const handleDelete = async (id) => {
+    setPriceID(id);
+    setIsModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    try {
+      setIsDeleting(true);
+      await customFetch.delete(`/cabPricing/${priceID}`);
+      toast.success("Cab deleted successfully");
+      setIsModalOpen(false);
+      await fetchDestinations();
+    } catch (error) {
+      toast.error(error?.response?.data?.msg || error.message);
+    } finally {
+      setIsDeleting(false);
+      setPriceID(null);
+    }
+  };
+
   const getPriceForCab = (cabId) => {
     const priceEntry = destination.pricing.find((p) => p.cabType === cabId);
     return priceEntry ? priceEntry.price : "---";
@@ -53,28 +87,77 @@ const TableRow = ({ destination, cabs, index }) => {
         </td>
       ))}
       <td className="py-4 px-6 text-center border-b border-[#4a55684b]">
-        <button className="bg-[#9288ec30] hover:bg-[#9288ec4d] text-[var(--bs-text)] px-4 py-2 rounded-md shadow transition-transform transform hover:scale-105">
-          Send Enquiry
-        </button>
+        {user?.userRole === "admin" ? (
+          <div className="flex justify-center items-center gap-4">
+            <Link
+              className="flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
+              to={`/admin/edit-cab-pricing/${destination._id}`}
+            >
+              <Edit2 size={16} />
+              <span>Edit</span>
+            </Link>
+            <button
+              onClick={() => handleDelete(destination._id)}
+              className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
+            >
+              <Trash2 size={16} />
+              <span>Delete</span>
+            </button>
+          </div>
+        ) : (
+          <button className="bg-[#9288ec30] hover:bg-[#9288ec4d] text-[var(--bs-text)] px-4 py-2 rounded-md shadow transition-transform transform hover:scale-105">
+            Send Enquiry
+          </button>
+        )}
       </td>
+      <DeleteModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={confirmDelete}
+        itemName={destination.route}
+        isDeleting={isDeleting}
+      />
     </tr>
   );
 };
 
-const DesktopTable = ({ cabs, destinations }) => (
-  <table className="w-full min-w-[800px] border-collapse border-spacing-0 border-b border-[#4a55684b] border">
-    <TableHeader cabs={cabs} />
-    <tbody>
-      {destinations.map((destination, index) => (
-        <TableRow
-          key={destination._id}
-          destination={destination}
-          index={index}
-          cabs={cabs}
-        />
+const PaginationControls = ({ currentPage, totalPages, onPageChange }) => (
+  <div className="flex items-center justify-between mt-4 text-[var(--bs-gray-300)]">
+    <div className="flex items-center gap-2">
+      <span className="text-sm">
+        Page {currentPage} of {totalPages}
+      </span>
+    </div>
+    <div className="flex items-center gap-2">
+      <button
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="p-2 rounded-lg hover:bg-[var(--bs-gray-800)]/30 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <ChevronLeft className="w-5 h-5" />
+      </button>
+      {[...Array(totalPages)].map((_, idx) => (
+        <button
+          key={idx + 1}
+          onClick={() => onPageChange(idx + 1)}
+          className={`w-8 h-8 rounded-lg ${
+            currentPage === idx + 1
+              ? "bg-[var(--bs-gray-800)] text-white"
+              : "hover:bg-[var(--bs-gray-800)]/30"
+          }`}
+        >
+          {idx + 1}
+        </button>
       ))}
-    </tbody>
-  </table>
+      <button
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="p-2 rounded-lg hover:bg-[var(--bs-gray-800)]/30 disabled:opacity-50 disabled:cursor-not-allowed"
+      >
+        <ChevronRight className="w-5 h-5" />
+      </button>
+    </div>
+  </div>
 );
 
 const MobileCard = ({ destination, cabs, index, openId, setOpenId }) => {
@@ -147,26 +230,65 @@ const MobileCard = ({ destination, cabs, index, openId, setOpenId }) => {
   );
 };
 
-const MobileCards = ({ cabs, destinations }) => {
-  const [openId, setOpenId] = useState(null);
-  const [searchTerm, setSearchTerm] = useState("");
+const DesktopTable = ({
+  cabs,
+  destinations,
+  fetchDestinations,
+  searchTerm,
+  onSearchChange,
+}) => {
+  const itemsPerPage = 10;
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const filteredDestinations = destinations.filter((destination) =>
-    destination.route.toLowerCase().includes(searchTerm.toLowerCase())
+  const totalPages = Math.ceil(destinations.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentDestinations = destinations.slice(startIndex, endIndex);
+
+  return (
+    <div>
+      <table className="w-full min-w-[800px] border-collapse border-spacing-0 border-b border-[#4a55684b] border">
+        <TableHeader
+          cabs={cabs}
+          searchTerm={searchTerm}
+          onSearchChange={onSearchChange}
+        />
+        <tbody>
+          {currentDestinations.map((destination, index) => (
+            <TableRow
+              key={destination._id}
+              destination={destination}
+              index={index}
+              cabs={cabs}
+              fetchDestinations={fetchDestinations}
+            />
+          ))}
+        </tbody>
+      </table>
+      {destinations.length > itemsPerPage && (
+        <PaginationControls
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
+    </div>
   );
+};
+
+const MobileCards = ({ cabs, destinations, fetchDestinations }) => {
+  const [openId, setOpenId] = useState(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
+
+  const totalPages = Math.ceil(destinations.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentDestinations = destinations.slice(startIndex, endIndex);
 
   return (
     <div className="space-y-4">
-      <div className="mb-4">
-        <input
-          type="search"
-          placeholder="Search Route..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="px-4 py-3 placeholder:font-thin w-full rounded-lg bg-[#4a55684b] text-[var(--bs-gray-300)] border-none"
-        />
-      </div>
-      {filteredDestinations.map((destination, index) => (
+      {currentDestinations.map((destination, index) => (
         <MobileCard
           key={destination._id}
           destination={destination}
@@ -176,6 +298,13 @@ const MobileCards = ({ cabs, destinations }) => {
           setOpenId={setOpenId}
         />
       ))}
+      {destinations.length > itemsPerPage && (
+        <PaginationControls
+          currentPage={currentPage}
+          totalPages={totalPages}
+          onPageChange={setCurrentPage}
+        />
+      )}
     </div>
   );
 };
@@ -183,17 +312,22 @@ const MobileCards = ({ cabs, destinations }) => {
 const DestinationPrices = ({ cabs }) => {
   const [destinations, setDestinations] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+
+  const fetchDestinations = async () => {
+    try {
+      setIsLoading(true);
+      const response = await customFetch.get("/cabPricing");
+      setDestinations(response.data.pricing);
+    } catch (error) {
+      console.error("Error fetching destination pricing:", error);
+      toast.error("Failed to load destination pricing.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   useEffect(() => {
-    const fetchDestinations = async () => {
-      try {
-        const response = await customFetch.get("/cabPricing");
-        setDestinations(response.data.pricing);
-      } catch (error) {
-        console.error("Error fetching destination pricing:", error);
-        toast.error("Failed to load destination pricing.");
-      }
-    };
     fetchDestinations();
   }, []);
 
@@ -201,13 +335,43 @@ const DestinationPrices = ({ cabs }) => {
     destination.route.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
+  if (isLoading) {
+    return (
+      <div className="w-full h-64 flex items-center justify-center bg-[var(--bs-card-bg)] p-6 rounded-xl shadow-lg">
+        <div className="text-[var(--bs-gray-300)]">Loading...</div>
+      </div>
+    );
+  }
+
   return (
     <div className="w-full overflow-x-auto bg-[var(--bs-card-bg)] p-3 md:p-6 rounded-xl shadow-lg">
       <div className="hidden lg:block">
-        <DesktopTable cabs={cabs} destinations={filteredDestinations} />
+        <DesktopTable
+          cabs={cabs}
+          destinations={filteredDestinations}
+          fetchDestinations={fetchDestinations}
+          searchTerm={searchTerm}
+          onSearchChange={setSearchTerm}
+        />
       </div>
       <div className="lg:hidden">
-        <MobileCards cabs={cabs} destinations={filteredDestinations} />
+        <div className="mb-4">
+          <div className="relative">
+            <input
+              type="search"
+              placeholder="Search Route..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-10 pr-3 py-3 placeholder:font-thin w-full rounded-lg bg-[#4a55684b] text-[var(--bs-gray-300)] border-none"
+            />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
+          </div>
+        </div>
+        <MobileCards
+          cabs={cabs}
+          destinations={filteredDestinations}
+          fetchDestinations={fetchDestinations}
+        />
       </div>
     </div>
   );

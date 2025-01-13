@@ -24,6 +24,7 @@ const AllDestinationCard = ({ destination }) => {
   const randomImageIndex = Math.floor(Math.random() * images.length);
   const navigate = useNavigate();
   const deleteDestination = async () => {
+    setIsModalOpen(false);
     try {
       setIsDeleting(true);
       await customFetch.delete(`/destination/${_id}`);
@@ -34,6 +35,9 @@ const AllDestinationCard = ({ destination }) => {
     } finally {
       setIsDeleting(false);
     }
+  };
+  const confirmDelete = () => {
+    deleteDestination();
   };
   const coverImage =
     images[randomImageIndex]?.image ||
@@ -63,7 +67,7 @@ const AllDestinationCard = ({ destination }) => {
         >
           Edit
         </Link>
-        <button onClick={deleteDestination} disabled={isDeleting}>
+        <button onClick={() => setIsModalOpen(true)} disabled={isDeleting}>
           Delete
         </button>
       </div>
