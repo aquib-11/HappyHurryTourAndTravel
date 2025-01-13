@@ -1,82 +1,89 @@
-import React, { useState, useEffect } from 'react';
-import customFetch from '../../utils/customFetch';
+import React, { useState, useEffect } from "react";
+import customFetch from "../../utils/customFetch";
+import { toast } from "react-toastify";
+import { useNavigation } from "react-router-dom";
 
 const AddDestinationPricing = () => {
-    const [route, setRoute] = useState('');
-    const [cabType, setCabType] = useState('');
-    const [price, setPrice] = useState('');
-    const [cabTypes, setCabTypes] = useState([]); 
+  const [route, setRoute] = useState("");
+  const [cabsPricing, setCabsPricing] = useState([]);
+  const [cabTypes, setCabTypes] = useState([]);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-    useEffect(() => {
-        const fetchCabTypes = async () => {
-            const response = await customFetch.get('/cab'); 
-            setCabTypes(response.data.cabs); 
-        };
-        fetchCabTypes();
-    }, []);
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        try {
-            await customFetch.post('/cabPricing', {
-                route,
-                pricing: [{ cabType, price }]
-            });
-            // Reset form fields after submission
-            setRoute('');
-            setCabType('');
-            setPrice('');
-            alert('Destination pricing added successfully!');
-        } catch (error) {
-            console.error('Error adding destination pricing:', error);
-            alert('Failed to add destination pricing.');
-        }
+  useEffect(() => {
+    const fetchCabTypes = async () => {
+      const response = await customFetch.get("/cab");
+      console.log({ response });
+      setCabTypes(response.data.cabs);
+      // Create a new object for each cab type with ID and price
+      setCabsPricing(
+        response.data.cabs.map((cab) => ({ cabType: cab._id, price: "" }))
+      ); // Initialize pricing for each cab type
     };
+    fetchCabTypes();
+  }, []);
 
-    return (
-        <div className="space-y-4">
+  const handlePricingChange = (index, event) => {
+    const values = [...cabsPricing];
+    values[index].price = event.target.value;
+    setCabsPricing(values);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    try {
+      await customFetch.post("/cabPricing", {
+        route,
+        pricing: cabsPricing.map((pricing) => ({
+          cabType: pricing.cabType,
+          price: pricing.price,
+        })),
+      });
+
+      setRoute("");
+      setCabsPricing(Array(cabTypes.length).fill({ cabType: "", price: "" }));
+      toast.success("Destination pricing added successfully!");
+      setIsSubmitting(false);
+    } catch (error) {
+      console.error("Error adding destination pricing:", error);
+      toast.error("Failed to add destination pricing.");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  return (
+    <div className="space-y-4">
       <h3 className="text-center">Add Cab Pricing</h3>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Route:</label>
-                    <input
-                        type="text"
-                        value={route}
-                        onChange={(e) => setRoute(e.target.value)}
-                        required
-                        className="inputText"
-                    />
-                </div>
-                <div>
-                    <label>Cab Type:</label>
-                    <select
-                        value={cabType}
-                        onChange={(e) => setCabType(e.target.value)}
-                        required
-                        className="inputText"
-                    >
-                        <option value="">Select Cab Type</option>
-                        {cabTypes.map((cab) => (
-                            <option key={cab._id} value={cab._id}>
-                                {cab.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div>
-                    <label>Price:</label>
-                    <input
-                        type="number"
-                        value={price}
-                        onChange={(e) => setPrice(e.target.value)}
-                        required
-                        className="inputText"
-                    />
-                </div>
-                <button type="submit">Add Pricing</button>
-            </form>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label>Route:</label>
+          <input
+            type="text"
+            value={route}
+            onChange={(e) => setRoute(e.target.value)}
+            required
+            className="inputText"
+          />
         </div>
-    );
+        {cabTypes.map((cab, index) => (
+          <div key={cab._id}>
+            <label>{cab.name} Price:</label>
+            <input
+              type="number"
+              value={cabsPricing[index]?.price}
+              onChange={(event) => handlePricingChange(index, event)}
+              required
+              className="inputText"
+            />
+          </div>
+        ))}
+        <button type="submit" className="submitButton" disabled={isSubmitting}>
+          {isSubmitting ? "Submiting..." : "Submit"}
+        </button>
+      </form>
+    </div>
+  );
 };
 
 export default AddDestinationPricing;

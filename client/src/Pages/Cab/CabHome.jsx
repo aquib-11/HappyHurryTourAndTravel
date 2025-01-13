@@ -18,7 +18,7 @@ export const cabHomeLoader = async () => {
 
 const CabHome = () => {
   const { cabs } = useLoaderData();
-  console.log({ cabs });
+
   const [tripType, setTripType] = useState("oneway");
   const features = [
     {
@@ -114,22 +114,26 @@ const CabHome = () => {
           Our Awesome Vehicles
         </h1>
       </div>
-      <div className="container flex items-center justify-center flex-wrap gap-4 py-4 ">
+      <div className=" flex items-center justify-center flex-wrap gap-4 py-4 ">
         {cabs.map((cab, index) => (
           <CarCard key={index} cab={cab} />
         ))}{" "}
       </div>
 
       {/* Destinaiton Pricing */}
-      <div className="container w-full md:py-16">
+      <div className=" w-full md:py-16">
         <h1 className="text-[--bs-white] text-center  font-sans font-bold my-8">
           Cab Pricing
         </h1>
-        <DestinaitonPrices />
+        <DestinaitonPrices
+          cabs={cabs.map((cab) => {
+            return { name: cab.name, _id: cab._id };
+          })}
+        />
       </div>
 
       {/* why choose us */}
-      <div className="container w-full md:py-16">
+      <div className=" w-full md:py-16">
         <h1 className=" font-bold font-sans text-white text-center my-8">
           Why Choose Us
         </h1>
