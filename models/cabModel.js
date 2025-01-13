@@ -32,21 +32,3 @@ const cabSchema = mongoose.Schema(
 export default mongoose.model("cabs", cabSchema);
 
 
-
-// Cab Model (cabModel.js) will include:
-// Vehicle details:
-// name (e.g., "Toyota Innova")
-// type (e.g., "SUV", "Sedan", "Luxury")
-// seatingCapacity
-// images (max 4, like other models)
-// Service details:
-// pricePerKm
-// basePrice
-// availableLocations (array of service areas)
-// features (AC, WiFi, etc.)
-// Booking details:
-// isAvailable (boolean)
-// driverDetails (name, phone, license)
-// Administrative:
-// createdBy (admin reference)
-// timestamps

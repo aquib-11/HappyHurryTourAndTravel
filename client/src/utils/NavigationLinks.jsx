@@ -51,8 +51,8 @@ const adminLinks = [
     address: "add-cab",
   },
   {
-    name: "Cart",
-    address: "/cart",
+    name: "Add Cab Pricing",
+    address: "add-cab-pricing",
   },
   {
     name: "Cart",

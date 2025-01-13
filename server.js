@@ -20,7 +20,7 @@ import authRouter from "./routes/authRouter.js";
 import destinationRouter from "./routes/destinationRoutes.js";
 import cabRouter from "./routes/cabRoutes.js";
 import hotelRouter from "./routes/hotelRoutes.js";
-import priceListRouter from "./routes/priceListRoutes.js";
+import cabPricingRouter from "./routes/cabPricingRoutes.js";
 
 //public
 import path, { dirname } from "path";
@@ -60,8 +60,7 @@ app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/destination", destinationRouter);
 app.use("/api/v1/cab", cabRouter);
 app.use("/api/v1/hotel", hotelRouter);
-app.use("/api/v1/price-lists", priceListRouter);
-
+app.use("/api/v1/cabPricing", cabPricingRouter);
 
 // entry point prod...
 app.get("*", (req, res) => {
