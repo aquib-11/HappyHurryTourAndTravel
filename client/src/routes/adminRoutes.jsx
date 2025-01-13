@@ -5,6 +5,7 @@ import {
   AddCab,
   AddDestination,
   AddDestinationImages,
+  AddDestinationPricing,
   AddHotel,
   EditDestination,
 } from "../Pages";
@@ -82,6 +83,10 @@ export const adminRoutes = [
         element: <EditCab />,
         action: editCabAction,
         loader: editCabLoader,
+      },
+      {
+        path: "add-cab-pricing",
+        element: <AddDestinationPricing />,
       },
     ],
   },
