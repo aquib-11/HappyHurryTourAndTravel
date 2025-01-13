@@ -5,10 +5,10 @@ const navLinks = [
     name: "Hotel",
     address: "/",
     icon: <FaHotel />,
-  },
+  },  
   {
     name: "Tours ",
-    address: "/tour",
+    address: "/all-packages",
     icon: <GiMountainRoad />,
   },
   {

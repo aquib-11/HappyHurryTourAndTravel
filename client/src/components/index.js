@@ -35,3 +35,6 @@ export { default as CarDetailModel } from "./cabCards/CarDetailModel";
 export { default as AllHotelsBanner } from "./hotels/AllHotelsBanner";
 export { default as AllHotelsCard } from "./hotels/AllHotelsCard";
 export { default as HotelOverView } from "./hotels/HotelOverView";
+
+// packages
+export { default as PackageCard } from "./package/packageCard";
