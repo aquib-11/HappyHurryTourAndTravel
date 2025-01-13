@@ -1,36 +1,9 @@
 import React, { useState } from "react";
-import { Form, redirect } from "react-router-dom";
 import { toast } from "react-toastify";
 import customFetch from "../../../utils/customFetch";
-import { FaPlus } from "react-icons/fa";
+import { Form, redirect, useLoaderData } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
-
-export const addCabAction = async ({ request }) => {
-  const formData = new FormData();
-  const data = await request.formData();
-
-  // Append each field to FormData
-  for (const [key, value] of data.entries()) {
-    formData.append(key, value);
-  }
-
-  try {
-    const response = await customFetch.post("/cab", formData, {
-      headers: {
-        "Content-Type": "multipart/form-data",
-      },
-    });
-    console.log({ response });
-    toast.success("Cab added successfully");
-    // return redirect("/admin/cab-home");
-    return null;
-  } catch (error) {
-    console.log({ error });
-    toast.error(error?.response?.data?.msg);
-    return error;
-  }
-};
-
+import { FaPlus } from "react-icons/fa";
 const cabFeatures = [
   "AC",
   "Non-AC",
@@ -41,19 +14,52 @@ const cabFeatures = [
   "Petrol",
   "Diesel",
   "Hybrid",
+
   "Music System",
   "Charger",
 ];
 
-const AddCab = () => {
-  const [name, setName] = useState("");
-  const [seatingCapacity, setSeatingCapacity] = useState(1);
-  const [image, setImage] = useState(null);
-  const [features, setFeatures] = useState([]);
-  const [driverName, setDriverName] = useState("");
-  const [driverPhone, setDriverPhone] = useState("");
+export const editCabAction = async ({ params, request }) => {
+  const formData = new FormData();
+  const data = await request.formData();
+
+  // Append each field to FormData
+  for (const [key, value] of data.entries()) {
+    formData.append(key, value);
+  }
+
+  try {
+    const response = await customFetch.patch(`/cab/${params.id}`, formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+    console.log({ response });
+    toast.success("Cab updated successfully");
+    return redirect("/cab-home");
+  } catch (error) {
+    console.log({ error });
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
+
+export const editCabLoader = async ({ params }) => {
+  try {
+    const { data } = await customFetch.get(`/cab/${params.id}`);
+    return data;
+  } catch (error) {
+    toast.error(error?.response?.data?.msg);
+    return error;
+  }
+};
+
+const EditCab = () => {
+  const { cabs } = useLoaderData();
+  const [features, setFeatures] = useState(cabs.features);
   const [selectedFeature, setSelectedFeature] = useState("");
   const [customFeature, setCustomFeature] = useState("");
+  const [image, setImage] = useState(null);
 
   const addFeature = () => {
     if (selectedFeature && !features.includes(selectedFeature)) {
@@ -76,16 +82,16 @@ const AddCab = () => {
 
   return (
     <div>
-      <h2 className="text-center">Add Cab</h2>
+      <h2 className="text-center">Edit Cab</h2>
       <Form method="post" encType="multipart/form-data" className="space-y-4">
         <div>
           <label>Cab Name:</label>
           <input
+            defaultValue={cabs.name}
             type="text"
             name="name"
             required
             className="inputText"
-            onChange={(e) => setName(e.target.value)}
           />
         </div>
         <div>
@@ -95,8 +101,7 @@ const AddCab = () => {
             name="seatingCapacity"
             required
             className="inputText"
-            min="1"
-            onChange={(e) => setSeatingCapacity(e.target.value)}
+            defaultValue={cabs.seatingCapacity}
           />
         </div>
         <div>
@@ -104,7 +109,6 @@ const AddCab = () => {
           <input
             type="file"
             name="image"
-            required
             className="inputText"
             onChange={handleImageChange}
           />
@@ -156,40 +160,15 @@ const AddCab = () => {
             ))}
           </div>
           {features.map((feature, index) => (
-            <input
-              type="hidden"
-              name="features"
-              value={feature}
-              key={index}
-            />
+            <input type="hidden" name="features" value={feature} key={index} />
           ))}
         </div>
-        <div>
-          <label>Driver Name:</label>
-          <input
-            type="text"
-            name="driverName"
-            required
-            className="inputText"
-            onChange={(e) => setDriverName(e.target.value)}
-          />
-        </div>
-        <div>
-          <label>Driver Phone:</label>
-          <input
-            type="text"
-            name="driverPhone"
-            required
-            className="inputText"
-            onChange={(e) => setDriverPhone(e.target.value)}
-          />
-        </div>
         <button type="submit" className="submitButton">
-          Add Cab
+          Update Cab
         </button>
       </Form>
     </div>
   );
 };
 
-export default AddCab;
+export default EditCab;

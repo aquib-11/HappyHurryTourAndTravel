@@ -40,14 +40,6 @@ const itineraryDaySchema = mongoose.Schema({
     roomType: String,
     nights: Number
   },
-  transportation: {
-    type: String,
-    mode: {
-      type: String,
-      enum: ['Car', 'Bus', 'Train', 'Flight', 'Mixed']
-    },
-    details: String // For flight numbers, train numbers, etc.
-  }
 });
 
 const tourPackageSchema = mongoose.Schema({
