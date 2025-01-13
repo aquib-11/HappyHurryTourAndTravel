@@ -37,3 +37,5 @@ export { default as EditHotel } from "./admin/editPages/EditHotel";
 export { default as AddCab } from "./admin/cabs/AddCab";
 export { default as EditCab } from "./admin/editPages/EditCab";
 export { default as AddDestinationPricing } from "./admin/AddDestinationPricing";
+export { default as EditCabPrice } from "./admin/editPages/EditCabPrice"
+

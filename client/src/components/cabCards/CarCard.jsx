@@ -12,11 +12,13 @@ import {
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
 import DeleteModal from "../shared/DeleteModal";
+import { CarDetailModel } from "..";
 
 const CarCard = ({ cab }) => {
   const { user } = useHomeLayoutContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const [isCardOpen, setIsCardOpen] = useState(false);
   const navigate = useNavigate();
 
   const formatDate = (dateString) => {
@@ -46,7 +48,10 @@ const CarCard = ({ cab }) => {
   };
 
   return (
-    <div className="w-full md:w-[320px] bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative">
+    <div
+      onClick={() => setIsCardOpen(!isCardOpen)}
+      className="w-full cursor-pointer md:w-[320px] bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative"
+    >
       {/* Availability Badge */}
       <div className="absolute top-4 right-4 z-10">
         {cab.isAvailable ? (
@@ -85,18 +90,6 @@ const CarCard = ({ cab }) => {
           </div>
 
           {/* Features */}
-          {/* {cab.features && cab.features.length > 0 && (
-            <div className="flex flex-wrap gap-2 mt-3">
-              {cab.features.map((feature, index) => (
-                <span
-                  key={index}
-                  className="bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 px-2 py-1 rounded-md text-sm"
-                >
-                  {feature}
-                </span>
-              ))}
-            </div>
-          )} */}
         </div>
 
         {/* Admin Controls */}
@@ -127,6 +120,13 @@ const CarCard = ({ cab }) => {
         itemName={cab.name}
         isDeleting={isDeleting}
       />
+      {isCardOpen && (
+        <CarDetailModel
+          isOpen={isCardOpen}
+          onClose={() => setIsCardOpen(false)}
+          cab={cab}
+        />
+      )}
     </div>
   );
 };

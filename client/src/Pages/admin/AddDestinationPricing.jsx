@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
-import { useNavigation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const AddDestinationPricing = () => {
+  const navigate = useNavigate();
   const [route, setRoute] = useState("");
   const [cabsPricing, setCabsPricing] = useState([]);
   const [cabTypes, setCabTypes] = useState([]);
@@ -44,6 +45,9 @@ const AddDestinationPricing = () => {
       setCabsPricing(Array(cabTypes.length).fill({ cabType: "", price: "" }));
       toast.success("Destination pricing added successfully!");
       setIsSubmitting(false);
+      setTimeout(() => {
+        window.location.reload();
+      }, 2000);
     } catch (error) {
       console.error("Error adding destination pricing:", error);
       toast.error("Failed to add destination pricing.");
