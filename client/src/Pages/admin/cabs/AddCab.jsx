@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Form, redirect } from "react-router-dom";
+import { Form, redirect, useNavigation } from "react-router-dom";
 import { toast } from "react-toastify";
 import customFetch from "../../../utils/customFetch";
 import { FaPlus } from "react-icons/fa";
@@ -46,14 +46,12 @@ const cabFeatures = [
 ];
 
 const AddCab = () => {
-  const [name, setName] = useState("");
-  const [seatingCapacity, setSeatingCapacity] = useState(1);
-  const [image, setImage] = useState(null);
   const [features, setFeatures] = useState([]);
-  const [driverName, setDriverName] = useState("");
-  const [driverPhone, setDriverPhone] = useState("");
+
   const [selectedFeature, setSelectedFeature] = useState("");
   const [customFeature, setCustomFeature] = useState("");
+  const navigation = useNavigation();
+  const isSubmitting = navigation.state === "submitting";
 
   const addFeature = () => {
     if (selectedFeature && !features.includes(selectedFeature)) {
@@ -111,7 +109,7 @@ const AddCab = () => {
         </div>
         <div>
           <label>Features:</label>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-col md:flex-row">
             <select
               value={selectedFeature}
               onChange={(e) => setSelectedFeature(e.target.value)}
@@ -156,12 +154,7 @@ const AddCab = () => {
             ))}
           </div>
           {features.map((feature, index) => (
-            <input
-              type="hidden"
-              name="features"
-              value={feature}
-              key={index}
-            />
+            <input type="hidden" name="features" value={feature} key={index} />
           ))}
         </div>
         <div>
@@ -184,8 +177,8 @@ const AddCab = () => {
             onChange={(e) => setDriverPhone(e.target.value)}
           />
         </div>
-        <button type="submit" className="submitButton">
-          Add Cab
+        <button type="submit" className="submitButton" disabled={isSubmitting}>
+          {isSubmitting ? "Adding..." : "Add Cab"}
         </button>
       </Form>
     </div>

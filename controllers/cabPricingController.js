@@ -10,7 +10,8 @@ export const getAllCabPricing = async (req, res) => {
 
 // Create a new cab pricing entry
 export const createCabPricing = async (req, res) => {
-    const newPricing = await cabPricing.create(req.body);
+    const { route, pricing } = req.body;
+    const newPricing = await cabPricing.create({ route, pricing });
     res.status(StatusCodes.CREATED).json({ newPricing });
 };
 

@@ -8,8 +8,7 @@ const cabPricingSchema = mongoose.Schema(
     pricing: [
       {
         cabType: {
-          type: mongoose.Types.ObjectId,
-          ref: "cabs", // Reference to the cab model
+          type: String,
         },
         price: {
           type: Number,
