@@ -10,6 +10,8 @@ export const getAllCabPricing = async (req, res) => {
 
 // Create a new cab pricing entry
 export const createCabPricing = async (req, res) => {
+    if (req.user.role !== "admin")
+        throw new UnauthorizedErr("you are not authorized to access this route");
     const { route, pricing } = req.body;
     const newPricing = await cabPricing.create({ route, pricing });
     res.status(StatusCodes.CREATED).json({ newPricing });
@@ -25,6 +27,8 @@ export const getSingleCabPricing = async (req, res) => {
 
 // Update a cab pricing entry
 export const updateCabPricing = async (req, res) => {
+    if (req.user.role !== "admin")
+        throw new UnauthorizedErr("you are not authorized to access this route");
     const { id } = req.params;
     const updatedPricing = await cabPricing.findByIdAndUpdate(id, req.body, { new: true });
     if (!updatedPricing) throw new NotFoundErr(`No pricing found with id ${id}`);
@@ -32,10 +36,12 @@ export const updateCabPricing = async (req, res) => {
 };
 
 // Delete a cab pricing entry
-export const deleteCabPricing = async (req, res) => {
+export const deleteCabPricing = async(req, res) => {
+    if (req.user.role !== "admin")
+        throw new UnauthorizedErr("you are not authorized to access this route");
     const { id } = req.params;
     const pricing = await cabPricing.findById(id);
     if (!pricing) throw new NotFoundErr(`No pricing found with id ${id}`);
     await cabPricing.findByIdAndDelete(id);
     res.status(StatusCodes.OK).json({ msg: "Pricing deleted" });
-};
+};     

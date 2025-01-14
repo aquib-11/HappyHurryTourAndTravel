@@ -21,6 +21,7 @@ import destinationRouter from "./routes/destinationRoutes.js";
 import cabRouter from "./routes/cabRoutes.js";
 import hotelRouter from "./routes/hotelRoutes.js";
 import cabPricingRouter from "./routes/cabPricingRoutes.js";
+import blogRouter from "./routes/blogRoutes.js";
 
 //public
 import path, { dirname } from "path";
@@ -61,6 +62,7 @@ app.use("/api/v1/destination", destinationRouter);
 app.use("/api/v1/cab", cabRouter);
 app.use("/api/v1/hotel", hotelRouter);
 app.use("/api/v1/cabPricing", cabPricingRouter);
+app.use("/api/v1/blog", blogRouter);
 
 // entry point prod...
 app.get("*", (req, res) => {
