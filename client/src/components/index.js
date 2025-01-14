@@ -8,6 +8,10 @@ export { default as DeleteModal } from "./shared/DeleteModal";
 
 // Home
 export { default as HeroSection } from "./Home/HeroSection";
+export { default as BookCab } from "./Home/BookCab";
+export { default as Package } from "./Home/Package";
+export { default as Hotel    } from "./Home/Hotel";
+export { default as Testimonial } from "./Home/Testimonial";
 // export { default as SpecialOffers } from "./Home/SpecialOffers";
 // Loader
 export { default as Loader } from "./shared/Loader";

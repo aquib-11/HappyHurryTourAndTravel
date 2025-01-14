@@ -1,11 +1,17 @@
+import { FaHome } from "react-icons/fa";
 import { FaCar, FaHotel, FaNewspaper } from "react-icons/fa6";
 import { GiMountainRoad } from "react-icons/gi";
 const navLinks = [
   {
-    name: "Hotel",
+    name: "Home",
     address: "/",
+    icon: <FaHome />,
+  },
+  {
+    name: "Hotel",
+    address: "/all-hotels",
     icon: <FaHotel />,
-  },  
+  },
   {
     name: "Tours ",
     address: "/all-packages",
