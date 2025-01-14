@@ -22,6 +22,9 @@ export const addCabAction = async ({ request }) => {
     });
     console.log({ response });
     toast.success("Cab added successfully");
+    setTimeout(() => {
+      window.location.reload();
+    }, 1000);
     // return redirect("/admin/cab-home");
     return null;
   } catch (error) {
@@ -137,7 +140,7 @@ const AddCab = () => {
               <FaPlus />
             </button>
           </div>
-          <div className="flex flex-col flex-wrap gap-2 mt-2">
+          <div className="flex  flex-wrap gap-2 mt-2">
             {features.map((feature, index) => (
               <span
                 key={index}

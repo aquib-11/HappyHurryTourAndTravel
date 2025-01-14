@@ -44,10 +44,11 @@ const AddDestinationPricing = () => {
       setRoute("");
       setCabsPricing(Array(cabTypes.length).fill({ cabType: "", price: "" }));
       toast.success("Destination pricing added successfully!");
+
       setIsSubmitting(false);
       setTimeout(() => {
         window.location.reload();
-      }, 2000);
+      }, 1000);
     } catch (error) {
       console.error("Error adding destination pricing:", error);
       toast.error("Failed to add destination pricing.");
@@ -58,7 +59,8 @@ const AddDestinationPricing = () => {
 
   return (
     <div className="space-y-4">
-      <h3 className="text-center">Add Cab Pricing</h3>
+      <h2 className="text-center">Add Cab Pricing</h2>
+
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label>Route:</label>

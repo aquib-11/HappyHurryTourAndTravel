@@ -26,7 +26,7 @@ const CarDetailModal = ({ isAvailable = true, onClose, cab }) => {
         <div className="flex flex-col md:flex-row gap-4 md:gap-6">
           {/* Car Image Section */}
           <div className="w-full md:w-64 bg-gray-800 rounded-lg p-3 md:p-4">
-            <div className="w-full h-48 object-cover relative">
+            <div className="w-full h-full object-cover relative">
               <img
                 src={cab.image}
                 alt="Car Image"

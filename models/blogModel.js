@@ -1,22 +1,22 @@
-import mongoose from "mongoose";
+  import mongoose from "mongoose";
 
-const blogSchema = mongoose.Schema(
-  {
-    // Vehicle details
-    title: String,
-    content: String,
-    image: String,
-    imageId: String,
-    tags: Array,
-    // Administrative
-    createdBy: {
-      type: mongoose.Types.ObjectId,
-      ref: "TravelAdminUser",
+  const blogSchema = mongoose.Schema(
+    {
+      // Vehicle details
+      title: String,
+      content: String,
+      image: String,
+      imageId: String,
+      tags: Array,
+      // Administrative
+      createdBy: {
+        type: mongoose.Types.ObjectId,
+        ref: "TravelAdminUser",
+      },
     },
-  },
-  { timestamps: true }
-);
+    { timestamps: true }
+  );
 
-export default mongoose.model("blogs", blogSchema);
+  export default mongoose.model("blogs", blogSchema);
 
 
