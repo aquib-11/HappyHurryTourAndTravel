@@ -5,17 +5,21 @@ import {
   ChevronLeft,
   ChevronRight,
   Bookmark,
+  Edit2,
+  Trash2,
 } from "lucide-react";
-import { Link, redirect } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { toast } from "react-toastify";
 import customFetch from "../../utils/customFetch";
 import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
+import DeleteModal from "../shared/DeleteModal";
 
 const AllHotelsCard = ({ hotel }) => {
   const { user } = useHomeLayoutContext();
-  console.log({ userinCard: user });
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
+  const navigate = useNavigate();
   const {
     _id,
     name,
@@ -26,12 +30,17 @@ const AllHotelsCard = ({ hotel }) => {
     amenities,
     description,
   } = hotel;
-  const handleDelete = (id) => {
+
+  const handleDelete = async () => {
+    setIsModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
     try {
       setIsDeleting(true);
-      customFetch.delete(`/hotel/${id}`);
+      await customFetch.delete(`/hotel/${_id}`);
       toast.success("Hotel deleted successfully");
-      return redirect("/all-hotels");
+      navigate("/all-hotels");
     } catch (error) {
       toast.error(error?.response?.data?.msg);
       return error;
@@ -44,7 +53,7 @@ const AllHotelsCard = ({ hotel }) => {
     "https://themes.stackbros.in/booking_ng/assets/09-NZkssKcO.jpg";
 
   return (
-    <div className="bg-gray-900 rounded-lg overflow-hidden ">
+    <div className="bg-[var(--bs-card-bg)] rounded-lg overflow-hidden ">
       <div className="relative">
         <div className="">
           <img
@@ -61,10 +70,10 @@ const AllHotelsCard = ({ hotel }) => {
             <Star className="fill-yellow-400 text-yellow-400" size={16} />
             <span className="text-white">{rating}</span>
           </div>
-          {user?.userRole === "admin" && (
+          {/* {user?.userRole === "admin" && (
             <div>
               <Link
-                to={`/admin/edit-hotel/${_id}`}
+               
                 className="text-[var(--bs-link-color)] transition-colors duration-300 hover:text-[var(--bs-link-hover-color)]"
               >
                 Edit
@@ -73,14 +82,13 @@ const AllHotelsCard = ({ hotel }) => {
                 {isDeleting ? "Deleting..." : "Delete"}
               </button>
             </div>
-          )}
+          )} */}
         </div>
-
-        <h3 className="text-white text-xl font-semibold mb-2 line-clamp-2">
+        <h3 className="font-sans font-semibold text-[var(--bs-white)]">
           {name}
         </h3>
 
-        <div className="flex flex-wrap gap-2 mb-4 ">
+        <div className="flex flex-wrap gap-2 my-2 text-gray-400">
           <p className="line-clamp-2">{description}</p>
         </div>
 
@@ -99,6 +107,32 @@ const AllHotelsCard = ({ hotel }) => {
           </Link>
         </div>
       </div>
+      {/* Admin Controls */}
+      {user?.userRole === "admin" && (
+        <div className="pb-2 flex justify-center items-center   gap-4 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+          <Link
+            to={`/admin/edit-hotel/${_id}`}
+            className="flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
+          >
+            <Edit2 size={16} />
+            <span>Edit</span>
+          </Link>
+          <button
+            onClick={handleDelete}
+            className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
+          >
+            <Trash2 size={16} />
+            <span>Delete</span>
+          </button>
+        </div>
+      )}
+      <DeleteModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={confirmDelete}
+        itemName={name}
+        isDeleting={isDeleting}
+      />
     </div>
   );
 };

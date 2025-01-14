@@ -23,8 +23,7 @@ export const getHotelDetailsLoader = async ({ params }) => {
   }
 };
 const Hotel = () => {
-  const user = useHomeLayoutContext();
-  console.log({ user });
+  const { user } = useHomeLayoutContext();
   const { hotels } = useLoaderData();
   const [heroImage, setHeroImage] = useState(hotels?.images?.[0]?.image);
   const slides = hotels?.images?.map((image) => image.image);
@@ -53,7 +52,7 @@ const Hotel = () => {
             className="text-blue-500 cursor-pointer flex items-center gap-1"
             onClick={handleModalToggle}
           >
-            <FaMapMarkerAlt /> View on map
+            <FaMapMarkerAlt /> View location on map
           </span>
         </div>
 

@@ -8,9 +8,11 @@ import { UnauthorizedErr } from '../errors/customErors.js';
 // Create a new blog post
 const createBlog = async (req, res) => {
     if(req.user.role !== "admin")
-    throw new UnauthorizedErr("you are not authorized to access this route");
+        throw new UnauthorizedErr("you are not authorized to access this route");
     try {
-        const newBlog = new Blog(req.body);
+        const newBlog = new Blog({
+            ...req.body,
+        });
 
         if (req.file) {
             const file = formatImage(req.file);
@@ -19,7 +21,7 @@ const createBlog = async (req, res) => {
             newBlog.imageId = response.public_id;
         }
 
-        const savedBlog = await newBlog.save();
+        const savedBlog = await Blog.create(newBlog);
         res.status(201).json(savedBlog);
     } catch (error) {
         res.status(500).json({ message: error.message });

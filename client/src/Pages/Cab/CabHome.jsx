@@ -114,7 +114,7 @@ const CabHome = () => {
           Our Awesome Vehicles
         </h1>
       </div>
-      <div className=" flex items-center justify-center flex-wrap gap-4 py-4 ">
+      <div className=" flex items-center justify-center flex-wrap gap-8 py-4 ">
         {cabs.map((cab, index) => (
           <CarCard key={index} cab={cab} />
         ))}{" "}

@@ -1,12 +1,22 @@
 import { FaHome } from "react-icons/fa";
 import { FaCar, FaHotel, FaNewspaper } from "react-icons/fa6";
 import { GiMountainRoad } from "react-icons/gi";
+import {
+  MapPin,
+  Building2,
+  Car,
+  DollarSign,
+  FileEdit,
+  ShoppingCart,
+  Globe,
+  Plane,
+  Hotel,
+  Route,
+  PenTool,
+  ShoppingBag,
+} from "lucide-react";
+
 const navLinks = [
-  {
-    name: "Home",
-    address: "/",
-    icon: <FaHome />,
-  },
   {
     name: "Hotel",
     address: "/all-hotels",
@@ -47,31 +57,32 @@ const adminLinks = [
   {
     name: "Add Destination",
     address: "add-destination",
+    icon: <MapPin />,
   },
   {
     name: "Add Hotel",
     address: "add-hotel",
+    icon: <Building2 />,
   },
   {
-    name: "Add Cabs",
+    name: "Add Cab",
     address: "add-cab",
+    icon: <Car />,
   },
   {
     name: "Add Cab Pricing",
     address: "add-cab-pricing",
+    icon: <DollarSign />,
+  },
+  {
+    name: "Add Blog",
+    address: "add-blog",
+    icon: <FileEdit />,
   },
   {
     name: "Cart",
     address: "/cart",
-  },
-  {
-    name: "Cart",
-    address: "/cart",
-  },
-
-  {
-    name: "Cart",
-    address: "/cart",
+    icon: <ShoppingCart />,
   },
 ];
 

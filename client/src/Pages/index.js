@@ -42,3 +42,7 @@ export { default as AddDestinationPricing } from "./admin/AddDestinationPricing"
 export { default as EditCabPrice } from "./admin/editPages/EditCabPrice"
 
 
+// Bloga
+export { default as AddBlogs } from "./admin/blogs/AddBlogs";
+export { default as EditBlog } from "./admin/editPages/EditBlog";
+

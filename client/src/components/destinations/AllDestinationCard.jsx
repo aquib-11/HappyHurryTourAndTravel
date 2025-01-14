@@ -17,7 +17,7 @@ const AllDestinationCard = ({ destination }) => {
     highlights,
     updatedAt,
   } = destination;
-
+  const { user } = useHomeLayoutContext();
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleting, setIsDeleting] = useState(false);
   const createDate = dayjs(updatedAt).format("MMM DD, YYYY");
@@ -60,17 +60,19 @@ const AllDestinationCard = ({ destination }) => {
         </h1>
         <p className="text-[var(--bs-gray-400)]">{createDate}</p>
       </div>
-      <div>
-        <Link
-          to={`/admin/edit-destination/${_id}`}
-          className="text-[var(--bs-link-color)] transition-colors duration-300 hover:text-[var(--bs-link-hover-color)]"
-        >
-          Edit
-        </Link>
-        <button onClick={() => setIsModalOpen(true)} disabled={isDeleting}>
-          Delete
-        </button>
-      </div>
+      {user?.userRole === "admin" && (
+        <div>
+          <Link
+            to={`/admin/edit-destination/${_id}`}
+            className="text-[var(--bs-link-color)] transition-colors duration-300 hover:text-[var(--bs-link-hover-color)]"
+          >
+            Edit
+          </Link>
+          <button onClick={() => setIsModalOpen(true)} disabled={isDeleting}>
+            Delete
+          </button>
+        </div>
+      )}
       <DeleteModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}

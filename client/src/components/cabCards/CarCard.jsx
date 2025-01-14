@@ -50,7 +50,7 @@ const CarCard = ({ cab }) => {
   return (
     <div
       onClick={() => setIsCardOpen(!isCardOpen)}
-      className="w-full cursor-pointer md:w-[320px] bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative"
+      className="w-full cursor-pointer md:w-[320px] bg-[var(--bs-card-bg)] rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 relative"
     >
       {/* Availability Badge */}
       <div className="absolute top-4 right-4 z-10">

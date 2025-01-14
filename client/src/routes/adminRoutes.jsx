@@ -2,11 +2,13 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 import AdminOutlet from "../outlets/AdminOutlet";
 import {
+  AddBlogs,
   AddCab,
   AddDestination,
   AddDestinationImages,
   AddDestinationPricing,
   AddHotel,
+  EditBlog,
   EditCabPrice,
   EditDestination,
 } from "../Pages";
@@ -34,6 +36,7 @@ import EditCab, {
   editCabLoader,
 } from "../Pages/admin/editPages/EditCab";
 import { editCabPriceLoader } from "../Pages/admin/editPages/EditCabPrice";
+import { editBlogLoader } from "../Pages/admin/editPages/EditBlog";
 
 export const adminRoutes = [
   {
@@ -94,6 +97,16 @@ export const adminRoutes = [
         path: "edit-cab-pricing/:id",
         element: <EditCabPrice />,
         loader: editCabPriceLoader,
+      },
+
+      {
+        path: "add-blog",
+        element: <AddBlogs />,
+      },
+      {
+        path: "edit-blog/:id",
+        element: <EditBlog />,
+        loader: editBlogLoader,
       },
     ],
   },

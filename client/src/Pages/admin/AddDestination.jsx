@@ -77,7 +77,7 @@ const AddDestination = () => {
               <FaPlus />
             </button>
           </div>
-          <div className="flex flex-col flex-wrap gap-2 mt-2">
+          <div className="flex  flex-wrap gap-2 mt-2">
             {highlights.map((highlight, index) => (
               <span
                 key={index}
