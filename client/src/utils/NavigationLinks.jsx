@@ -80,9 +80,23 @@ const adminLinks = [
     icon: <FileEdit />,
   },
   {
+<<<<<<< Updated upstream
     name: "Cart",
     address: "/cart",
     icon: <ShoppingCart />,
+=======
+    name: "Add Tour Package",
+    address: "add-tour-package",
+  },
+  {
+    name: "Cart",
+    address: "/cart",
+  },
+
+  {
+    name: "Cart",
+    address: "/cart",
+>>>>>>> Stashed changes
   },
 ];
 

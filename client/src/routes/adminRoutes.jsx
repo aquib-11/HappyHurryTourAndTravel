@@ -36,7 +36,11 @@ import EditCab, {
   editCabLoader,
 } from "../Pages/admin/editPages/EditCab";
 import { editCabPriceLoader } from "../Pages/admin/editPages/EditCabPrice";
+<<<<<<< Updated upstream
 import { editBlogLoader } from "../Pages/admin/editPages/EditBlog";
+=======
+import AddTourPackage, { addTourpackageAction } from "../Pages/admin/AddTourPackage";
+>>>>>>> Stashed changes
 
 export const adminRoutes = [
   {
@@ -98,6 +102,7 @@ export const adminRoutes = [
         element: <EditCabPrice />,
         loader: editCabPriceLoader,
       },
+<<<<<<< Updated upstream
 
       {
         path: "add-blog",
@@ -107,6 +112,12 @@ export const adminRoutes = [
         path: "edit-blog/:id",
         element: <EditBlog />,
         loader: editBlogLoader,
+=======
+      {
+        path: "add-tour-package",
+        element: <AddTourPackage />,
+        action: addTourpackageAction,
+>>>>>>> Stashed changes
       },
     ],
   },
