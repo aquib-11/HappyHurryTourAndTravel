@@ -68,17 +68,17 @@ const CarCard = ({ cab }) => {
       </div>
 
       {/* Image Container */}
-      <div className="relative h-48 overflow-hidden">
+      <div className="relative h-48 overflow-hidden p-2">
         <img
           src={cab.image}
           alt={cab.name}
-          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+          className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300 rounded-lg"
         />
       </div>
 
       {/* Content Container */}
-      <div className="p-6 flex items-center flex-col justify-between">
-        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3">
+      <div className="p-6 flex items-start flex-col justify-between">
+        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 capitalize">
           {cab.name}
         </h3>
 
@@ -91,27 +91,26 @@ const CarCard = ({ cab }) => {
 
           {/* Features */}
         </div>
-
-        {/* Admin Controls */}
-        {user?.userRole === "admin" && (
-          <div className="flex justify-end gap-4 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
-            <Link
-              to={`/admin/edit-cab/${cab._id}`}
-              className="flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
-            >
-              <Edit2 size={16} />
-              <span>Edit</span>
-            </Link>
-            <button
-              onClick={handleDelete}
-              className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
-            >
-              <Trash2 size={16} />
-              <span>Delete</span>
-            </button>
-          </div>
-        )}
       </div>
+      {/* Admin Controls */}
+      {user?.userRole === "admin" && (
+        <div className="flex items-center justify-center gap-4 mt-6 py-4 border-t border-gray-200 dark:border-gray-700">
+          <Link
+            to={`/admin/edit-cab/${cab._id}`}
+            className="flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
+          >
+            <Edit2 size={16} />
+            <span>Edit</span>
+          </Link>
+          <button
+            onClick={handleDelete}
+            className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
+          >
+            <Trash2 size={16} />
+            <span>Delete</span>
+          </button>
+        </div>
+      )}
 
       <DeleteModal
         isOpen={isModalOpen}

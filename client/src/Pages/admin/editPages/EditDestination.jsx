@@ -46,7 +46,9 @@ const EditDestination = () => {
   };
   return (
     <div>
-      <h2 className="text-center">Edit Destination</h2>
+      <h2 className="text-center text-[var(--bs-white)] font-sans">
+        Edit Destination
+      </h2>
       <Form method="post" className="space-y-4">
         <div>
           <label>Destination Name:</label>

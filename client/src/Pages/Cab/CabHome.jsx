@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { CarCard, DestinaitonPrices, OneWay } from "../../components";
 import Roadtrip from "../../components/cabCards/Roadtrip";
-import img1 from "../../assets/images/bg6.jpg";
+import img1 from "../../assets/images/cab-bg-image.jpg";
 import { Zap, Leaf, Shield, Car, Wifi, Accessibility } from "lucide-react";
 import customFetch from "../../utils/customFetch";
 import { useLoaderData } from "react-router-dom";
@@ -67,61 +67,74 @@ const CabHome = () => {
   return (
     <div className="container">
       {/* Booking Form container */}
-      <div className="relative  mx-auto min-h-screen md:min-h-screen flex items-center justify-center px-4">
-        <img
-          src={img1}
-          alt=""
-          className=" absolute inset-0 w-full lg:w-[1000px] lg:h-[650px] object-cover ml-auto rounded-xl"
-        />
-        {/* booking form */}
-        <div className="absolute top-2/3 left-1/2  lg:top-1/2 lg:left-1/4 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-md p-6 bg-[var(--bs-card-bg)] rounded-lg shadow-lg text-center z-10 ">
-          <h1 className="text-2xl text-start font-bold text-[var(--bs-white)] mb-6">
-            Book your Online Cab
-          </h1>
-          <div className="flex gap-6 mb-6">
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="trip"
-                value="oneway"
-                checked={tripType === "oneway"}
-                onChange={() => setTripType("oneway")}
-                className="form-radio h-4 w-4 text-[var(--bs-gray-400)] appearance-none border-2 border-gray-300 rounded-full checked:bg-[var(--bs-text)] checked:border-transparent focus:outline-none transition-all duration-300"
-              />
-              <span className="text-[var(--bs-white)] text-sm">One Way</span>
-            </label>
-            <label className="flex items-center gap-2">
-              <input
-                type="radio"
-                name="trip"
-                value="roadtrip"
-                checked={tripType === "roadtrip"}
-                onChange={() => setTripType("roadtrip")}
-                className="form-radio h-4 w-4 text-[var(--bs-gray-400)] appearance-none border-2 border-gray-300 rounded-full checked:bg-[var(--bs-text)] checked:border-transparent focus:outline-none transition-all duration-300"
-              />
-              <span className="text-[var(--bs-white)] text-sm">Road Trip</span>
-            </label>
+      <div className="relative w-full md:h-[40rem]   ">
+        {/* Background Image Container */}
+        <div className="absolute inset-0 filter backdrop-blur-sm brightness-90 contrast-100 saturate-100 ">
+          <img
+            src={img1}
+            alt=""
+            className="w-full h-full object-cover rounded-lg"
+          />
+          <div className="absolute inset-0 bg-black/50 rounded-lg"></div>
+        </div>
+
+        {/* Form Container */}
+        <div className="relative h-full  items-center flex flex-col md:flex-row ">
+          <div className="w-full max-w-md mx-auto lg:ml-32 order-2 md:order-1">
+            <div className="bg-zinc-900/90 backdrop-blur-sm p-6 rounded-lg shadow-xl">
+              <h1 className="text-2xl font-bold text-white mb-6">
+                Book Your Online Cab
+              </h1>
+
+              {/* Trip Type Selection */}
+              <div className="flex gap-6 mb-6">
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="trip"
+                    value="oneway"
+                    checked={tripType === "oneway"}
+                    onChange={() => setTripType("oneway")}
+                    className="form-radio h-4 w-4 text-purple-600"
+                  />
+                  <span className="text-white text-sm">One Way</span>
+                </label>
+                <label className="flex items-center gap-2">
+                  <input
+                    type="radio"
+                    name="trip"
+                    value="roadtrip"
+                    checked={tripType === "roadtrip"}
+                    onChange={() => setTripType("roadtrip")}
+                    className="form-radio h-4 w-4 text-purple-600"
+                  />
+                  <span className="text-white text-sm">Road Trip</span>
+                </label>
+              </div>
+
+              <div className="mt-4">
+                {tripType === "oneway" ? <OneWay /> : <Roadtrip />}
+              </div>
+            </div>
           </div>
-          <div className="mt-4">
-            {tripType === "oneway" ? <OneWay /> : <Roadtrip />}
+          <div className="w-full mx-auto lg:mx-12 order-1 md:order-2 p-3">
+            <h1 className="text-[var(--bs-white)] font-sans font-bold leading-tight mr-8 text-2xl md:text-4xl">
+              Book Your Ride, Your Way
+              <br />
+              Comfortable and Reliable Cabs
+              <div className="h-1 w-24 bg-purple-500 mt-2"></div>
+            </h1>
+            <p className="text-gray-300 font-sans text-lg mt-4 leading-1.2">
+              Whether it's a one-way trip or an exciting road trip, we’ve got
+              you covered. Choose your ride, book online, and enjoy a seamless
+              travel experience with Happy Hurry Cab Services. Your journey
+              begins here!
+            </p>
           </div>
         </div>
       </div>
-
-      {/* Our vehicles */}
-      <div>
-        <h1 className="text-center text-[var(--bs-white)] font-sans font-semibold my-8">
-          Our Awesome Vehicles
-        </h1>
-      </div>
-      <div className=" flex items-center justify-center flex-wrap gap-8 py-4 ">
-        {cabs.map((cab, index) => (
-          <CarCard key={index} cab={cab} />
-        ))}{" "}
-      </div>
-
       {/* Destinaiton Pricing */}
-      <div className=" w-full md:py-16">
+      <div className=" w-full pt-8 md:pt-16 ">
         <h1 className="text-[--bs-white] text-center  font-sans font-bold my-8">
           Cab Pricing
         </h1>
@@ -131,9 +144,20 @@ const CabHome = () => {
           })}
         />
       </div>
+      {/* Our vehicles */}
+      <div className="pt-8 md:pt-16">
+        <h1 className="text-center text-[var(--bs-white)] font-sans font-semibold my-8">
+          Our Awesome Vehicles
+        </h1>
+        <div className=" flex items-center justify-center flex-wrap gap-8  ">
+          {cabs.map((cab, index) => (
+            <CarCard key={index} cab={cab} />
+          ))}{" "}
+        </div>
+      </div>
 
       {/* why choose us */}
-      <div className=" w-full md:py-16">
+      <div className=" w-full pt-8 md:pt-16">
         <h1 className=" font-bold font-sans text-white text-center my-8">
           Why Choose Us
         </h1>

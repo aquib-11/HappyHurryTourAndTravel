@@ -5,7 +5,7 @@ const AllHotelsBanner = ({ randomImages }) => {
 
   return (
     <div
-      className="relative rounded-2xl p-12 container md:h-[300px] grid place-items-center"
+      className="relative rounded-2xl p-12  md:h-[300px] grid place-items-center"
       style={{
         // backgroundImage: `url(${randomImages[randomIndex]})`,
         backgroundImage: `url(https://themes.stackbros.in/booking_ng/assets/14-WhMiwcrG.jpg)`,

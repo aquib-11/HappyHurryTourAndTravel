@@ -6,6 +6,7 @@ import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
 import DeleteModal from "../shared/DeleteModal";
+import { Edit2, Trash2 } from "lucide-react";
 dayjs.extend(advancedFormat);
 const AllDestinationCard = ({ destination }) => {
   const {
@@ -60,16 +61,23 @@ const AllDestinationCard = ({ destination }) => {
         </h1>
         <p className="text-[var(--bs-gray-400)]">{createDate}</p>
       </div>
+
       {user?.userRole === "admin" && (
-        <div>
+        <div className="flex justify-center gap-4 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
           <Link
             to={`/admin/edit-destination/${_id}`}
-            className="text-[var(--bs-link-color)] transition-colors duration-300 hover:text-[var(--bs-link-hover-color)]"
+            className="flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
           >
-            Edit
+            <Edit2 size={16} />
+            <span>Edit</span>
           </Link>
-          <button onClick={() => setIsModalOpen(true)} disabled={isDeleting}>
-            Delete
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
+            disabled={isDeleting}
+          >
+            <Trash2 size={16} />
+            <span>Delete</span>
           </button>
         </div>
       )}

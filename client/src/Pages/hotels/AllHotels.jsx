@@ -16,7 +16,7 @@ const AllHotels = () => {
   return (
     <div className="container space-y-5">
       <AllHotelsBanner randomImages={randomImages} />
-      <div className="container grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div className=" grid grid-cols-1 md:grid-cols-3 gap-4">
         {hotels?.map((hotel) => (
           <AllHotelsCard key={hotel._id} hotel={hotel} />
         ))}

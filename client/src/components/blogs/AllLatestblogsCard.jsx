@@ -40,7 +40,7 @@ const AllLatestblogsCard = ({ blog }) => {
   };
   const date = dayjs(blog.createdAt).format("MMM DD, YYYY");
   return (
-    <div className="relative  bg-[var(--bs-card-bg)] p-2 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col justify-between h-[100%]">
+    <div className="relative p-3 bg-[var(--bs-card-bg)] rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden flex flex-col justify-between h-[100%]">
       <img
         src={blog.image}
         alt={blog.title}

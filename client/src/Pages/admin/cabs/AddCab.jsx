@@ -77,7 +77,7 @@ const AddCab = () => {
 
   return (
     <div>
-      <h2 className="text-center">Add Cab</h2>
+      <h2 className="text-center text-[var(--bs-white)] font-sans">Add Cab</h2>
       <Form method="post" encType="multipart/form-data" className="space-y-4">
         <div>
           <label>Cab Name:</label>

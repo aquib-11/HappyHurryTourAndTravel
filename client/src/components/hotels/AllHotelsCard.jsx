@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import customFetch from "../../utils/customFetch";
 import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
 import DeleteModal from "../shared/DeleteModal";
+import { FaRupeeSign } from "react-icons/fa";
 
 const AllHotelsCard = ({ hotel }) => {
   const { user } = useHomeLayoutContext();
@@ -67,22 +68,9 @@ const AllHotelsCard = ({ hotel }) => {
       <div className="p-4">
         <div className="flex justify-between items-start mb-2">
           <div className="flex items-center gap-2">
-            <Star className="fill-yellow-400 text-yellow-400" size={16} />
             <span className="text-white">{rating}</span>
+            <Star className="fill-yellow-400 text-yellow-400" size={16} />
           </div>
-          {/* {user?.userRole === "admin" && (
-            <div>
-              <Link
-               
-                className="text-[var(--bs-link-color)] transition-colors duration-300 hover:text-[var(--bs-link-hover-color)]"
-              >
-                Edit
-              </Link>
-              <button onClick={() => handleDelete(_id)} disabled={isDeleting}>
-                {isDeleting ? "Deleting..." : "Delete"}
-              </button>
-            </div>
-          )} */}
         </div>
         <h3 className="font-sans font-semibold text-[var(--bs-white)]">
           {name}
@@ -94,16 +82,17 @@ const AllHotelsCard = ({ hotel }) => {
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-emerald-400 text-xl font-semibold">
-              ${price} <span className="text-gray-400">/day</span>
+            <span className="text-emerald-400 text-xl font-semibold flex gap-1 items-center">
+              <FaRupeeSign />
+              {price} <span className="text-gray-400">/day</span>
             </span>
           </div>
           <Link
             to={`/know-about-hotel/${_id}`}
-            className="flex items-center gap-2 text-indigo-400 hover:text-indigo-300 transition-colors"
+            className="bg-[#9288ec30] hover:bg-[#9288ec5b] text-[var(--bs-text)] px-4 py-2 rounded-lg transition-colors duration-300"
           >
             View Detail
-            <ArrowRight size={16} />
+            {/* <ArrowRight size={16} /> */}
           </Link>
         </div>
       </div>
