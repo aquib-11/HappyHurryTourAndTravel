@@ -11,16 +11,18 @@ const PackageOverview = () => {
         <p>{_package?.overview}</p>
       </div>
       <div>
-        <h2 className="font-sans font-semibold my-4 capitalize text-[var(--bs-white)]">Tour info</h2>
+        <h2 className="\
+         font-sans font-semibold my-4 capitalize text-[var(--bs-white)]">Tour info</h2>
         <ul>
           <li>
-            duration: {_package?.totaldays} days {_package?.totalnights} nights
+            Duration: {_package?.totaldays} days {_package?.totalnights} nights
+            
           </li>
-          <li>adultPrice: {_package?.adultPrice}</li>
-          <li>childPrice: {_package?.childPrice}</li>
-          <li>infantPrice: {_package?.infantPrice}</li>
-          <li>minGroupSize: {_package?.minGroupSize}</li>
-          <li>maxGroupSize: {_package?.maxGroupSize}</li>
+          <li>AdultPrice: {_package?.adultPrice}</li>
+          <li>ChildPrice: {_package?.childPrice}</li>
+          <li>InfantPrice: {_package?.infantPrice}</li>
+          <li>MinGroupSize: {_package?.minGroupSize}</li>
+          <li>MaxGroupSize: {_package?.maxGroupSize}</li>
         </ul>
       </div>
       <div>

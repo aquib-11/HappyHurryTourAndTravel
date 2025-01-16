@@ -1,40 +1,24 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import customFetch from "../../utils/customFetch";
+import { Link } from 'react-router-dom';
+
 
 const FeaturedHotels = () => {
-  const hotels = [
-    {
-      name: 'Baga Comfort',
-      location: 'New York',
-      price: 455,
-      startingAt: 455,
-      rating: 4.5,
-      image: 'https://images.pexels.com/photos/261146/pexels-photo-261146.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    },
-    {
-      name: 'New Apollo Hotel',
-      location: 'California',
-      price: 585,
-      startingAt: 585,
-      rating: 4.5,
-      image: 'https://images.pexels.com/photos/1457841/pexels-photo-1457841.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    },
-    {
-      name: 'New Age Hotel',
-      location: 'Los Angeles',
-      price: 385,
-      startingAt: 385,
-      rating: 4.5,
-      image: 'https://images.pexels.com/photos/1054397/pexels-photo-1054397.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    },
-    {
-      name: 'Helios Beach Resort',
-      location: 'Chicago',
-      price: 665,
-      startingAt: 665,
-      rating: 4.5,
-      image: 'https://images.pexels.com/photos/164558/pexels-photo-164558.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260',
-    },
-  ];
+  const [hotels, setHotels] = useState([]);
+
+  const fetchHotels = async () => {
+    try {  
+      const { data } = await customFetch.get("/hotel");
+      setHotels(data.hotels);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchHotels();
+  }, []);
+  console.log({hotels})
 
   return (
     <div className="container ">
@@ -45,14 +29,14 @@ const FeaturedHotels = () => {
           <div key={index} className="relative">
             <div className="rounded-lg overflow-hidden">
               <img
-                src={hotel.image}
-                alt={hotel.name}
+                src={hotel?.images[0]?.image}
+                alt={hotel?.name}
                 className="w-full h-72 object-cover"
               />
             </div>
             
             <div className="mt-3">
-              <h3 className="text-xl font-semibold font-sans text-white">{hotel.name}</h3>
+              <Link to={`/hotel/${hotel?._id}`} className="text-xl font-semibold font-sans text-white">{hotel?.name}</Link>
               <div className="flex justify-between items-center mt-2">
                 <div>
                   <span className="text-emerald-400 font-medium">₨: {hotel.price}</span>
