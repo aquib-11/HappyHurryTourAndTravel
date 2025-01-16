@@ -26,6 +26,7 @@ import tourPackageRouter from "./routes/tourPackageRoutes.js";
 import bookOneWayRouter from "./routes/bookOneWayRoutes.js";
 import bookTwoWayRouter from "./routes/bookTwoWayModel.js";
 import contactRouter from "./routes/contactRouter.js";
+import testimonialRouter from "./routes/testimonialRouter.js";
 
 //public
 import path, { dirname } from "path";
@@ -71,6 +72,7 @@ app.use("/api/v1/tourPackage", tourPackageRouter);
 app.use("/api/v1/bookOneWay", bookOneWayRouter);
 app.use("/api/v1/bookTwoWay", bookTwoWayRouter);
 app.use("/api/v1/contact", contactRouter);
+app.use("/api/v1/testimonial", testimonialRouter);
 
 // entry point prod...
 app.get("*", (req, res) => {

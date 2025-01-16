@@ -116,7 +116,7 @@ const fetchcabs = async () => {
         </select>
         {/* Search Button */}
         <button type="submit" disabled={submitting} className="w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold py-3 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors">
-          {submitting ? "Booking..." : "Book Now"}
+          {submitting ? "Book Now" : "Booking..."}
         </button>
       </div>
       </form>

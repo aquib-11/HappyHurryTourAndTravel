@@ -3,8 +3,10 @@ import { Hotel, Car, Map, Phone } from "lucide-react";
 import { Globe, UserCheck, Bell } from "lucide-react";
 
 import img1 from "../../assets/images/bg3.jpg";
+import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
 
 const About = () => {
+  const { user } = useHomeLayoutContext();
   return (
     <div className="container text-white p-4 md:p-8">
       {/* Header Section */}
@@ -54,15 +56,9 @@ const About = () => {
 
       {/* Our Story Section */}
       <div className="mx-auto mb-12">
-        <h2 className="font-sans font-bold my-6">Our Story</h2>
-        <p className="text-gray-400 mb-4">
-          Founded in 2005, Happy Hurry Tour and Travel began with a mission to make travel accessible, 
-          comfortable, and unforgettable. Over the years, we've grown into a trusted name in the travel industry, 
-          offering personalized services for every traveler.
-        </p>
+        <h2 className="font-sans font-bold my-6">Our Story</h2> 
         <p className="text-gray-400">
-          Whether it's exploring the serene landscapes of Kashmir, planning your perfect getaway, 
-          or ensuring seamless travel arrangements, our team is here to turn your travel dreams into reality.
+          {user.adminDetails?.aboutUsStory}
         </p>
       </div>
 

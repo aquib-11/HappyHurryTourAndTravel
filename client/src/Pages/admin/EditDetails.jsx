@@ -17,7 +17,7 @@ export const editDetailsAction = async({request, params}) => {
 
 const EditDetails = () => {
     const {user} = useHomeLayoutContext()
-    console.log({user})
+    console.log(user);
     const navigation = useNavigation();
     const isSubmitting = navigation.state === "submitting";
   
@@ -32,6 +32,7 @@ const EditDetails = () => {
           name="name"
           required
           className="inputText"
+          defaultValue={user?.adminDetails?.name}
         />
       </div>
       <div>
@@ -41,6 +42,7 @@ const EditDetails = () => {
           name="email"
           required
           className="inputText"
+          defaultValue={user?.adminDetails?.email}
         />
       </div>
       <div>
@@ -49,6 +51,7 @@ const EditDetails = () => {
           type="number"
           name="phone"
           required
+          defaultValue={user?.adminDetails?.phone}
           className="inputText"
         />
       </div>
@@ -58,6 +61,7 @@ const EditDetails = () => {
           type="number"
           name="phone2"
           required
+          defaultValue={user?.adminDetails?.phone2}
           className="inputText"
         />
       </div>
@@ -66,7 +70,7 @@ const EditDetails = () => {
         <input
           type="file"
           name="image"
-          required
+          defaultValue={user?.adminDetails?.logo}
           className="inputText"
         />
       </div>
@@ -74,8 +78,9 @@ const EditDetails = () => {
         <label>Footer Text:</label>
         <input
           type="text"
-          name="footerText"
+          name="footertext"
           required
+          defaultValue={user?.adminDetails?.footertext}
           className="inputText"
         />
       </div>
@@ -85,6 +90,7 @@ const EditDetails = () => {
           type="text"
           name="facebook"
           required
+          defaultValue={user?.adminDetails?.facebook}
           className="inputText"
         />
       </div>
@@ -94,15 +100,7 @@ const EditDetails = () => {
           type="text"
           name="instagram"
           required
-          className="inputText"
-        />
-      </div>
-      <div>
-        <label>youtube link:</label>
-        <input
-          type="text"
-          name="youtube"
-          required
+          defaultValue={user?.adminDetails?.instagram}
           className="inputText"
         />
       </div>
@@ -111,6 +109,7 @@ const EditDetails = () => {
         <input
           type="tel"
           name="whatsapp"
+      defaultValue={user?.adminDetails?.whatsapp}
           required
           className="inputText"
         />
@@ -121,6 +120,7 @@ const EditDetails = () => {
           type="text"
           name="aboutUsStory"
           required
+          defaultValue={user?.adminDetails?.aboutUsStory}
           className="inputText"
         />
       </div>
