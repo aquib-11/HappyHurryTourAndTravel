@@ -1,5 +1,9 @@
 import React from "react";
-import { AllHotelsBanner, AllHotelsCard } from "../../components";
+import {
+  AllDestinaitonBanner,
+  AllHotelsBanner,
+  AllHotelsCard,
+} from "../../components";
 import { useLoaderData } from "react-router-dom";
 import customFetch from "../../utils/customFetch";
 export const allHotelsLoader = async () => {
@@ -9,13 +13,13 @@ export const allHotelsLoader = async () => {
 };
 const AllHotels = () => {
   const { hotels } = useLoaderData();
-  console.log({ hotelsInAll: hotels });
-  const randomImages = hotels
-    ?.map((hotel) => hotel.images[1]?.image)
-    .filter((image) => image !== null && image !== "" && image !== undefined);
+
   return (
     <div className="container space-y-5">
-      <AllHotelsBanner randomImages={randomImages} />
+      <AllDestinaitonBanner
+        image="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqgF09vuD2UIy9bQh6G9g2j4fPN0TbkG3u5Q&s"
+        title="All Hotels"
+      />
       <div className=" grid grid-cols-1 md:grid-cols-3 gap-4">
         {hotels?.map((hotel) => (
           <AllHotelsCard key={hotel._id} hotel={hotel} />

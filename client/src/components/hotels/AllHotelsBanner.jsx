@@ -1,14 +1,11 @@
 import React from "react";
 
 const AllHotelsBanner = ({ randomImages }) => {
-  const randomIndex = Math.floor(Math.random() * randomImages.length) || 0;
-
   return (
     <div
       className="relative rounded-2xl p-12  md:h-[300px] grid place-items-center"
       style={{
-        // backgroundImage: `url(${randomImages[randomIndex]})`,
-        backgroundImage: `url(https://themes.stackbros.in/booking_ng/assets/14-WhMiwcrG.jpg)`,
+        backgroundImage: `url(${randomImages[randomIndex]})`,
         backgroundPosition: "center center",
         backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
