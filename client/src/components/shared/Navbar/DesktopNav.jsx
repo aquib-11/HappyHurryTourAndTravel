@@ -29,13 +29,13 @@ const DesktopNav = () => {
         </ul>
       </div>
       <div>
-        <ul className="flex items-center space-x-6">
+        <ul className="flex items-center space-x-3">
           {navLinks?.map((link, index) => (
             <li key={index}>
               <NavLink
                 to={link.address}
                 className={({ isActive }) =>
-                  `flex items-center space-x-2 px-4 py-2 rounded transition-all duration-300 ${
+                  `flex items-center space-x-2 px-3 py-2 rounded transition-all duration-300 ${
                     isActive
                       ? "bg-[#9288ec30] text-[var(--bs-text)]"
                       : "text-[var(--bs-gray-300)]"
