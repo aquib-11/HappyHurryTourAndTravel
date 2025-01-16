@@ -6,9 +6,11 @@ import { Form } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
+import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
 const Contact = () => {
     const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
     const [submitting, setSubmitting] = useState(false);
+    const { user: admin } = useHomeLayoutContext();
 
   const [formData, setFormData] = useState({
     name: user?.name,
@@ -27,15 +29,15 @@ const Contact = () => {
         formData.name = user?.name;
         formData.email = user?.email;
        await customFetch.post("/contact", formData);
-      toast.success("Cab Booked Successfully");
+      toast.success("Message Sent");
     } catch (error) {
       console.log(error);
       toast.error(error?.response?.data?.msg);
     }finally {
       setSubmitting(false);
       setFormData({
-        name: "",
-        email: "",
+        name: user?.name,
+        email: user?.email,
         phone: "",
         message: "",
       });
@@ -71,10 +73,10 @@ return (
                     </p>
                     <div className="space-y-2">
                         <div className="flex items-center justify-center text-indigo-400">
-                            <a href ="tel:+123456789">+123 456 789</a>
+                        <a href ={`tel:${admin?.adminDetails?.phone2}`}>{admin?.adminDetails?.phone2}</a>
                         </div>
                         <div className="flex items-center justify-center text-white">
-                            <a href ="tel:+2224567586">+(222)4567 586</a>
+                            <a href ={`tel:${admin?.adminDetails?.phone}`}>{admin?.adminDetails?.phone}</a>
                         </div>
                     </div>
                 </div>
@@ -89,10 +91,10 @@ return (
                         Large above be to means. Him his for sympathize.
                     </p>
                     <a
-                        href="mailto:example@gmail.com"
+                        href={`mailto:${admin?.adminDetails?.email}`}
                         className="text-indigo-400 hover:text-indigo-300"
                     >
-                        example@gmail.com
+                        {admin?.adminDetails?.email}
                     </a>
                 </div>
 
@@ -107,27 +109,26 @@ return (
                     </p>
                     <div className="flex justify-center space-x-3">
                         <a
-                            href="https://www.facebook.com/people/Happy-hurry-tourtravels/61554337767234/"
+                            href={`${admin?.adminDetails?.facebook}`}
                             target="_blank"
                             className="bg-blue-600 p-2 rounded-md hover:bg-blue-700"
                         >
                             <FaFacebook className="w-5 h-5" />
                         </a>
                         <a
-                            href="https://www.instagram.com/happy_hurry_tour_travels/p/DDFK6PshRl3/"
+                            href={`${admin?.adminDetails?.instagram}`}
                             target="_blank"
                             className="bg-pink-600 p-2 rounded-md hover:bg-pink-700"
                         >
                             <FaInstagram className="w-5 h-5" />
                         </a>
                         <a
-                            href="https://api.whatsapp.com/+91999999999"
+                            href={`https://wa.me/${admin?.adminDetails?.whatsapp}`}
                             target="_blank"
                             className="bg-green-600 p-2 rounded-md hover:bg-green-700"
                         >
                             <FaWhatsapp className="w-5 h-5" />
                         </a>
-                      
                     </div>
                 </div>
             </div>
@@ -139,7 +140,7 @@ return (
                     Send us message
                 </h2>
 
-                <form onSubmit={(e)=>handleSubmit(e)} className="space-y-6">
+                <form calassName="w-full" onSubmit={(e)=>handleSubmit(e)}>
                     <div className="grid md:grid-cols-2 gap-6">
                         <div>
                             <label className="block text-gray-300 mb-2">

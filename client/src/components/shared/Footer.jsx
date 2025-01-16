@@ -8,6 +8,7 @@ import { FaWhatsapp } from "react-icons/fa";
 
 const Footer = () => {
   const { user } = useHomeLayoutContext();
+  console.log(user);
   return (
     <footer className="bg-[var(--bs-black)] py-12 mt-4">
       <div className="container mx-auto px-4">
@@ -16,11 +17,10 @@ const Footer = () => {
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
             <img src={logo} alt="Logo" className="h-20 object-contain mb-4" />
             <p className="text-gray-400 mb-4">
-              Departure defective arranging rapturous did believe him all had
-              supported.
+              {user?.adminDetails?.footertext}
             </p>
-            <p className="text-gray-400 mb-2">+91990099009</p>
-            <p className="text-gray-400">happyhurry@gmail.com</p>
+            <a href={`tel:${user?.adminDetails?.phone}`} className=" block text-gray-400 mb-2 cursor-pointer" >{user?.adminDetails?.phone}</a>
+            <a href={`mailto:${user?.adminDetails?.email}`} className="text-gray-400">{user?.adminDetails?.email}</a>
           </div>
 
           {/* Booking Links */}
@@ -115,8 +115,7 @@ const Footer = () => {
             </h2>
             <div className="flex space-x-4">
               <a
-                href="https://www.facebook.com/people/Happy-hurry-tourtravels/61554337767234/
-                "
+                href={`${user?.adminDetails?.facebook}`}
                 target="_blank"
                 className="text-gray-400 hover:text-[var(--bs-text)] transition-colors duration-300"
               >
@@ -124,13 +123,14 @@ const Footer = () => {
               </a>
               <a
                 target="_blank"
-                href="https://www.instagram.com/happy_hurry_tour_travels/p/DDFK6PshRl3/"
+                href={`${user?.adminDetails?.instagram}`}
                 className="text-gray-400 hover:text-[var(--bs-text)] transition-colors duration-300"
               >
                 <FaInstagram size={24} />
               </a>
-              <a  
-                href="https://wa.me/+919999999999"
+              <a
+                href={`https://wa.me/${user?.adminDetails?.whatsapp}`}
+                target="_blank"
                 className="text-gray-400 hover:text-[var(--bs-text)] transition-colors duration-300"
               >
                 <FaWhatsapp size={24} />
