@@ -5,7 +5,6 @@ import { Form, Link, NavLink } from "react-router-dom";
 import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
 import { FaWhatsapp } from "react-icons/fa";
 
-
 const Footer = () => {
   const { user } = useHomeLayoutContext();
   console.log(user);
@@ -15,12 +14,26 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div className="col-span-1 md:col-span-2 lg:col-span-1">
-            <img src={logo} alt="Logo" className="h-20 object-contain mb-4" />
+            <img
+              src={user.adminDetails?.image}
+              alt="Logo"
+              className="h-20 object-contain mb-4"
+            />
             <p className="text-gray-400 mb-4">
               {user?.adminDetails?.footertext}
             </p>
-            <a href={`tel:${user?.adminDetails?.phone}`} className=" block text-gray-400 mb-2 cursor-pointer" >{user?.adminDetails?.phone}</a>
-            <a href={`mailto:${user?.adminDetails?.email}`} className="text-gray-400">{user?.adminDetails?.email}</a>
+            <a
+              href={`tel:${user?.adminDetails?.phone}`}
+              className=" block text-gray-400 mb-2 cursor-pointer"
+            >
+              {user?.adminDetails?.phone}
+            </a>
+            <a
+              href={`mailto:${user?.adminDetails?.email}`}
+              className="text-gray-400"
+            >
+              {user?.adminDetails?.email}
+            </a>
           </div>
 
           {/* Booking Links */}
