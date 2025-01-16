@@ -11,8 +11,8 @@ import mongoose from "mongoose";
 import cookieParser from "cookie-parser";
 import cloudinary from "cloudinary";
 
-// import cron from "node-cron";
-// import axios from "axios";
+import cron from "node-cron";
+import axios from "axios";
 
 // //routers
 
@@ -50,17 +50,18 @@ app.use(express.static(path.resolve(__dirname, "./public")));
 app.use(express.json());
 app.use(cookieParser());
 
-// app.get("/api/v1/health", (req, res) => {
-//   res.status(200).json({ msg: "Server is running!" });
-// });
-// cron.schedule("*/14 * * * *", async () => {
-//   try {
-//     const response = await axios.get("https://aquib-ahmad.tech");
-//     console.log(`Health check successful: ${response.data.msg}`);
-//   } catch (error) {
-//     console.error(`Health check failed: ${error.message}`);
-//   }
-// });
+app.get("/api/v1/health", (req, res) => {
+  res.status(200).json({ msg: "Server is running!" });
+});
+cron.schedule("*/14 * * * *", async () => {
+  try {
+    const response = await axios.get(`${process.env.LIVE_URL}`);
+    console.log(`Health check successful: ${response.data.msg}`);
+  } catch (error) {
+    console.error(`Health check failed: ${error.message}`);
+  }
+});
+
 
 app.use("/api/v1/auth", authRouter);
 app.use("/api/v1/destination", destinationRouter);
