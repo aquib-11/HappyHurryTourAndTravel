@@ -75,9 +75,14 @@ const adminLinks = [
     icon: <DollarSign />,
   },
   {
+<<<<<<< Updated upstream
     name: "Add Blog",
     address: "add-blog",
     icon: <FileEdit />,
+=======
+    name: "Add Tour Package",
+    address: "add-tour-package",
+>>>>>>> Stashed changes
   },
   {
     name: "Add Tour Package",
