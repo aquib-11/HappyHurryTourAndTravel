@@ -6,11 +6,12 @@ const PackageOverview = () => {
   console.log({ _package });
   return (
     <div>
+      <h2 className="border-b border-b-gray-600 font-sans font-semibold my-4 capitalize text-[var(--bs-white)]">overview</h2>
       <div>
         <p>{_package?.overview}</p>
       </div>
       <div>
-        <h2>Tour info</h2>
+        <h2 className="font-sans font-semibold my-4 capitalize text-[var(--bs-white)]">Tour info</h2>
         <ul>
           <li>
             duration: {_package?.totaldays} days {_package?.totalnights} nights
@@ -23,7 +24,7 @@ const PackageOverview = () => {
         </ul>
       </div>
       <div>
-        <h2>highlights</h2>
+        <h2 className="font-sans font-semibold my-4 capitalize text-[var(--bs-white)]">highlights</h2>
         <ul>
           {_package?.highlights.map((highlight) => (
             <li key={highlight}>{highlight}</li>

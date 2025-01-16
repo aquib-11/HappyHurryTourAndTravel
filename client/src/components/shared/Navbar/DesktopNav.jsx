@@ -15,7 +15,7 @@ const DesktopNav = () => {
               <NavLink
                 to={link.address}
                 className={({ isActive }) =>
-                  `text-[var(--bs-gray-300)] flex items-center space-x-1 transition-all duration-300 ${
+                  `text-[var(--bs-gray-300)] text-sm flex items-center space-x-1 transition-all duration-300 ${
                     isActive
                       ? "text-[var(--bs-text)]"
                       : "text-[var(--bs-gray-300)]"
@@ -35,7 +35,7 @@ const DesktopNav = () => {
               <NavLink
                 to={link.address}
                 className={({ isActive }) =>
-                  `flex items-center space-x-2 px-3 py-2 rounded transition-all duration-300 ${
+                  `flex items-center text-sm space-x-2 px-2 py-2 rounded-md transition-all duration-300 ${
                     isActive
                       ? "bg-[#9288ec30] text-[var(--bs-text)]"
                       : "text-[var(--bs-gray-300)]"
