@@ -51,7 +51,7 @@ const AllDestinationCard = ({ destination }) => {
         className="rounded-full w-36 h-36 mx-auto object-cover"
       />
       <div className=" p-0 pt-3">
-        <h1 className="font-extrabold text-xl text-[var(--bs-white)]">
+        <h1 className="font-extrabold text-base text-[var(--bs-white)] line-clamp-1">
           <Link
             className="hover:text-[var(--bs-link-color)] transition-colors duration-300"
             to={`/know-about-destination/${_id}`}

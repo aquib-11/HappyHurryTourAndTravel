@@ -25,6 +25,7 @@ const Package = () => {
             <NavLink
               key={link.name}
               to={link.address}
+              end
               className={({ isActive }) =>
                 `capitalize text-center px-4 py-2 rounded-md text-sm transition-colors duration-200 ${
                   isActive
