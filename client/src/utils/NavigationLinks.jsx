@@ -18,6 +18,11 @@ import {
 
 const navLinks = [
   {
+    name: "Home",
+    address: "/",
+    icon: <FaHome />,
+  },
+  {
     name: "Hotel",
     address: "/all-hotels",
     icon: <FaHotel />,

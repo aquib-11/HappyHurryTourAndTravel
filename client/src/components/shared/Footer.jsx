@@ -3,6 +3,8 @@ import logo from "../../assets/images/logo.png";
 import { quickLinks, navLinks } from "../../utils/NavigationLinks";
 import { Form, Link, NavLink } from "react-router-dom";
 import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
+import { FaWhatsapp } from "react-icons/fa";
+
 
 const Footer = () => {
   const { user } = useHomeLayoutContext();
@@ -113,28 +115,25 @@ const Footer = () => {
             </h2>
             <div className="flex space-x-4">
               <a
-                href="#"
+                href="https://www.facebook.com/people/Happy-hurry-tourtravels/61554337767234/
+                "
+                target="_blank"
                 className="text-gray-400 hover:text-[var(--bs-text)] transition-colors duration-300"
               >
                 <FaFacebook size={24} />
               </a>
               <a
-                href="#"
-                className="text-gray-400 hover:text-[var(--bs-text)] transition-colors duration-300"
-              >
-                <FaTwitter size={24} />
-              </a>
-              <a
-                href="#"
+                target="_blank"
+                href="https://www.instagram.com/happy_hurry_tour_travels/p/DDFK6PshRl3/"
                 className="text-gray-400 hover:text-[var(--bs-text)] transition-colors duration-300"
               >
                 <FaInstagram size={24} />
               </a>
-              <a
-                href="#"
+              <a  
+                href="https://wa.me/+919999999999"
                 className="text-gray-400 hover:text-[var(--bs-text)] transition-colors duration-300"
               >
-                <FaYoutube size={24} />
+                <FaWhatsapp size={24} />
               </a>
             </div>
           </div>
