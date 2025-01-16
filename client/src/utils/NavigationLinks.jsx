@@ -1,4 +1,3 @@
-import { FaHome } from "react-icons/fa";
 import { FaCar, FaHotel, FaNewspaper } from "react-icons/fa6";
 import { GiMountainRoad } from "react-icons/gi";
 import {
@@ -7,21 +6,13 @@ import {
   Car,
   DollarSign,
   FileEdit,
-  ShoppingCart,
-  Globe,
-  Plane,
-  Hotel,
-  Route,
   PenTool,
   ShoppingBag,
 } from "lucide-react";
+import { FaPlaceOfWorship } from "react-icons/fa";
 
 const navLinks = [
-  {
-    name: "Home",
-    address: "/",
-    icon: <FaHome />,
-  },
+
   {
     name: "Hotel",
     address: "/all-hotels",
@@ -40,7 +31,7 @@ const navLinks = [
   {
     name: "Destinations",
     address: "/all-destinations",
-    icon: <MapPin />,
+    icon:<FaPlaceOfWorship/>,
   },
   {
     name: "Blogs",
@@ -50,6 +41,11 @@ const navLinks = [
 ];
 
 const quickLinks = [
+  {
+    name: "Home",
+    address: "/",
+
+  },
   {
     name: "About Us",
     address: "/about",
