@@ -27,15 +27,15 @@ const PackageMore = () => {
   console.log({ filteredDestinations, filteredHotels });
   return (
     <div>
-      <h2 className="text-2xl font-bold mb-4">Destinations</h2>
+      <h2 className="font-sans font-semibold text-[var(--bs-white)] mb-4">Destinations</h2>
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
         {filteredDestinations.map((destination, index) => (
                     <AllDestinationCard key={destination._id} destination={destination} />
 
         ))}
       </div>
-      <h2 className="text-2xl font-bold mb-4">Hotels</h2>
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+      <h2 className="font-sans font-semibold text-[var(--bs-white)] mb-4">Hotels</h2>
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {filteredHotels.map((hotel, index) => (
           <AllHotelsCard key={hotel._id} hotel={hotel} />
         ))}

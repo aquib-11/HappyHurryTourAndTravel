@@ -4,10 +4,12 @@ const PackageIterinary = () => {
   const _package = useOutletContext();
   return (
     <div>
-      <h2>Itinerary</h2>
+      <h2 className="font-sans font-semibold my-4 capitalize text-[var(--bs-white)]">Itinerary</h2>
       <ul>
         {_package?.itinerary.map((item, index) => (
-          <li key={item}>Day {index + 1} : {item}</li>
+          <li key={item} className="font-sans  ">
+            <span className=" text-[var(--bs-white)] ">Day {index + 1} : </span> {item}
+          </li>
         ))}
       </ul>
     </div>
