@@ -8,16 +8,17 @@ import { formatImage } from "../middleware/multer.js";
 export const getUserRole = async (req, res) => {
   let currentUserRole = "";
   const { token } = req.cookies;
+  const adminDetails = await User.findOne({ role: "admin" }).select("-password -role");
 
   if (!token) {
     currentUserRole = "visitor";
-    return res.status(StatusCodes.OK).json({ userRole: currentUserRole });
+    return res.status(StatusCodes.OK).json({ userRole: currentUserRole, adminDetails });
   }
 
   try {
     const { role } = verifyJWT(token);
     currentUserRole = role;
-    return res.status(StatusCodes.OK).json({ userRole: currentUserRole });
+    return res.status(StatusCodes.OK).json({ userRole: currentUserRole, adminDetails });
   } catch (error) {
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)

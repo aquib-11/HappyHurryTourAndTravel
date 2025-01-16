@@ -30,8 +30,7 @@ export const logoutAction = async () => {
   }
 };
 const HomeOutlet = () => {
-  const { user = "visitor" } = useLoaderData();
-
+  const { user = "visitor", adminDetails } = useLoaderData();
   return (
     <>
       <homeLayoutContext.Provider value={{ user }}>
