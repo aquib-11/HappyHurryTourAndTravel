@@ -2,9 +2,17 @@ import React from "react";
 import logo from "../../../assets/images/logo.png";
 import { quickLinks, navLinks } from "../../../utils/NavigationLinks";
 import { Link, NavLink } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import { toast } from "react-toastify";
 
 const DesktopNav = () => {
+  const { isAuthenticated, loginWithRedirect, isLoading, user, logout  } =
+    useAuth0();
 
+    const logOutMessage = ()=>{
+      toast.success("logged out")
+}
+  const isUser = isAuthenticated && user;
   return (
     <nav className="hidden container lg:flex justify-between items-center py-2 text-[var(--bs-white)] h-20 w-full bg-[var(--bs-body-bg)] z-50 sticky top-0 ">
       <div className=" flex items-center space-x-6">
@@ -26,6 +34,27 @@ const DesktopNav = () => {
               </NavLink>
             </li>
           ))}
+        {isUser ? (
+          <button
+            onClick={() => {
+              logout({
+                logoutParams: { returnTo: window.location.origin },
+              });
+              logOutMessage();
+            }}
+          > logout </button>     
+               ) : (
+              <button
+                className="formBtn"
+                style={{ textTransform: "lowercase" }}
+                type="button"
+                onClick={async () => {
+                  loginWithRedirect();
+                }}
+              >
+                login
+              </button>
+            )}
         </ul>
       </div>
       <div>

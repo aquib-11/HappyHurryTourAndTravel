@@ -23,6 +23,9 @@ import hotelRouter from "./routes/hotelRoutes.js";
 import cabPricingRouter from "./routes/cabPricingRoutes.js";
 import blogRouter from "./routes/blogRoutes.js";
 import tourPackageRouter from "./routes/tourPackageRoutes.js";
+import bookOneWayRouter from "./routes/bookOneWayRoutes.js";
+import bookTwoWayRouter from "./routes/bookTwoWayModel.js";
+import contactRouter from "./routes/contactRouter.js";
 
 //public
 import path, { dirname } from "path";
@@ -65,11 +68,14 @@ app.use("/api/v1/hotel", hotelRouter);
 app.use("/api/v1/cabPricing", cabPricingRouter);
 app.use("/api/v1/blog", blogRouter);
 app.use("/api/v1/tourPackage", tourPackageRouter);
+app.use("/api/v1/bookOneWay", bookOneWayRouter);
+app.use("/api/v1/bookTwoWay", bookTwoWayRouter);
+app.use("/api/v1/contact", contactRouter);
 
 // entry point prod...
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "./public", "index.html"));
- });
+});
 
 //not found `
 app.use("*", (req, res) => {

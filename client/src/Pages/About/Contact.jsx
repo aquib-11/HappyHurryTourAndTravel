@@ -3,28 +3,45 @@ import { FaGlobe, FaEnvelope, FaHeadphones,  } from "react-icons/fa";
 import { FaFacebook, FaInstagram, FaWhatsapp,  } from "react-icons/fa";
 import img from "../../assets/images/contact.svg";
 import { Form } from "react-router-dom";
+import { useAuth0 } from "@auth0/auth0-react";
+import customFetch from "../../utils/customFetch";
+import { toast } from "react-toastify";
 const Contact = () => {
+    const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
+    const [submitting, setSubmitting] = useState(false);
+
   const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    mobile: "",
+    name: user?.name,
+    email:user?.email,
+    phone: "",
     message: "",
-    agreed: false,
   });
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    // Handle form submission logic here
+    setSubmitting(true);
+    if (!isAuthenticated) {
+      toast.error("Please login to book a cab");
+      return
+    } 
+    try {
+        formData.name = user?.name;
+        formData.email = user?.email;
+       await customFetch.post("/contact", formData);
+      toast.success("Cab Booked Successfully");
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.msg);
+    }finally {
+      setSubmitting(false);
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      });
+    }
   };
-
-  const handleChange = (e) => {
-    const { name, value, type, checked } = e.target;
-    setFormData((prev) => ({
-      ...prev,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  };
+  console.log({ formData });
 return (
     <div className="container min-h-screen text-white p-8 ">
         <div className=" mx-auto ">
@@ -122,7 +139,7 @@ return (
                     Send us message
                 </h2>
 
-                <Form onSubmit={handleSubmit} className="space-y-6">
+                <form onSubmit={(e)=>handleSubmit(e)} className="space-y-6">
                     <div className="grid md:grid-cols-2 gap-6">
                         <div>
                             <label className="block text-gray-300 mb-2">
@@ -130,9 +147,8 @@ return (
                             </label>
                             <input
                                 type="text"
-                                name="name"
                                 value={formData.name}
-                                onChange={handleChange}
+                                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                 className="w-full bg-[var(--bs-card-bg)] border border-gray-600 rounded-md p-2 text-white focus:outline-none focus:border-blue-500"
                                 required
                             />
@@ -142,10 +158,9 @@ return (
                                 Email address <span className="text-red-500">*</span>
                             </label>
                             <input
-                                type="email"
-                                name="email"
                                 value={formData.email}
-                                onChange={handleChange}
+                                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                type="email"
                                 className="w-full bg-[var(--bs-card-bg)] border border-gray-600 rounded-md p-2 text-white focus:outline-none focus:border-blue-500"
                                 required
                             />
@@ -158,9 +173,8 @@ return (
                         </label>
                         <input
                             type="tel"
-                            name="mobile"
-                            value={formData.mobile}
-                            onChange={handleChange}
+                            value={formData.phone}
+                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                             className="w-full bg-[var(--bs-card-bg)] border border-gray-600 rounded-md p-2 text-white focus:outline-none focus:border-blue-500"
                             required
                         />
@@ -171,36 +185,21 @@ return (
                             Message <span className="text-red-500">*</span>
                         </label>
                         <textarea
-                            name="message"
                             value={formData.message}
-                            onChange={handleChange}
+                            onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                             rows="4"
                             className="w-full bg-[var(--bs-card-bg)] border border-gray-600 rounded-md p-2 text-white focus:outline-none focus:border-blue-500"
                             required
                         ></textarea>
                     </div>
-
-                    <div className="flex items-center">
-                        <input
-                            type="checkbox"
-                            name="agreed"
-                            checked={formData.agreed}
-                            onChange={handleChange}
-                            className="w-4 h-4 mr-2"
-                            required
-                        />
-                        <label className="text-gray-300">
-                            By submitting this form you agree to our terms and conditions.
-                        </label>
-                    </div>
-
                     <button
                         type="submit"
+                        disabled={submitting}
                         className="bg-black text-white px-8 py-2 rounded-md hover:bg-gray-900 transition-colors"
                     >
-                        Send Message
+                       {submitting ? "Sending..." : "Send Message"}
                     </button>
-                </Form>
+                </form>
             </div>
         </div>
     </div>
