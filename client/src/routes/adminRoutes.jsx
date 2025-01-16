@@ -37,6 +37,8 @@ import EditCab, {
 } from "../Pages/admin/editPages/EditCab";
 import { editCabPriceLoader } from "../Pages/admin/editPages/EditCabPrice";
 import { editBlogLoader } from "../Pages/admin/editPages/EditBlog";
+import AddTourPackage, { addTourpackageAction, addTourPackageLoader } from "../Pages/admin/AddTourPackage";
+import EditPackage, { editTourpackageAction, editTourPackageLoader } from "../Pages/admin/editPages/EditPackage";
 
 export const adminRoutes = [
   {
@@ -107,6 +109,18 @@ export const adminRoutes = [
         path: "edit-blog/:id",
         element: <EditBlog />,
         loader: editBlogLoader,
+      },
+      {
+        path: "add-tour-package",
+        element: <AddTourPackage />,
+        action: addTourpackageAction,
+        loader: addTourPackageLoader,
+      },
+      {
+        path: "edit-tour-package/:id",
+        element: <EditPackage />,
+        action: editTourpackageAction,
+        loader: editTourPackageLoader,
       },
     ],
   },

@@ -20,6 +20,10 @@ export { default as LoginPage } from "./auth/LoginPage";
 
 // Packages
 export { default as AllPackages } from "./package/AllPackages";
+export { default as PackageOverview } from "./package/PackageOverview";
+export { default as PackageMore } from "./package/PackageMore";
+export { default as PackageIterinary } from "./package/PackageIterinary";
+export { default as InclusionExclusion } from "./package/InclusionExclusion";
 
 
 // Admin things

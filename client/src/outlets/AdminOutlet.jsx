@@ -6,7 +6,7 @@ import { adminLinks } from "../utils/NavigationLinks";
 const AdminOutlet = () => {
   return (
     <div className="grid grid-cols-12  container gap-2">
-      <ul className="col-span-12 md:col-span-2 flex  md:items-start  md:flex-col md:justify-start flex-wrap gap-3 border border-gray-600 rounded-md p-4 ">
+      <ul className="col-span-12 md:col-span-3 flex  md:items-start  md:flex-col md:justify-start flex-wrap gap-3 border border-gray-600 rounded-lg p-4 bg-[var(--bs-card-bg)] ">
         {adminLinks?.map((link, index) => (
           <li key={index}>
             <NavLink
@@ -26,7 +26,7 @@ const AdminOutlet = () => {
         ))}
       </ul>
 
-      <div className=" col-span-12 md:col-span-10 p-4 border border-gray-600 rounded-md">
+      <div className=" col-span-12 md:col-span-9 p-4 border border-gray-600 rounded-lg bg-[var(--bs-card-bg)] ">
         <Outlet />
       </div>
     </div>

@@ -59,7 +59,9 @@ const AddDestinationPricing = () => {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-center">Add Cab Pricing</h2>
+      <h2 className="text-center text-[var(--bs-white)] font-sans">
+        Add Cab Pricing
+      </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

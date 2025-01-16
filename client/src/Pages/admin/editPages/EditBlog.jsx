@@ -104,12 +104,6 @@ const EditBlog = () => {
       ...prev,
       content: newContent,
     }));
-    if (errors.content) {
-      setErrors((prev) => ({
-        ...prev,
-        content: null,
-      }));
-    }
   };
 
   // Handle image upload
@@ -224,7 +218,9 @@ const EditBlog = () => {
   return (
     <div className="max-w-4xl mx-auto p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold">Edit Blog</h1>
+        <h2 className="text-3xl font-bold text-[var(--bs-white)] font-sans">
+          Edit Blog
+        </h2>
         <button
           onClick={() => navigate("/all-blogs")}
           className="px-4 py-2 text-gray-600 hover:text-gray-800"
@@ -258,7 +254,8 @@ const EditBlog = () => {
           <JoditEditor
             value={formData.content}
             config={editorConfig}
-            onChange={handleContentChange}
+            // onChange={handleContentChange}
+            onBlur={handleContentChange}
           />
           {errors.content && (
             <p className="mt-1 text-sm text-red-500">{errors.content}</p>

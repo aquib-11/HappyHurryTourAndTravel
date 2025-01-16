@@ -82,7 +82,9 @@ const EditCabPrice = () => {
 
   return (
     <div>
-      <h3 className="text-center">Edit Cab Pricing</h3>
+      <h2 className="text-center text-[var(--bs-white)] font-sans">
+        Edit Cab Pricing
+      </h2>
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
           <label>Route:</label>

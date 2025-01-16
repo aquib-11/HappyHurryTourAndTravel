@@ -38,6 +38,11 @@ const navLinks = [
     icon: <FaCar />,
   },
   {
+    name: "Destinations",
+    address: "/all-destinations",
+    icon: <MapPin />,
+  },
+  {
     name: "Blogs",
     address: "/blog-grid",
     icon: <FaNewspaper />,
@@ -85,10 +90,30 @@ const adminLinks = [
     icon: <FileEdit />,
   },
   {
-    name: "Cart",
-    address: "/cart",
-    icon: <ShoppingCart />,
+    name: "Add Tour Package",
+    address: "add-tour-package",
   },
 ];
 
-export { quickLinks, navLinks, adminLinks };
+const pakageLinks = [
+  {
+    name: "Overview",
+    address: ".",
+    icon: <PenTool />,
+  },
+  {
+    name: "Iterinary",
+    address: "iterinary",
+    icon: <ShoppingBag />,
+  },
+  {
+    name: "hotels and destinations",
+    address: "more",
+  },
+  {
+    name: "Inclusions & Exclusions",
+    address: "inclusions-and-exclusions",
+  },
+];
+
+export { quickLinks, navLinks, adminLinks, pakageLinks };

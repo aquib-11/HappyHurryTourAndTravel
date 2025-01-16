@@ -160,7 +160,18 @@ const PaginationControls = ({ currentPage, totalPages, onPageChange }) => (
   </div>
 );
 
-const MobileCard = ({ destination, cabs, index, openId, setOpenId }) => {
+const MobileCard = ({
+  destination,
+  cabs,
+  index,
+  openId,
+  setOpenId,
+  fetchDestinations,
+}) => {
+  const { user } = useHomeLayoutContext();
+  const [priceID, setPriceID] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isDeleting, setIsDeleting] = useState(false);
   const getPriceForCab = (cabId) => {
     const priceEntry = destination.pricing.find((p) => p.cabType === cabId);
     return priceEntry ? priceEntry.price : "-";
@@ -170,6 +181,26 @@ const MobileCard = ({ destination, cabs, index, openId, setOpenId }) => {
 
   const toggleAccordion = () => {
     setOpenId(isOpen ? null : destination._id);
+  };
+
+  const handleDelete = async (id) => {
+    setPriceID(id);
+    setIsModalOpen(true);
+  };
+
+  const confirmDelete = async () => {
+    try {
+      setIsDeleting(true);
+      await customFetch.delete(`/cabPricing/${priceID}`);
+      toast.success("Cab deleted successfully");
+      setIsModalOpen(false);
+      await fetchDestinations();
+    } catch (error) {
+      toast.error(error?.response?.data?.msg || error.message);
+    } finally {
+      setIsDeleting(false);
+      setPriceID(null);
+    }
   };
 
   return (
@@ -221,11 +252,37 @@ const MobileCard = ({ destination, cabs, index, openId, setOpenId }) => {
               </span>
             </div>
           ))}
-          <button className="w-full bg-[#9288ec30] hover:bg-[#9288ec4d] text-[var(--bs-text)] px-4 py-2 rounded-md shadow transition-transform transform hover:scale-105">
-            Send Enquiry
-          </button>
+          {user?.userRole === "admin" ? (
+            <div className="flex justify-center items-center gap-4">
+              <Link
+                className="flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
+                to={`/admin/edit-cab-pricing/${destination._id}`}
+              >
+                <Edit2 size={16} />
+                <span>Edit</span>
+              </Link>
+              <button
+                onClick={() => handleDelete(destination._id)}
+                className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
+              >
+                <Trash2 size={16} />
+                <span>Delete</span>
+              </button>
+            </div>
+          ) : (
+            <button className="bg-[#9288ec30] hover:bg-[#9288ec4d] text-[var(--bs-text)] px-4 py-2 rounded-md shadow transition-transform transform hover:scale-105">
+              Send Enquiry
+            </button>
+          )}
         </div>
       </div>
+      <DeleteModal
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onConfirm={confirmDelete}
+        itemName={destination.route}
+        isDeleting={isDeleting}
+      />
     </div>
   );
 };
@@ -290,6 +347,7 @@ const MobileCards = ({ cabs, destinations, fetchDestinations }) => {
     <div className="space-y-4">
       {currentDestinations.map((destination, index) => (
         <MobileCard
+          fetchDestinations={fetchDestinations}
           key={destination._id}
           destination={destination}
           index={index}

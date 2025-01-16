@@ -40,7 +40,9 @@ const AddDestination = () => {
 
   return (
     <div>
-      <h2 className="text-center">Add Destination</h2>
+      <h2 className="text-center text-[var(--bs-white)] font-sans">
+        Add Destination
+      </h2>
       <Form method="post" className="space-y-4">
         <div>
           <label>Destination Name:</label>
