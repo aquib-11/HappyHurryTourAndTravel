@@ -12,6 +12,7 @@ export const homeRoutes = [
         <Home />
       </Suspense>
     ),
+    
   },
   {
     element: (
