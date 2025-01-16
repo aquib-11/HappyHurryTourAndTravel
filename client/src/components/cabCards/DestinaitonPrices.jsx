@@ -21,10 +21,13 @@ const TableHeader = ({ cabs, searchTerm, onSearchChange }) => (
         </th>
       ))}
       <th className="py-4 px-6 text-center text-[var(--bs-white)] font-semibold rounded-tr-lg border-[#4a55684b] border">
+        <label htmlFor="search" className="text-sm font-semibold">
+          Search destination
+        </label>
         <div className="relative">
           <input
             type="search"
-            placeholder="Search by destination..."
+            placeholder="Search..."
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
             className="pl-10 pr-3 py-2 placeholder:font-thin w-full rounded-lg bg-[#4a55684b] border-none"
@@ -297,10 +300,16 @@ const DesktopTable = ({
   const itemsPerPage = 10;
   const [currentPage, setCurrentPage] = useState(1);
 
+  // Calculate pagination after filtering
   const totalPages = Math.ceil(destinations.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentDestinations = destinations.slice(startIndex, endIndex);
+
+  // Reset to first page when search term changes
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [searchTerm]);
 
   return (
     <div>
@@ -336,12 +345,18 @@ const DesktopTable = ({
 const MobileCards = ({ cabs, destinations, fetchDestinations }) => {
   const [openId, setOpenId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 5;
+  const itemsPerPage = 3;
 
+  // Calculate pagination after filtering
   const totalPages = Math.ceil(destinations.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentDestinations = destinations.slice(startIndex, endIndex);
+
+  // Reset to first page when filtered results change
+  useEffect(() => {
+    setCurrentPage(1);
+  }, [destinations.length]);
 
   return (
     <div className="space-y-4">
@@ -389,6 +404,7 @@ const DestinationPrices = ({ cabs }) => {
     fetchDestinations();
   }, []);
 
+  // Filter the complete dataset before pagination
   const filteredDestinations = destinations.filter((destination) =>
     destination.route.toLowerCase().includes(searchTerm.toLowerCase())
   );
