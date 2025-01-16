@@ -40,7 +40,7 @@ export const updateTourPackage = async (req, res) => {
     const { id } = req.params;
     const _package = await tourPackage.findById(id);
     if (!_package) throw new NotFoundErr(`No package found with id ${id}`);
-
+    const updateData = { ...req.body };
     if (req.file) {
         // Delete old image if exists
         if (_package.image && _package.image.imageId) {
@@ -49,13 +49,11 @@ export const updateTourPackage = async (req, res) => {
         // Upload new image
         const file = formatImage(req.file);
         const response = await cloudinary.v2.uploader.upload(file);
-        _package.image = {
-            image: response.secure_url,
-            imageId: response.public_id
-        };
+        updateData.image = response.secure_url;
+        updateData.imageId = response.public_id;
     }
-    await _package.save();
-    res.status(StatusCodes.OK).json({ msg: "Package updated", _package });
+    const updatedPackage = await tourPackage.findByIdAndUpdate(id, updateData, { new: true });
+    res.status(StatusCodes.OK).json({ msg: "Package updated", updatedPackage });
 };
 
 // Add an image to a tour package

@@ -14,12 +14,8 @@ const tourPackageSchema = mongoose.Schema({
   inclusions: [String],
   exclusions: [String],
   itinerary: [String],
-  destinations: [{
-    destinationId: {
-      type: mongoose.Types.ObjectId,
-      ref: 'destinations'
-    },
-  }],
+  destinations: [String],
+  hotels: [String],
     minGroupSize: Number,
     maxGroupSize: Number,
   createdBy: {

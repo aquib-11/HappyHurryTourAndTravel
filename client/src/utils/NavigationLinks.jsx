@@ -80,24 +80,31 @@ const adminLinks = [
     icon: <FileEdit />,
   },
   {
-<<<<<<< Updated upstream
-    name: "Cart",
-    address: "/cart",
-    icon: <ShoppingCart />,
-=======
     name: "Add Tour Package",
     address: "add-tour-package",
   },
-  {
-    name: "Cart",
-    address: "/cart",
-  },
+ 
+];
 
+const pakageLinks = [
   {
-    name: "Cart",
-    address: "/cart",
->>>>>>> Stashed changes
+    name: "Overview",
+    address: ".",
+    icon: <PenTool />,
+  },
+  {
+    name: "Iterinary",
+    address: "iterinary",
+    icon: <ShoppingBag />,
+  },
+  {
+    name: "hotels and destinations",
+    address: "more",
+  },
+  {
+    name: "Inclusions & Exclusions",
+    address: "inclusions-and-exclusions",
   },
 ];
 
-export { quickLinks, navLinks, adminLinks };
+export { quickLinks, navLinks, adminLinks, pakageLinks };
