@@ -8,20 +8,20 @@ const HeroSection = () => {
         <div className="grid md:grid-cols-2 gap-8 items-center">
           {/* Left Column - Text Content */}
           <div className="space-y-6">
-            <h1 className="font-sans font-bold leading-tight">
+            <h1 className="text-[1.8rem] md:text-5xl font-sans font-bold leading-tight">
               Discover Your Next
               <br />
               Adventure with Us.
               <div className="h-1 w-24 bg-purple-500 mt-2"></div>
             </h1>
 
-            <p className="text-gray-300 text-lg font-sans">
+            <p className="text-gray-400 text-lg font-sans">
               Happy Hurry Tour and Travel brings you unforgettable journeys,
               offering luxury stays and curated travel experiences within your
               budget. Explore, relax, and make memories with us.
             </p>
             <div className="flex items-center space-x-4">
-              <button className="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg">
+              <button className="bg-[--bs-blur-bg] hover:bg-purple-700 hover:text-white text-[var(--bs-text)] px-6 py-2 rounded-lg font-bold">
                 Discover Now
               </button>
             </div>

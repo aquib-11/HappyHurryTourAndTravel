@@ -17,7 +17,7 @@ const DesktopNav = () => {
   const isUser = isAuthenticated && user;
   return (
     <nav className="hidden container lg:flex justify-between items-center py-2 text-[var(--bs-white)] h-20 w-full bg-[var(--bs-body-bg)] z-50 sticky top-0 ">
-      <div className=" flex items-center space-x-6">
+      <div className="flex items-center space-x-3">
         <img
           src={admin?.adminDetails?.image}
           alt="Logo"
@@ -48,7 +48,7 @@ const DesktopNav = () => {
                 });
                 logOutMessage();
               }}
-              className="w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold px-3 p-1 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
+              className=" bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold px-3 p-1 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
             >
               {" "}
               Logout{" "}
