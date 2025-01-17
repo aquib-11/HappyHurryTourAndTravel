@@ -14,7 +14,7 @@ import { FaHome,  } from "react-icons/fa";
 const navLinks = [
   {
     name: "Home",
-    address: "/ ",
+    address: "/",
     icon: <FaHome />,
   },
   {
