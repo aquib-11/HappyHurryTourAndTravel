@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
-import { ChevronLeft, ChevronRight, Trash2 } from "lucide-react";
+import { Trash2 } from "lucide-react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
 import customFetch from "../../utils/customFetch";
@@ -28,6 +28,15 @@ const Testimonial = () => {
     email: user?.email,
     message: "",
   });
+
+  useEffect(() => {
+    setFormData({
+      name: user?.name,
+      rating: "",
+      email: user?.email,
+      message: "",
+    });
+  }, [user]);
 
   const splideOptions = {
     type: "slide",
@@ -131,12 +140,12 @@ const Testimonial = () => {
             <SplideSlide key={index} className="flex justify-center">
               <div className="bg-[var(--bs-card-bg)] rounded-lg p-6 h-full">
                 <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-[var(--bs-text)] text-white font-bold text-3xl flex items-center justify-center">
-                    {testimonial.name
+                  {/* <div className="w-16 h-16 rounded-full bg-[var(--bs-text)] text-white font-bold text-3xl flex items-center justify-center">
+                    {testimonial?.name
                       .split(" ")
                       .map((name) => name[0])
                       .join("")}
-                  </div>
+                  </div> */}
                   <div className="ml-4 flex justify-between w-full">
                     <div>
                       <h3 className="text-white font-semibold text-lg">
@@ -147,21 +156,20 @@ const Testimonial = () => {
                       </p>
                     </div>
 
-                    {admin?.userRole === "admin" ||
-                      (user?.email === testimonial?.email && (
-                        <div className="flex justify-center gap-4">
-                          <button
-                            onClick={() => {
-                              setTestimonialToDelete(testimonial._id);
-                              setIsDeleteModalOpen(true);
-                            }}
-                            className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
-                            disabled={isDeleting}
-                          >
-                            <Trash2 size={20} />
-                          </button>
-                        </div>
-                      ))}
+                    {user?.email === testimonial?.email && (
+                      <div className="flex justify-center gap-4">
+                        <button
+                          onClick={() => {
+                            setTestimonialToDelete(testimonial._id);
+                            setIsDeleteModalOpen(true);
+                          }}
+                          className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
+                          disabled={isDeleting}
+                        >
+                          <Trash2 size={20} />
+                        </button>
+                      </div>
+                    )}
                   </div>
                 </div>
 
@@ -197,6 +205,13 @@ const Testimonial = () => {
 
         {isModelOpen && (
           <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
+            {isLoading && (
+              <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2">
+                <div className="flex items-center space-x-2 animate-spin">
+                  <div className="w-4 h-4 bg-indigo-500 rounded-full"></div>
+                </div>
+              </div>
+            )}
             <div className="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md relative animate-fade-in border border-gray-800">
               <span
                 onClick={() => setIsModelOpen(false)}
@@ -210,6 +225,26 @@ const Testimonial = () => {
               </h2>
 
               <form onSubmit={(e) => submitForm(e)} className="p-6 space-y-6">
+                <div className="mb-4">
+                  <label
+                    htmlFor="rating"
+                    className="block text-sm font-medium text-gray-300 mb-2"
+                  >
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    id="name"
+                    value={formdata.name}
+                    onChange={(e) =>
+                      setFormData({ ...formdata, name: e.target.value })
+                    }
+                    className="w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-lg 
+                    text-gray-200 placeholder-gray-500
+                    focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                    placeholder="Share your thoughts..."
+                  />
+                </div>
                 <div className="mb-4">
                   <label
                     htmlFor="rating"
