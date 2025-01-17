@@ -42,3 +42,4 @@ export { default as HotelOverView } from "./hotels/HotelOverView";
 
 // packages
 export { default as PackageCard } from "./package/packageCard";
+export { default as PackageBookingCard } from "./package/PackageBookingCard";
