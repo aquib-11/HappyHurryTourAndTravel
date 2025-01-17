@@ -12,7 +12,6 @@ import {
 import { FaPlaceOfWorship } from "react-icons/fa";
 
 const navLinks = [
-
   {
     name: "Hotel",
     address: "/all-hotels",
@@ -31,7 +30,7 @@ const navLinks = [
   {
     name: "Destinations",
     address: "/all-destinations",
-    icon:<FaPlaceOfWorship/>,
+    icon: <FaPlaceOfWorship />,
   },
   {
     name: "Blogs",
@@ -44,7 +43,6 @@ const quickLinks = [
   {
     name: "Home",
     address: "/",
-
   },
   {
     name: "About Us",
@@ -53,10 +51,6 @@ const quickLinks = [
   {
     name: "Contact Us",
     address: "/contact",
-  },
-  {
-    name: "Cart",
-    address: "/cart",
   },
 ];
 const adminLinks = [

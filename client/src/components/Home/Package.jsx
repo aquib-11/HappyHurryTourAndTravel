@@ -6,6 +6,7 @@ import img4 from "../../assets/images/bg3.jpg";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import { FaIndianRupeeSign, FaRupeeSign } from "react-icons/fa6";
 
 const TravelPackages = () => {
   const [allPacakges, setAllPackages] = useState([]);
@@ -22,6 +23,7 @@ const TravelPackages = () => {
   useEffect(() => {
     allPackages();
   }, []);
+
   return (
     <div className="container ">
       <h1 className="font-sans font-bold text-white text-center mb-8">
@@ -34,12 +36,20 @@ const TravelPackages = () => {
             key={pkg._id}
             className="relative rounded-xl overflow-hidden group"
           >
-            <div className="relative h-64 overflow-hidden rounded-xl">
+            <div className="relative h-[24rem] overflow-hidden rounded-xl">
               <img
                 src={pkg.image}
                 alt={pkg.name}
                 className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-300"
               />
+              <div className="absolute top-5 left-3 flex items-center space-x-2 ">
+                <h3 className="px-3 py-1 bg-white text-black text-sm rounded-full">
+                  {pkg?.destinations?.length} Places
+                </h3>
+                <h3 className="px-3 py-1 bg-white text-black text-sm rounded-full">
+                  {pkg?.hotels?.length} Hotels
+                </h3>
+              </div>
 
               <div className="absolute bottom-4 left-4">
                 <span className="px-3 py-1 bg-white text-black text-sm rounded-full">
@@ -56,15 +66,15 @@ const TravelPackages = () => {
               </Link>
               <div className="flex justify-between items-start text-xs font-bold text-green-400">
                 <div className="flex items-center">
-                  Adult Price: 
+                  Adult Price:
                   <span className="ml-1 font-light text-gray-300">
-                    ₨: {pkg.adultPrice}
+                    ₹ {pkg.adultPrice}
                   </span>
                 </div>
                 <div className="flex items-center">
-                  Child Price: 
+                  Child Price:
                   <span className="ml-1 text-gray-300 font-light">
-                    ₨:{pkg.childPrice}
+                    ₹ {pkg.childPrice}
                   </span>
                 </div>
               </div>
