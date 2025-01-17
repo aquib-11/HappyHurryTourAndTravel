@@ -17,14 +17,14 @@ const AllPackages = () => {
   const { packages } = useLoaderData();
   console.log(packages);
   return (
-    <main className="container">
+    <main className="container space-y-4">
       <AllDestinaitonBanner
         image={
           "https://3.imimg.com/data3/IQ/UY/MY-12701900/international-tour.jpg"
         }
         title="All Packages"
       />
-      <div className="container grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+      <div className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8  ">
         {packages?.map((_package) => (
           <PackageCard key={_package._id} _package={_package} />
         ))}
