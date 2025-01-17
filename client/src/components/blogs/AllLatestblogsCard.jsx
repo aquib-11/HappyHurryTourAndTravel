@@ -76,14 +76,14 @@ const AllLatestblogsCard = ({ blog }) => {
           <div className="flex justify-center gap-4 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
             <Link
               to={`/admin/edit-blog/${blog._id}`}
-              className="flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
-            >
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-500 hover:text-blue-400 bg-blue-500/10 hover:bg-blue-500/20 rounded-md transition-all duration-300 ease-in-out"
+              >
               <Edit2 size={16} />
               <span>Edit</span>
             </Link>
             <button
               onClick={() => setIsModalOpen(true)}
-              className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
+              className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-500 hover:text-red-400 bg-red-500/10 hover:bg-red-500/20 rounded-md transition-all duration-300 ease-in-out"
             >
               <Trash2 size={16} />
               <span>Delete</span>

@@ -81,8 +81,8 @@ const CabHome = () => {
         {/* Form Container */}
         <div className="relative h-full  items-center flex flex-col md:flex-row ">
           <div className="w-full max-w-md mx-auto lg:ml-32 order-2 md:order-1">
-            <div className="bg-zinc-900/90 backdrop-blur-sm p-6 rounded-lg shadow-xl">
-              <h1 className="text-2xl font-bold text-white mb-6">
+            <div className="bg-[--bs-card-bg] backdrop-blur-sm p-6 rounded-lg shadow-xl">
+              <h1 className="text-xl md:2xl font-bold font-sans text-white mb-6">
                 Book Your Online Cab
               </h1>
 
@@ -118,13 +118,13 @@ const CabHome = () => {
             </div>
           </div>
           <div className="w-full mx-auto lg:mx-12 order-1 md:order-2 p-3">
-            <h1 className="text-[var(--bs-white)] font-sans font-bold leading-tight mr-8 text-2xl md:text-4xl">
+            <h1 className="text-[var(--bs-white)] font-sans font-bold leading-tight mr-8 text-xl md:text-4xl">
               Book Your Ride, Your Way
               <br />
               Comfortable and Reliable Cabs
               <div className="h-1 w-24 bg-purple-500 mt-2"></div>
             </h1>
-            <p className="text-gray-300 font-sans text-lg mt-4 leading-1.2">
+            <p className="text-gray-300 font-sans text-base md:text-lg mt-4 leading-5">
               Whether it's a one-way trip or an exciting road trip, we’ve got
               you covered. Choose your ride, book online, and enjoy a seamless
               travel experience with Happy Hurry Cab Services. Your journey
@@ -134,7 +134,7 @@ const CabHome = () => {
         </div>
       </div>
       {/* Destinaiton Pricing */}
-      <div className=" w-full pt-8 md:pt-16 ">
+      <div className=" w-full pt-6 md:pt-16 ">
         <h1 className="text-[--bs-white] text-center  font-sans font-bold my-8">
           Cab Pricing
         </h1>
@@ -145,7 +145,7 @@ const CabHome = () => {
         />
       </div>
       {/* Our vehicles */}
-      <div className="pt-8 md:pt-16">
+      <div className="pt-6 md:pt-16">
         <h1 className="text-center text-[var(--bs-white)] font-sans font-semibold my-8">
           Our Awesome Vehicles
         </h1>
@@ -157,7 +157,7 @@ const CabHome = () => {
       </div>
 
       {/* why choose us */}
-      <div className=" w-full pt-8 md:pt-16">
+      <div className=" w-full pt-6 md:pt-16">
         <h1 className=" font-bold font-sans text-white text-center my-8">
           Why Choose Us
         </h1>
@@ -173,7 +173,7 @@ const CabHome = () => {
               >
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-semibold text-white mb-2">
+              <h3 className="text-xl font-semibold font-sans text-white mb-2">
                 {feature.title}
               </h3>
               <p className="text-gray-400">{feature.description}</p>

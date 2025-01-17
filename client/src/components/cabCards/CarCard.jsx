@@ -78,7 +78,7 @@ const CarCard = ({ cab }) => {
 
       {/* Content Container */}
       <div className="p-6 flex items-start flex-col justify-between">
-        <h3 className="text-xl font-bold text-gray-800 dark:text-white mb-3 capitalize">
+        <h3 className="text-xl font-bold font-sans text-gray-800 dark:text-white mb-3 capitalize">
           {cab.name}
         </h3>
 
@@ -97,15 +97,15 @@ const CarCard = ({ cab }) => {
         <div className="flex items-center justify-center gap-4 mt-6 py-4 border-t border-gray-200 dark:border-gray-700">
           <Link
             to={`/admin/edit-cab/${cab._id}`}
-            className="flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-500 hover:text-blue-400 bg-blue-500/10 hover:bg-blue-500/20 rounded-md transition-all duration-300 ease-in-out"
           >
             <Edit2 size={16} />
             <span>Edit</span>
           </Link>
           <button
             onClick={handleDelete}
-            className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
-          >
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-500 hover:text-red-400 bg-red-500/10 hover:bg-red-500/20 rounded-md transition-all duration-300 ease-in-out"
+            >
             <Trash2 size={16} />
             <span>Delete</span>
           </button>
