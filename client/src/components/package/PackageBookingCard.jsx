@@ -47,7 +47,7 @@ const PackageBookingCard = ({ price = 280, currency = "$", _package }) => {
 
         {/* Help Section */}
         <div className=" border-t border-gray-700/50">
-          <h3 className="text-2xl font-bold font-sans text-white mb-4">Need Help?</h3>
+          <h3 className="text-2xl font-bold text-white mb-4">Need Help?</h3>
           <div className="space-y-4">
             <div className="flex items-center gap-3 group cursor-pointer bg-gray-900/50 hover:bg-gray-900/70 border border-gray-700 p-4 rounded-lg transition-colors">
               <Phone className="w-5 h-5 text-blue-400" />
@@ -100,7 +100,7 @@ const PackageBookingCard = ({ price = 280, currency = "$", _package }) => {
       {showBookingModal && (
         <PackageBookingModel
           showBookingModal={showBookingModal}
-          OnClose={() => setShowBookingModal(false)}
+          onClose={() => setShowBookingModal(false)}
           _package={_package}
         />
       )}

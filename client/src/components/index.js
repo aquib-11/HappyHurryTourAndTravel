@@ -44,3 +44,10 @@ export { default as HotelOverView } from "./hotels/HotelOverView";
 export { default as PackageCard } from "./package/packageCard";
 export { default as PackageBookingCard } from "./package/PackageBookingCard";
 export { default as PackageBookingModel } from "./package/PackageBookingModel";
+
+
+// notfi
+export { default as BookOneWayNotification } from "./notifications/BookOneWayNotification";
+export { default as BookTwoWayNotification } from "./notifications/BookTwoWayNotification";
+export { default as ContactNotfication } from "./notifications/ContactNotfication";
+export { default as PackageNotification } from "./notifications/PackageNotification";

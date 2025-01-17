@@ -4,11 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
 import customFetch from "../../utils/customFetch";
 
-const PackageBookingModal = ({
-  showBookingModel,
-  OnClose,
-  _package,
-}) => {
+const PackageBookingModal = ({ showBookingModel, onClose, _package }) => {
   const [packages, setPackages] = useState([]);
   const [formData, setFormData] = useState({
     selectPackage: _package?._id,
@@ -57,7 +53,7 @@ const PackageBookingModal = ({
           <div className="flex justify-between items-center rounded-lg">
             <h2 className="text-2xl font-bold text-white">Book Package</h2>
             <button
-              onClick={OnClose}
+              onClick={onClose}
               className="p-2 hover:bg-gray-700/50 rounded-lg transition-colors"
             >
               <X className="w-5 h-5 text-gray-400" />
@@ -230,7 +226,7 @@ const PackageBookingModal = ({
             <div className="flex justify-end gap-3 pt-4 border-t border-gray-700/50">
               <button
                 type="button"
-                onClick={OnClose}
+                onClick={onClose}
                 className="px-6 py-2.5 rounded-lg border border-gray-600 text-gray-300 hover:bg-gray-700/50 transition-colors"
               >
                 Cancel
