@@ -1,7 +1,7 @@
 import { Link, NavLink, Outlet, useLoaderData } from "react-router-dom";
 import customFetch from "../utils/customFetch";
 import { pakageLinks } from "../utils/NavigationLinks";
-import { AllDestinaitonBanner } from "../components";
+import { AllDestinaitonBanner, PackageBookingCard } from "../components";
 
 export const packageloader = async ({ params }) => {
   try {
@@ -19,27 +19,35 @@ const Package = () => {
     <div className="container">
       {/* <img src={_package?.image} alt={_package?.name} /> */}
       <AllDestinaitonBanner randomImages={[_package?.image]} />
-      <div className="w-full lg:w-fit bg-[var(--bs-card-bg)] p-4 rounded-lg my-4">
-        <div className="flex flex-col md:flex-row gap-4">
-          {pakageLinks.map((link) => (
-            <NavLink
-              key={link.name}
-              to={link.address}
-              end
-              className={({ isActive }) =>
-                `capitalize text-center px-4 py-2 rounded-md text-sm transition-colors duration-200 ${
-                  isActive
-                    ? "bg-violet-500 text-white"
-                    : "text-violet-400 hover:text-violet-300"
-                }`
-              }
-            >
-              {link.name}
-            </NavLink>
-          ))}
+
+      <div className="grid grid-cols-12 my-4">
+        <div className="col-span-8">
+          <div className="w-full lg:w-fit bg-[var(--bs-card-bg)] p-4 rounded-lg ">
+            <div className="flex flex-col md:flex-row gap-4">
+              {pakageLinks.map((link) => (
+                <NavLink
+                  key={link.name}
+                  to={link.address}
+                  end
+                  className={({ isActive }) =>
+                    `capitalize text-center px-4 py-2 rounded-md text-sm transition-colors duration-200 ${
+                      isActive
+                        ? "bg-violet-500 text-white"
+                        : "text-violet-400 hover:text-violet-300"
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ))}
+            </div>
+          </div>
+          <Outlet context={_package} />
+        </div>
+        <div className="col-span-4">
+          <PackageBookingCard _package={_package} />
         </div>
       </div>
-      <Outlet context={_package} />
     </div>
   );
 };
