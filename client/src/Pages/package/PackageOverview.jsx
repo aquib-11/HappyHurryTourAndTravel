@@ -14,8 +14,8 @@ const PackageOverview = () => {
   return (
     <div className="mt-8 space-y-8">
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-xl p-8">
-        <h2 className="text-3xl font-bold text-white mb-4">Overview</h2>
+      <div className="bg-gradient-to-r from-blue-900/20 to-purple-900/20 rounded-xl p-4 md:p-8">
+        <h2 className="text-3xl font-bold font-sans text-white mb-4">Overview</h2>
         <p className="text-lg text-gray-300 leading-relaxed">
           {_package?.overview}
         </p>
@@ -23,7 +23,7 @@ const PackageOverview = () => {
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-gray-800/40 rounded-xl p-6 backdrop-blur-sm hover:bg-gray-800/60 transition-all">
+        <div className="bg-gray-800/40 rounded-xl p-4 md:p-6 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/60 transition-all">
           <div className="flex items-start justify-between">
             <div>
               <p className="text-gray-400 text-sm">Duration</p>
@@ -53,7 +53,7 @@ const PackageOverview = () => {
           </div>
         </div>
 
-        <div className="bg-gray-800/40 rounded-xl p-6 backdrop-blur-sm hover:bg-gray-800/60 transition-all">
+        <div className="bg-gray-800/40 rounded-xl p-4 md:p-6 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/60 transition-all">
           <div className="flex items-start justify-between">
             <div>
               <p className="text-gray-400 text-sm">Group Size</p>
@@ -81,7 +81,7 @@ const PackageOverview = () => {
           </div>
         </div>
 
-        <div className="bg-gray-800/40 rounded-xl p-6 backdrop-blur-sm hover:bg-gray-800/60 transition-all">
+        <div className="bg-gray-800/40 rounded-xl p-4 md:p-6 border border-gray-700 backdrop-blur-sm hover:bg-gray-800/60 transition-all">
           <div className="flex items-start justify-between">
             <div>
               <p className="text-gray-400 text-sm">Starting From</p>
@@ -111,8 +111,8 @@ const PackageOverview = () => {
       </div>
 
       {/* Highlights Section */}
-      <div className="bg-gray-800/40 rounded-xl p-8">
-        <h3 className="text-2xl font-bold text-white mb-6">Highlights</h3>
+      <div className="bg-gray-800/40 rounded-xl border border-gray-700 p-4 md:p-8">
+        <h3 className="text-2xl font-bold font-sans text-white mb-6">Highlights</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {_package?.highlights.map((highlight) => (
             <div key={highlight} className="flex items-center space-x-3">
@@ -124,22 +124,22 @@ const PackageOverview = () => {
       </div>
 
       {/* Pricing Section */}
-      <div className="bg-gray-800/40 rounded-xl p-8">
-        <h3 className="text-2xl font-bold text-white mb-6">Tour Pricing</h3>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-gray-900/50 p-6 rounded-lg">
+      <div className="bg-gray-800/40 rounded-xl border border-gray-700 p-4">
+        <h3 className="text-2xl font-bold font-sans text-white mb-6">Tour Pricing</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="bg-gray-900/50  border border-gray-700 p-6 rounded-lg">
             <p className="text-gray-400 mb-2">Adult Price</p>
             <p className="text-3xl font-bold text-white">
               {formatPrice(_package?.adultPrice)}
             </p>
           </div>
-          <div className="bg-gray-900/50 p-6 rounded-lg">
+          <div className="bg-gray-900/50 border border-gray-700 p-6 rounded-lg">
             <p className="text-gray-400 mb-2">Child Price</p>
             <p className="text-3xl font-bold text-white">
               {formatPrice(_package?.childPrice)}
             </p>
           </div>
-          <div className="bg-gray-900/50 p-6 rounded-lg">
+          <div className="bg-gray-900/50 border border-gray-700 p-6 rounded-lg">
             <p className="text-gray-400 mb-2">Infant Price</p>
             <p className="text-3xl font-bold text-white">
               {formatPrice(_package?.infantPrice)}
