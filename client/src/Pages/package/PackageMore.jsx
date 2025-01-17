@@ -95,7 +95,7 @@ const PackageMore = () => {
                 d="M3 21v-4m0 0V5a2 2 0 012-2h6.5l1 1H21l-3 6 3 6h-8.5l-1-1H5a2 2 0 00-2 2zm9-13.5V9"
               />
             </svg>
-            <h2 className="text-2xl font-bold text-white">
+            <h2 className="text-2xl font-bold font-sans text-white">
               Featured Destinations
             </h2>
           </div>
@@ -137,7 +137,7 @@ const PackageMore = () => {
                 d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"
               />
             </svg>
-            <h2 className="text-2xl font-bold text-white">Featured Hotels</h2>
+            <h2 className="text-2xl font-bold font-sans text-white">Featured Hotels</h2>
           </div>
         </div>
 

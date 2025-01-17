@@ -50,7 +50,7 @@ const PackageItinerary = () => {
       <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-xl p-8 mb-12">
         <div className="flex items-center gap-3 mb-4">
           <CompassIcon />
-          <h2 className="text-3xl font-bold text-white">
+          <h2 className="text-3xl font-sans font-bold text-white">
             Your Adventure Itinerary
           </h2>
         </div>

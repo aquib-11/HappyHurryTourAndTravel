@@ -21,7 +21,7 @@ const HeroSection = () => {
               budget. Explore, relax, and make memories with us.
             </p>
             <div className="flex items-center space-x-4">
-              <button className="bg-[--bs-blur-bg] hover:bg-purple-700 hover:text-white text-[var(--bs-text)] px-6 py-2 rounded-lg font-bold">
+              <button className="bg-[--bs-blur-bg] transition-colors duration-200 hover:bg-purple-700 hover:text-white text-[var(--bs-text)] px-6 py-2 rounded-lg font-bold">
                 Discover Now
               </button>
             </div>

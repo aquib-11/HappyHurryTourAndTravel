@@ -138,7 +138,7 @@ const Testimonial = () => {
         <Splide options={splideOptions}>
           {alltestimonials.map((testimonial, index) => (
             <SplideSlide key={index} className="flex justify-center">
-              <div className="bg-[var(--bs-card-bg)] rounded-lg p-6 h-full">
+              <div className="bg-[var(--bs-card-bg)] rounded-lg p-6 w-full h-full">
                 <div className="flex items-center mb-4">
                   {/* <div className="w-16 h-16 rounded-full bg-[var(--bs-text)] text-white font-bold text-3xl flex items-center justify-center">
                     {testimonial?.name
@@ -198,7 +198,7 @@ const Testimonial = () => {
       <div className="flex justify-center items-center">
         <button
           onClick={() => setIsModelOpen(true)}
-          className="mt-4 bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg transition-colors duration-200"
+          className=" mt-4 bg-[--bs-blur-bg] transition-colors duration-200 hover:bg-purple-700 hover:text-white text-[var(--bs-text)] px-6 py-2 rounded-lg font-bold"
         >
           Review Us
         </button>
@@ -212,7 +212,7 @@ const Testimonial = () => {
                 </div>
               </div>
             )}
-            <div className="bg-gray-900 rounded-lg shadow-2xl w-full max-w-md relative animate-fade-in border border-gray-800">
+            <div className="bg-[var(--bs-card-bg)] rounded-lg shadow-2xl w-full max-w-md relative animate-fade-in border border-gray-800">
               <span
                 onClick={() => setIsModelOpen(false)}
                 className="absolute top-4 right-4 text-gray-400 hover:text-gray-200 cursor-pointer text-xl"
@@ -292,9 +292,7 @@ const Testimonial = () => {
 
                 <button
                   type="submit"
-                  className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-medium 
-                  py-2 px-4 rounded-lg transition-colors duration-200
-                  focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-900 focus:ring-indigo-500"
+                  className="bg-[--bs-blur-bg] transition-colors duration-200 hover:bg-purple-700 hover:text-white text-[var(--bs-text)] px-6 py-2 rounded-lg font-bold"
                 >
                   Submit
                 </button>
