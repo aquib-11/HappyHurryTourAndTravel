@@ -17,11 +17,10 @@ const Package = () => {
   const { _package } = useLoaderData();
   return (
     <div className="container">
-      {/* <img src={_package?.image} alt={_package?.name} /> */}
       <AllDestinaitonBanner randomImages={[_package?.image]} />
 
       <div className="grid grid-cols-12 my-4">
-        <div className="col-span-8">
+        <div className="col-span-12 md:col-span-8">
           <div className="w-full lg:w-fit bg-[var(--bs-card-bg)] p-4 rounded-lg ">
             <div className="flex flex-col md:flex-row gap-4">
               {pakageLinks.map((link) => (
@@ -44,7 +43,7 @@ const Package = () => {
           </div>
           <Outlet context={_package} />
         </div>
-        <div className="col-span-4">
+        <div className="col-span-12 md:col-span-4 relative">
           <PackageBookingCard _package={_package} />
         </div>
       </div>
