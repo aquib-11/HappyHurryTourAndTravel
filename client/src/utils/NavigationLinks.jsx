@@ -9,7 +9,8 @@ import {
   PenTool,
   ShoppingBag,
 } from "lucide-react";
-import { FaHome,  } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
+import { MdNotifications } from "react-icons/md";
 
 const navLinks = [
   {
@@ -53,6 +54,11 @@ const quickLinks = [
   },
 ];
 const adminLinks = [
+  {
+    name: "Notifications",
+    address: "notifications",
+    icon: <MdNotifications />,
+  },
   {
     name: "Add Destination",
     address: "add-destination",

@@ -17,7 +17,7 @@ export const getAllBookings = async (req, res) => {
     if (req.user.role !== "admin")
         throw new UnauthorizedErr("you are not authorized to access this route");
     try {
-        const bookings = await BookTwoWay.find();
+        const bookings = await BookTwoWay.find().populate('selectCab', 'name image _id');
         res.status(200).json(bookings);
     } catch (error) {
         res.status(500).json({ message: error.message });
@@ -29,7 +29,7 @@ export const getBookingById = async (req, res) => {
     if (req.user.role !== "admin")
         throw new UnauthorizedErr("you are not authorized to access this route");
     try {
-        const booking = await BookTwoWay.findById(req.params.id);
+        const booking = await BookTwoWay.findById(req.params.id).populate('selectCab', 'name image');
         if (!booking) return res.status(404).json({ message: 'Booking not found' });
         res.status(200).json(booking);
     } catch (error) {
