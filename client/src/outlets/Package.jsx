@@ -15,7 +15,7 @@ export const packageloader = async ({ params }) => {
 
 const Package = () => {
   const { _package } = useLoaderData();
-  console.log({ _package });
+
   return (
     <div className="container relative">
       <AllDestinaitonBanner image={[_package?.image]} type="package" />

@@ -43,7 +43,7 @@ const Contact = () => {
       });
     }
   };
-  console.log({ formData });
+
 return (
     <div className="container min-h-screen text-white p-8 ">
         <div className=" mx-auto ">

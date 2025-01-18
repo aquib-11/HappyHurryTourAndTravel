@@ -9,7 +9,6 @@ import customFetch from "../../utils/customFetch";
 import { MdDangerous } from "react-icons/md";
 export const allHotelsLoader = async () => {
   const { data } = await customFetch.get("/hotel");
-  //   console.log({ data });
   return data;
 };
 const AllHotels = () => {

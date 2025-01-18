@@ -20,7 +20,6 @@ export const editTourpackageAction = async ({ request, params }) => {
         "Content-Type": "multipart/form-data",
         },
     });
-    console.log({ response });
     toast.success("Package updated successfully");
     return redirect("/all-packages");
     } catch (error) {
@@ -43,7 +42,6 @@ export const editTourPackageLoader =async ({params}) => {
 };
 const EditPackage = () => {
     const data = useLoaderData();
-    console.log({data});
     const navigation = useNavigation();
     const isSubmitting = navigation.state === "submitting";
     // highlights

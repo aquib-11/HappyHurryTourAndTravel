@@ -11,7 +11,6 @@ export const editHotelAction = async ({ params, request }) => {
   data.amenities = formData.getAll("amenities");
   try {
     const response = await customFetch.patch(`/hotel/${params.id}`, data);
-    console.log({ response });
     toast.success("Hotel updated successfully");
     return redirect("/all-hotels");
   } catch (error) {
@@ -31,7 +30,6 @@ export const editHotelLoader = async ({ params }) => {
 };
 const EditHotel = () => {
   const { hotels } = useLoaderData();
-  console.log({ hotels });
   const [amenities, setAmenities] = useState(hotels.amenities);
   const [amenityInput, setAmenityInput] = useState("");
 

@@ -11,7 +11,6 @@ export const addDestinationAction = async ({ request }) => {
   data.highlights = formData.getAll("highlights"); // Add highlights to the data
   try {
     const response = await customFetch.post("/destination", data);
-    console.log({ response });
     toast.success("Destination added successfully");
     return redirect(
       "/admin/add-destination-images/" + response.data.destinations._id

@@ -33,7 +33,7 @@ export const notificationLoader = async () => {
 const Notification = () => {
   const data = useLoaderData();
   const [selectedFilter, setSelectedFilter] = useState("all");
-  console.log({data});
+
 
   // Calculate total notifications
   const totalNotifications =
