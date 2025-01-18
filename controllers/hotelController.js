@@ -1,4 +1,5 @@
 import hotel from "../models/hotelModel.js";
+import TourPackage from '../models/tourPackageModel';
 import { StatusCodes } from "http-status-codes";
 import { NotFoundErr, UnauthorizedErr } from "../errors/customErors.js";
 import { formatImage } from "../middleware/multer.js";
@@ -90,15 +91,23 @@ export const deleteHotel = async (req, res) => {
   if (req.user.role !== "admin")
     throw new UnauthorizedErr("you are not authorized to access this route");
   const { id } = req.params;
-  const hotels = await hotel.findById(id);
-  if (!hotels) throw new NotFoundErr(`no hotel with id ${id}`);
+  try {
+    const hotels = await hotel.findById(id);
+    if (!hotels) throw new NotFoundErr(`no hotel with id ${id}`);
 
-  // Delete all images from Cloudinary
-  for (const image of hotels.images) {
-    await cloudinary.v2.uploader.destroy(image.imageId);
+    // Delete all images from Cloudinary
+    for (const image of hotels.images) {
+      await cloudinary.v2.uploader.destroy(image.imageId);
+    }
+
+    // Remove the hotel from the database
+    await hotel.findByIdAndRemove(id);
+
+    // Update all tour packages to remove the deleted hotel ID
+    await TourPackage.updateMany({ hotels: id }, { $pull: { hotels: id } });
+
+    return res.status(StatusCodes.OK).json({ msg: "Hotel deleted successfully and removed from packages." });
+  } catch (error) {
+    return res.status(500).json({ message: 'Error deleting hotel', error });
   }
-
-  // Delete hotel from database
-  await hotel.findByIdAndDelete(id);
-  res.status(StatusCodes.OK).json({ msg: "hotel and all related images deleted" });
 };

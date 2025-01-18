@@ -1,4 +1,5 @@
 import destination from "../models/destinationModel.js";
+import TourPackage from '../models/tourPackageModel';
 import { StatusCodes } from "http-status-codes";
 import { NotFoundErr, UnauthorizedErr } from "../errors/customErors.js";
 import { formatImage } from "../middleware/multer.js";
@@ -92,15 +93,23 @@ export const deleteDestination = async (req, res) => {
   if (req.user.role !== "admin")
     throw new UnauthorizedErr("you are not authorized to access this route");
   const { id } = req.params;
-  const destinations = await destination.findById(id);
-  if (!destinations) throw new NotFoundErr(`no destination with id ${id}`);
+  try {
+    const destinations = await destination.findById(id);
+    if (!destinations) throw new NotFoundErr(`no destination with id ${id}`);
 
-  // Delete all images from Cloudinary
-  for (const image of destinations.images) {
-    await cloudinary.v2.uploader.destroy(image.imageId);
+    // Delete all images from Cloudinary
+    for (const image of destinations.images) {
+      await cloudinary.v2.uploader.destroy(image.imageId);
+    }
+
+    // Remove the destination from the database
+    await destination.findByIdAndRemove(id);
+
+    // Update all tour packages to remove the deleted destination ID
+    await TourPackage.updateMany({ destinations: id }, { $pull: { destinations: id } });
+
+    return res.status(200).json({ message: 'Destination deleted successfully and removed from packages.' });
+  } catch (error) {
+    return res.status(500).json({ message: 'Error deleting destination', error });
   }
-
-  // Delete destination from database
-  await destination.findByIdAndDelete(id);
-  res.status(StatusCodes.OK).json({ msg: "destination and all related images deleted" });
 };
