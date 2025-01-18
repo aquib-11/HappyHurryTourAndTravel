@@ -1,28 +1,9 @@
-import React, { useEffect, useState } from "react";
-import img1 from "../../assets/images/bg6.jpg";
-import img2 from "../../assets/images/bg5.jpg";
-import img3 from "../../assets/images/bg7.jpg";
-import img4 from "../../assets/images/bg3.jpg";
-import customFetch from "../../utils/customFetch";
-import { toast } from "react-toastify";
+import React from "react";
 import { Link } from "react-router-dom";
-import { FaIndianRupeeSign, FaRupeeSign } from "react-icons/fa6";
+import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
 
 const TravelPackages = () => {
-  const [allPacakges, setAllPackages] = useState([]);
-  const allPackages = async () => {
-    try {
-      const { data } = await customFetch.get("/tourPackage");
-      setAllPackages(data.packages);
-      return data;
-    } catch (error) {
-      toast.error(error?.response?.data?.msg);
-      return error;
-    }
-  };
-  useEffect(() => {
-    allPackages();
-  }, []);
+  const { user } = useHomeLayoutContext();
 
   return (
     <div className="container ">
@@ -31,7 +12,7 @@ const TravelPackages = () => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 place-items-center ">
-        {allPacakges.map((pkg) => (
+        {user?.packages?.map((pkg) => (
           <div
             key={pkg._id}
             className="relative rounded-xl overflow-hidden group"

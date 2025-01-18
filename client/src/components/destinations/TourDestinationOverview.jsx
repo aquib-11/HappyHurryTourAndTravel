@@ -1,5 +1,8 @@
+import { CompassIcon } from "lucide-react";
 import React from "react";
 import { FaLongArrowAltRight } from "react-icons/fa";
+import ListMapStyles from "../shared/ListMapStyles";
+import OverViewTile from "../shared/OverViewTile";
 const TourDestinationOverview = ({ destination }) => {
   const {
     destinationName,
@@ -11,24 +14,12 @@ const TourDestinationOverview = ({ destination }) => {
     updatedAt,
   } = destination;
   return (
-    <div className="container grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
+    <div className=" grid grid-cols-1 md:grid-cols-3 gap-8 text-white">
       {/* Left Section */}
       <div className="md:col-span-2">
-        <h2 className="text-2xl font-bold mb-4">{title}</h2>
+        <OverViewTile title={title} icon={<CompassIcon />} />
         <p className="text-gray-300 mb-6">{overview}</p>
-
-        <div className="space-y-6">
-          <div>
-            <h2 className="text-xl font-semibold mb-2">Tour Highlights</h2>
-            <ul className="list-disc pl-5 space-y-2 text-gray-300">
-              {highlights.map((highlight) => (
-                <li className="flex items-center gap-2" key={highlight}>
-                  <FaLongArrowAltRight /> {highlight}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+        <ListMapStyles iteratorItems={highlights} />
       </div>
 
       {/* Right Section */}
