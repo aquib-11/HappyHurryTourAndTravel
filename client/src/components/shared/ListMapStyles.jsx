@@ -1,4 +1,5 @@
 import {
+  ArrowBigRight,
   Calendar,
   Clock,
   IterationCcw,
@@ -36,7 +37,7 @@ const ListMapStyles = ({ iteratorItems }) => {
               >
                 {/* Itinerary Content */}
                 <div className="flex items-start gap-3">
-                  <IterationCcw />
+                  <ArrowBigRight />
                   <p className="text-gray-300 leading-relaxed text-lg">
                     {item}
                   </p>

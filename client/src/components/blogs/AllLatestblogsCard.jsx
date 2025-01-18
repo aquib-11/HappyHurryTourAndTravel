@@ -60,13 +60,13 @@ const AllLatestblogsCard = ({ blog }) => {
         </span>
       </div>
       <div className="mt-4">
-        <h3 className="text-xl font-bold text-white mb-2 transition-colors line-clamp-2">
-          {blog.title}
+        <h3 className="text-xl font-bold font-sans text-white mb-2 transition-colors line-clamp-2">
+          {blog?.title}
         </h3>
         <div className="flex items-center justify-between">
           <div className="text-gray-400 text-sm"> {date}</div>
           <Link
-            to={`/blog/${blog._id}`}
+            to={`/blog/${blog?._id}`}
             className="text-blue-400 hover:text-blue-300"
           >
             Read more →
@@ -75,7 +75,7 @@ const AllLatestblogsCard = ({ blog }) => {
         {user?.userRole === "admin" && (
           <div className="flex justify-center gap-4 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
             <Link
-              to={`/admin/edit-blog/${blog._id}`}
+              to={`/admin/edit-blog/${blog?._id}`}
               className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-500 hover:text-blue-400 bg-blue-500/10 hover:bg-blue-500/20 rounded-md transition-all duration-300 ease-in-out"
               >
               <Edit2 size={16} />
@@ -95,7 +95,7 @@ const AllLatestblogsCard = ({ blog }) => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={confirmDelete}
-        itemName={blog.title}
+        itemName={blog?.title}
         isDeleting={isDeleting}
       />
     </div>

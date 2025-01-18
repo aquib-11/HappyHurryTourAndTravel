@@ -134,6 +134,8 @@ const CabHome = () => {
         </div>
       </div>
       {/* Destinaiton Pricing */}
+      {cabs.length > 0 &&(
+        <>
       <div className=" w-full pt-6 md:pt-16 ">
         <h1 className="text-[--bs-white] text-center  font-sans font-bold my-8">
           Cab Pricing
@@ -144,8 +146,8 @@ const CabHome = () => {
           })}
         />
       </div>
-      {/* Our vehicles */}
-      <div className="pt-6 md:pt-16">
+      {/* Our Awesome Vehicles */}
+        <div className="pt-6 md:pt-16">
         <h1 className="text-center text-[var(--bs-white)] font-sans font-semibold my-8">
           Our Awesome Vehicles
         </h1>
@@ -155,6 +157,9 @@ const CabHome = () => {
           ))}{" "}
         </div>
       </div>
+    </>  
+    )
+      } 
 
       {/* why choose us */}
       <div className=" w-full pt-6 md:pt-16">

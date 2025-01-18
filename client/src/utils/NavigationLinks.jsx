@@ -104,10 +104,6 @@ const pakageLinks = [
     icon: <ShoppingBag />,
   },
   {
-    name: "hotels and destinations",
-    address: "more",
-  },
-  {
     name: "Inclusions & Exclusions",
     address: "inclusions-and-exclusions",
   },

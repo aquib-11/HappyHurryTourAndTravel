@@ -25,6 +25,8 @@ const HotelOverview = ({ hotels }) => {
           experiences"
         icon={<Hotel />}
       />
+      
+      <p className="font-sans">{hotels?.description}</p>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         <ListMapStyles iteratorItems={amenities} />
         {/* Main Content Section */}
