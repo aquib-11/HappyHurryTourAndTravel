@@ -130,7 +130,7 @@ const BookTwoWayNotification = ({ bookTwoWay }) => {
                       </div>
                       <div className="flex items-center gap-2">
                         <Phone className="w-4 h-4 text-blue-400" />
-                        <a href={`tel:${twoWay.phoneNumber}`} className="text-sm  text-blue-400">
+                        <a href={`tel:${twoWay.phoneNumber}`} className="text-sm   text-blue-400">
                           {twoWay.phoneNumber}
                         </a>
                       </div>

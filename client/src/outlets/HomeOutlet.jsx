@@ -31,6 +31,7 @@ export const logoutAction = async () => {
 };
 const HomeOutlet = () => {
   const { user = "visitor", adminDetails } = useLoaderData();
+  console.log({USER: user});
   return (
     <>
       <homeLayoutContext.Provider value={{ user }}>
