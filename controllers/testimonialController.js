@@ -14,8 +14,8 @@ export const createTestimonial = async (req, res) => {
 
 // Get all bookings
 export const getAllTestimonials = async (req, res) => {
-    if (req.user.role !== "admin")
-        throw new UnauthorizedErr("you are not authorized to access this route");
+    // if (req?.user?.role !== "admin")
+    //     throw new UnauthorizedErr("you are not authorized to access this route");
     try {
         const testimonials = await Testimonial.find();
         res.status(200).json(testimonials);
@@ -26,8 +26,8 @@ export const getAllTestimonials = async (req, res) => {
 
 // Get a booking by ID
 export const getTestimonialById = async (req, res) => {
-    if (req.user.role !== "admin")
-        throw new UnauthorizedErr("you are not authorized to access this route");
+    // if (req.user.role !== "admin")
+    //     throw new UnauthorizedErr("you are not authorized to access this route");
     try {
         const testimonial = await Testimonial.findById(req.params.id);
         if (!testimonial) return res.status(404).json({ message: 'Booking not found' });
@@ -39,8 +39,8 @@ export const getTestimonialById = async (req, res) => {
 
 // Update a booking
 export const updateTestimonial = async (req, res) => {
-    if (req.user.role !== "admin")
-        throw new UnauthorizedErr("you are not authorized to access this route");
+    // if (req.user.role !== "admin")
+    //     throw new UnauthorizedErr("you are not authorized to access this route");
     try {
         const testimonial = await Testimonial.findByIdAndUpdate(req.params.id, req.body, { new: true });
         if (!testimonial) return res.status(404).json({ message: 'Booking not found' });
@@ -52,8 +52,8 @@ export const updateTestimonial = async (req, res) => {
 
 // Delete a booking
 export const deleteTestimonial = async (req, res) => {
-    if (req.user.role !== "admin")
-        throw new UnauthorizedErr("you are not authorized to access this route");
+    // if (req.user.role !== "admin")
+    //     throw new UnauthorizedErr("you are not authorized to access this route");
     try {
         const testimonial = await Testimonial.findByIdAndDelete(req.params.id);
         if (!testimonial) return res.status(404).json({ message: 'Booking not found' });

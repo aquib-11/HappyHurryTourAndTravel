@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import customFetch from "../../utils/customFetch";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { GiPriceTag } from "react-icons/gi";
 
 const AddDestinationPricing = () => {
   const navigate = useNavigate();
@@ -59,9 +60,14 @@ const AddDestinationPricing = () => {
 
   return (
     <div className="space-y-4">
-      <h2 className="text-center text-[var(--bs-white)] font-sans">
-        Add Cab Pricing
-      </h2>
+      <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-xl p-3 mb-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <GiPriceTag className="w-6 h-6 text-blue-400" />
+            <h2 className="text-2xl font-bold text-white">Add Cab Pricing</h2>
+          </div>
+        </div>
+      </div>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>

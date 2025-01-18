@@ -3,6 +3,8 @@ export { default as Footer } from "./shared/Footer";
 export { default as Header } from "./shared/Header";
 export { default as ImageSlider } from "./shared/ImageSlider";
 export { default as DeleteModal } from "./shared/DeleteModal";
+export {default as ListMapStyles} from "./shared/ListMapStyles"
+export { default as OverViewTile } from "./shared/OverViewTile"
 
 
 
@@ -42,3 +44,12 @@ export { default as HotelOverView } from "./hotels/HotelOverView";
 
 // packages
 export { default as PackageCard } from "./package/packageCard";
+export { default as PackageBookingCard } from "./package/PackageBookingCard";
+export { default as PackageBookingModel } from "./package/PackageBookingModel";
+
+
+// notfi
+export { default as BookOneWayNotification } from "./notifications/BookOneWayNotification";
+export { default as BookTwoWayNotification } from "./notifications/BookTwoWayNotification";
+export { default as ContactNotfication } from "./notifications/ContactNotfication";
+export { default as PackageNotification } from "./notifications/PackageNotification";

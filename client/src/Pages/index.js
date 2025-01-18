@@ -50,3 +50,7 @@ export { default as EditCabPrice } from "./admin/editPages/EditCabPrice"
 export { default as AddBlogs } from "./admin/blogs/AddBlogs";
 export { default as EditBlog } from "./admin/editPages/EditBlog";
 
+
+
+// notiif   
+export { default as Notification } from "./admin/notifications/Notification"

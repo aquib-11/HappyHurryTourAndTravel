@@ -140,7 +140,7 @@
   margin: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: "Plus Jakarta Sans", sans-serif;
+  font-family: "sans-serif", sans-serif;
   list-style: none;
   scroll-behavior: smooth;
 }
@@ -160,6 +160,7 @@ body {
   line-height: var(--bs-body-line-height);
   overflow-x: hidden;
   width: 100%;
+  font-family: "sans-serif", sans-serif;
 }
 
 /* Variable colors */
@@ -170,7 +171,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Playfair Display", serif;
+  font-family: "sans-serif", serif;
   margin-top: 0;
   margin-bottom: 0;
   font-style: normal;
@@ -180,7 +181,7 @@ h6 {
 h1 {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: "Lora", serif;
+  font-family: "sans-serif", serif;
   font-style: normal;
   font-size: clamp(24px, 5vw, 38px);
   /* Made font size responsive */
@@ -191,9 +192,9 @@ h1 {
 h2 {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: "Lora", serif;
+  font-family: "sans-serif", serif;
   font-style: normal;
-  font-size: clamp(20px, 4vw, 32px);
+  font-size: clamp(18px, 4vw, 24px);
   /* Made font size responsive */
   font-weight: 400;
   line-height: 1.4;
@@ -202,10 +203,10 @@ h2 {
 h3 {
   margin-top: 0;
   margin-bottom: 0;
-  font-family: "Lora", serif;
+  font-family: "sans-serif", serif;
   font-optical-sizing: auto;
   font-style: normal;
-  font-size: clamp(18px, 3vw, 24px);
+  font-size: clamp(16px, 3vw, 20px);
   /* Made font size responsive */
   font-weight: 500;
   line-height: 1.2;
@@ -247,7 +248,7 @@ h6 {
 p {
   margin-top: 0;
   margin-bottom: 10px;
-  font-family: "Inter-samibold";
+  font-family: "saZns-serif", sans-serif;
 }
 
 /* Buttons  */
@@ -483,6 +484,16 @@ p {
   border: 1px solid #4a5568; /* Gray border */
   border-radius: 0.5rem; /* Rounded corners */
   padding: 0.75rem; /* Padding */
+  color: #a0aec0; /* Text color */
+  outline: none; /* Remove focus outline */
+  transition: border-color 0.2s ease-in-out; /* Smooth border transition */
+}
+.cabSelect {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #4a5568; /* Gray border */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 0.9rem; /* Padding */
   color: #a0aec0; /* Text color */
   outline: none; /* Remove focus outline */
   transition: border-color 0.2s ease-in-out; /* Smooth border transition */

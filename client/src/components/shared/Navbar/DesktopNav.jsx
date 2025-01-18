@@ -5,6 +5,7 @@ import { Link, NavLink } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
 import { useHomeLayoutContext } from "../../../outlets/HomeOutlet";
+import { FaUserMinus, FaUserPlus } from "react-icons/fa6";
 
 const DesktopNav = () => {
   const { isAuthenticated, loginWithRedirect, isLoading, user, logout } =
@@ -14,10 +15,11 @@ const DesktopNav = () => {
   const logOutMessage = () => {
     toast.success("logged out");
   };
+  console.log({ user });
   const isUser = isAuthenticated && user;
   return (
     <nav className="hidden container lg:flex justify-between items-center py-2 text-[var(--bs-white)] h-20 w-full bg-[var(--bs-body-bg)] z-50 sticky top-0 ">
-      <div className=" flex items-center space-x-6">
+      <div className="flex items-center space-x-3">
         <img
           src={admin?.adminDetails?.image}
           alt="Logo"
@@ -48,21 +50,20 @@ const DesktopNav = () => {
                 });
                 logOutMessage();
               }}
-              className="w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold px-3 p-1 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
+              className="flex items-center gap-2 bg-black/25 text-[var(--bs-white)] font-semibold text-sm px-3 py-2 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
             >
-              {" "}
-              Logout{" "}
+              <FaUserMinus/>
+              Logout
             </button>
           ) : (
             <button
-              className="bg-purple-600 hover:bg-purple-700 text-white px-3 p-1 rounded-lg"
-              style={{ textTransform: "lowercase" }}
+              className="flex items-center gap-2 bg-[--bs-blur-bg] transition-colors duration-200 hover:bg-purple-700 text-sm hover:text-white text-[var(--bs-text)] px-2 py-1 rounded-md font-bold"
               type="button"
               onClick={async () => {
-                loginWithRedirect();
+                await loginWithRedirect();
               }}
             >
-              Login
+             <FaUserPlus/> Login
             </button>
           )}
         </ul>
@@ -74,7 +75,7 @@ const DesktopNav = () => {
               <NavLink
                 to={link.address}
                 className={({ isActive }) =>
-                  `flex items-center text-sm space-x-2 px-2 py-2 rounded-md transition-all duration-300 ${
+                  `flex items-center text-sm space-x-2 px-3 py-2 rounded-md transition-all duration-300 ${
                     isActive
                       ? "bg-[#9288ec30] text-[var(--bs-text)]"
                       : "text-[var(--bs-gray-300)]"

@@ -9,7 +9,6 @@ import {
   Trash2,
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-
 import { toast } from "react-toastify";
 import customFetch from "../../utils/customFetch";
 import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
@@ -54,7 +53,7 @@ const AllHotelsCard = ({ hotel }) => {
     "https://themes.stackbros.in/booking_ng/assets/09-NZkssKcO.jpg";
 
   return (
-    <div className="bg-[var(--bs-card-bg)] rounded-lg overflow-hidden ">
+    <div className="flex flex-col justify-between bg-[var(--bs-card-bg)] rounded-lg overflow-hidden ">
       <div className="relative">
         <div className="">
           <img
@@ -65,50 +64,50 @@ const AllHotelsCard = ({ hotel }) => {
         </div>
       </div>
 
-      <div className="p-4">
-        <div className="flex justify-between items-start mb-2">
+      <div className="p-3 space-y-1">
+        <div className="flex justify-between items-start">
           <div className="flex items-center gap-2">
-            <span className="text-white">{rating}</span>
             <Star className="fill-yellow-400 text-yellow-400" size={16} />
+            <span className="text-white">{rating}</span>
           </div>
         </div>
-        <h3 className="font-sans font-semibold text-[var(--bs-white)]">
+        <h3 className="font-sans font-bold text-[var(--bs-white)] capitalize">
           {name}
         </h3>
 
-        <div className="flex flex-wrap gap-2 my-2 text-gray-400">
+        <div className="flex flex-wrap gap-2 text-sm text-gray-400">
           <p className="line-clamp-2">{description}</p>
         </div>
 
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <span className="text-emerald-400 text-xl font-semibold flex gap-1 items-center">
+            <span className="text-emerald-400 text-sm md:text-lg font-semibold flex gap-1 items-center">
               <FaRupeeSign />
               {price} <span className="text-gray-400">/day</span>
             </span>
           </div>
           <Link
             to={`/know-about-hotel/${_id}`}
-            className="bg-[#9288ec30] hover:bg-[#9288ec5b] text-[var(--bs-text)] px-4 py-2 rounded-lg transition-colors duration-300"
+            className="bg-[#9288ec30] hover:bg-[#9288ec5b] text-sm text-[var(--bs-text)] px-3 py-2 rounded-lg transition-colors duration-300"
           >
             View Detail
-            {/* <ArrowRight size={16} /> */}
           </Link>
         </div>
       </div>
-      {/* Admin Controls */}
+      {/* Enhanced Admin Controls */}
       {user?.userRole === "admin" && (
-        <div className="pb-2 flex justify-center items-center   gap-4 mt-6 pt-4 border-t border-gray-200 dark:border-gray-700">
+        <div className="flex justify-center gap-2 m-4 pt-4  border-t border-[var(--bs-gray-700)]  ">
           <Link
             to={`/admin/edit-hotel/${_id}`}
-            className="flex items-center gap-1 text-blue-600 hover:text-blue-700 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-blue-500 hover:text-blue-400 bg-blue-500/10 hover:bg-blue-500/20 rounded-md transition-all duration-300 ease-in-out"
           >
             <Edit2 size={16} />
             <span>Edit</span>
           </Link>
           <button
             onClick={handleDelete}
-            className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
+            className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-500 hover:text-red-400 bg-red-500/10 hover:bg-red-500/20 rounded-md transition-all duration-300 ease-in-out"
+
           >
             <Trash2 size={16} />
             <span>Delete</span>

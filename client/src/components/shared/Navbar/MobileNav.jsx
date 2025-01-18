@@ -5,6 +5,7 @@ import { FaEllipsisV } from "react-icons/fa";
 import { useHomeLayoutContext } from "../../../outlets/HomeOutlet";
 import { toast } from "react-toastify";
 import { useAuth0 } from "@auth0/auth0-react";
+import { FaUserMinus, FaUserPlus } from "react-icons/fa6";
 
 const MobileNav = () => {
   const [isQuickLinksOpen, setIsQuickLinksOpen] = useState(false);
@@ -32,7 +33,7 @@ const MobileNav = () => {
       <div className="flex items-center justify-between">
         {isUser ? (
           <button
-            className="w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold px-3 p-1 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
+            className=" flex items-center gap-2 w-full bg-black/25 text-[var(--bs-white)] font-semibold px-3 p-1 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
             onClick={() => {
               logout({
                 logoutParams: { returnTo: window.location.origin },
@@ -40,19 +41,18 @@ const MobileNav = () => {
               logOutMessage();
             }}
           >
-            {" "}
-            Logout{" "}
+              <FaUserMinus/>
+              Logout
           </button>
         ) : (
           <button
-            className="bg-purple-600 hover:bg-purple-700 text-white px-3 p-1 rounded-lg"
-            style={{ textTransform: "lowercase" }}
+            className="flex items-center gap-2 bg-[--bs-blur-bg] transition-colors duration-200 hover:bg-purple-700 text-sm hover:text-white text-[var(--bs-text)] px-2 py-1 rounded-md font-bold"
             type="button"
             onClick={async () => {
               loginWithRedirect();
             }}
           >
-            Login
+               <FaUserPlus/> Login
           </button>
         )}
       </div>

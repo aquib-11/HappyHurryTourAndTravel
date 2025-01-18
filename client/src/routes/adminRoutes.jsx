@@ -11,6 +11,7 @@ import {
   EditBlog,
   EditCabPrice,
   EditDestination,
+  Notification,
 } from "../Pages";
 import { addDestinationAction } from "../Pages/admin/AddDestination";
 import {
@@ -37,9 +38,16 @@ import EditCab, {
 } from "../Pages/admin/editPages/EditCab";
 import { editCabPriceLoader } from "../Pages/admin/editPages/EditCabPrice";
 import { editBlogLoader } from "../Pages/admin/editPages/EditBlog";
-import AddTourPackage, { addTourpackageAction, addTourPackageLoader } from "../Pages/admin/AddTourPackage";
-import EditPackage, { editTourpackageAction, editTourPackageLoader } from "../Pages/admin/editPages/EditPackage";
+import AddTourPackage, {
+  addTourpackageAction,
+  addTourPackageLoader,
+} from "../Pages/admin/AddTourPackage";
+import EditPackage, {
+  editTourpackageAction,
+  editTourPackageLoader,
+} from "../Pages/admin/editPages/EditPackage";
 import EditDetails, { editDetailsAction } from "../Pages/admin/EditDetails";
+import { notificationLoader } from "../Pages/admin/notifications/Notification";
 
 export const adminRoutes = [
   {
@@ -127,7 +135,12 @@ export const adminRoutes = [
         path: "edit-details/:id",
         element: <EditDetails />,
         action: editDetailsAction,
-      }
+      },
+      {
+        path: "notifications",
+        element: <Notification />,
+        loader: notificationLoader,
+      },
     ],
   },
 ];

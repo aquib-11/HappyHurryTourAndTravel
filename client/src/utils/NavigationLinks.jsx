@@ -8,11 +8,17 @@ import {
   FileEdit,
   PenTool,
   ShoppingBag,
+  FileSliders,
+  Bell,
 } from "lucide-react";
-import { FaPlaceOfWorship } from "react-icons/fa";
+import { FaHome } from "react-icons/fa";
 
 const navLinks = [
-
+  {
+    name: "Home",
+    address: "/",
+    icon: <FaHome />,
+  },
   {
     name: "Hotel",
     address: "/all-hotels",
@@ -28,23 +34,12 @@ const navLinks = [
     address: "/cab-home",
     icon: <FaCar />,
   },
-  {
-    name: "Destinations",
-    address: "/all-destinations",
-    icon:<FaPlaceOfWorship/>,
-  },
-  {
-    name: "Blogs",
-    address: "/blog-grid",
-    icon: <FaNewspaper />,
-  },
 ];
 
 const quickLinks = [
   {
-    name: "Home",
-    address: "/",
-
+    name: "Blogs",
+    address: "/blog-grid",
   },
   {
     name: "About Us",
@@ -55,11 +50,16 @@ const quickLinks = [
     address: "/contact",
   },
   {
-    name: "Cart",
-    address: "/cart",
+    name: "Destinations",
+    address: "/all-destinations",
   },
 ];
 const adminLinks = [
+  {
+    name: "Notifications",
+    address: "notifications",
+    icon: <Bell />,
+  },
   {
     name: "Add Destination",
     address: "add-destination",
@@ -88,7 +88,8 @@ const adminLinks = [
   {
     name: "Add Tour Package",
     address: "add-tour-package",
-  },
+    icon: <FileSliders />
+    },
 ];
 
 const pakageLinks = [
