@@ -488,6 +488,16 @@ p {
   outline: none; /* Remove focus outline */
   transition: border-color 0.2s ease-in-out; /* Smooth border transition */
 }
+.cabSelect {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #4a5568; /* Gray border */
+  border-radius: 0.5rem; /* Rounded corners */
+  padding: 0.9rem; /* Padding */
+  color: #a0aec0; /* Text color */
+  outline: none; /* Remove focus outline */
+  transition: border-color 0.2s ease-in-out; /* Smooth border transition */
+}
 
 .cabInputs:focus {
   border-color: #2d3748; /* Change border color on focus */

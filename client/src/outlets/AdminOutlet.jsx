@@ -3,6 +3,7 @@ import { Link, NavLink } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { adminLinks } from "../utils/NavigationLinks";
 import { useHomeLayoutContext } from "./HomeOutlet";
+import { FilePenLine } from "lucide-react";
 
 const AdminOutlet = () => {
   const { user } = useHomeLayoutContext();
@@ -27,6 +28,7 @@ const AdminOutlet = () => {
           </li>
         ))}
         <li>
+          
         <NavLink
               to={`/admin/edit-details/${user.adminDetails?._id}`}
               className={({ isActive }) =>
@@ -37,7 +39,7 @@ const AdminOutlet = () => {
                 }  hover:text-[var(--bs-text)] hover:bg-[#8f85e61b]`
               }
             >
-              <span>Edit Details</span>
+            <FilePenLine/>  <span>Edit Details</span>
             </NavLink>
         </li>
       </ul>

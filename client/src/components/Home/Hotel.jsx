@@ -32,7 +32,7 @@ const FeaturedHotels = () => {
               <img
                 src={hotel?.images[0]?.image}
                 alt={hotel?.name}
-                className="w-full h-[30rem] md:h-72  object-cover"
+                className="w-full md:h-[25rem] h-72  object-cover"
               />
               <div className="absolute bottom-20 left-5">
                 {[...Array(5)].map((_, i) => (
@@ -50,7 +50,7 @@ const FeaturedHotels = () => {
 
             <div className="mt-3 ml-3">
               <Link
-                to={`/hotel/${hotel?._id}`}
+                to={`/know-about-hotel/${hotel?._id}`}
                 className="text-xl font-semibold font-sans text-white"
               >
                 {hotel?.name}

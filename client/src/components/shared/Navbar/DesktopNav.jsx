@@ -50,7 +50,7 @@ const DesktopNav = () => {
                 });
                 logOutMessage();
               }}
-              className="flex items-center gap-2 bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold text-sm px-3 py-2 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
+              className="flex items-center gap-2 bg-black/25 text-[var(--bs-white)] font-semibold text-sm px-3 py-2 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
             >
               <FaUserMinus/>
               Logout

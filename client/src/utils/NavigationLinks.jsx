@@ -8,9 +8,10 @@ import {
   FileEdit,
   PenTool,
   ShoppingBag,
+  FileSliders,
+  Bell,
 } from "lucide-react";
 import { FaHome } from "react-icons/fa";
-import { MdNotifications } from "react-icons/md";
 
 const navLinks = [
   {
@@ -57,7 +58,7 @@ const adminLinks = [
   {
     name: "Notifications",
     address: "notifications",
-    icon: <MdNotifications />,
+    icon: <Bell />,
   },
   {
     name: "Add Destination",
@@ -87,7 +88,8 @@ const adminLinks = [
   {
     name: "Add Tour Package",
     address: "add-tour-package",
-  },
+    icon: <FileSliders />
+    },
 ];
 
 const pakageLinks = [
