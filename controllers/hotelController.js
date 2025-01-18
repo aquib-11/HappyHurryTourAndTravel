@@ -1,5 +1,5 @@
 import hotel from "../models/hotelModel.js";
-import TourPackage from '../models/tourPackageModel';
+import TourPackage from '../models/tourPackageModel.js';
 import { StatusCodes } from "http-status-codes";
 import { NotFoundErr, UnauthorizedErr } from "../errors/customErors.js";
 import { formatImage } from "../middleware/multer.js";
