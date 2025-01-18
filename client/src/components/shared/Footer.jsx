@@ -17,7 +17,7 @@ const Footer = () => {
   const { user } = useHomeLayoutContext();
   console.log(user);
   return (
-    <footer className="bg-[var(--bs-black)] py-12 mt-4">
+    <footer className="bg-[var(--bs-black)] py-12 mt-4 ">
       <div className="container mx-auto px-2 space-y-4 ">
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Company Info */}
@@ -167,8 +167,8 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="text-center text-gray-400 pt-3 border-t border-gray-800 my-4 ">
-          <p>© 2023 HappyHurry. All rights reserved.</p>
+        <div className="text-center text-gray-400  border-t border-gray-800 my-4  ">
+          <p className="my-6">© 2023 HappyHurry. All rights reserved.</p>
         </div>
       </div>
     </footer>

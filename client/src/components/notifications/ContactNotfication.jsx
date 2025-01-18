@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { toast } from "react-toastify";
 import customFetch from "../../utils/customFetch";
 import DeleteModal from "../shared/DeleteModal";
-import { Trash2, MessageSquare, ChevronDown } from "lucide-react";
+import { Trash2, MessageSquare, ChevronDown, Mail, Phone } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
 const ContactNotification = ({ contact }) => {
@@ -36,7 +36,7 @@ const ContactNotification = ({ contact }) => {
 
   return (
     <div className="">
-      <h4 className="text-xl font-semibold text-white mb-6 text-center">
+      <h4 className="text-xl font-semibold font-sans text-white mb-6 text-center">
         Contact Notifications
       </h4>
       <div className="space-y-2">
@@ -90,23 +90,27 @@ const ContactNotification = ({ contact }) => {
               />
             </div>
             {activeIndex === index && (
-              <div className="border-t border-gray-700/50 space-y-4 p-2 text-sm md:text-xl">
-                <div className="flex flex-col sm:flex-row  sm:gap-12">
-                  <p>
+              <div className="border-t border-gray-700/50 p-4 text-sm md:text-lg">
+                <div className="flex flex-col md:flex-row  sm:gap-12">
+
+                  <p  className="flex items-center gap-2 text-sm text-[var(--bs-white)]">
+                    <Mail className="text-red-400  " size={16}/>
                     Email:{" "}
                     <a href={`mailto:${singleContact.email}`} className="underline text-blue-400 ">
                     <span className="text-gray-400">{singleContact.email}</span>
                     </a>
                   </p>
                   
-                  <p>
+                  <p  className="flex items-center gap-2 text-sm text-[var(--bs-white)]">
+                    <Phone className="text-blue-400" size={16}/>
                     Phone:{" "}
                     <a href={`tel:${singleContact.phone}`} className=" text-blue-400">
                     <span className="text-gray-400">{singleContact.phone}</span>
                     </a>
                   </p>
                 </div>
-                <p>
+                <p className="flex items-center gap-2 text-sm text-[var(--bs-white)]">
+                  <MessageSquare className="text-green-400" size={16}/>
                   Message:{" "}
                   <span className="text-gray-400">{singleContact.message}</span>
                 </p>
