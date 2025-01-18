@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from "react";
-import customFetch from "../../utils/customFetch";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
 
 const FeaturedHotels = () => {
-  const [hotels, setHotels] = useState([]);
-
-  const fetchHotels = async () => {
-    try {
-      const { data } = await customFetch.get("/hotel");
-      setHotels(data.hotels);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchHotels();
-  }, []);
-  console.log(hotels);
+  const { user } = useHomeLayoutContext();
 
   return (
     <div className="container ">
@@ -26,13 +12,13 @@ const FeaturedHotels = () => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {hotels.map((hotel, index) => (
+        {user.hotels.map((hotel, index) => (
           <div key={index} className="relative">
             <div className="rounded-[20px] overflow-hidden">
               <img
                 src={hotel?.images[0]?.image}
                 alt={hotel?.name}
-                className="w-full h-[30rem] md:h-72  object-cover"
+                className="w-full md:h-[25rem] h-72  object-cover"
               />
               <div className="absolute bottom-20 left-5">
                 {[...Array(5)].map((_, i) => (
@@ -50,7 +36,7 @@ const FeaturedHotels = () => {
 
             <div className="mt-3 ml-3">
               <Link
-                to={`/hotel/${hotel?._id}`}
+                to={`/know-about-hotel/${hotel?._id}`}
                 className="text-xl font-semibold font-sans text-white"
               >
                 {hotel?.name}

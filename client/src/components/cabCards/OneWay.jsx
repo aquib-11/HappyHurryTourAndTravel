@@ -145,7 +145,7 @@ const OneWay = () => {
          <div className="flex flex-col">
          <label className="text-sm text-[var(--bs-400)] mb-2">Select Car</label>
          <select
-            className="cabInputs "
+            className="cabSelect "
             value={data.selectCab}
             required
             onChange={(e) => {
@@ -167,7 +167,7 @@ const OneWay = () => {
             <input
               value={data.mobile}
               type="tel"
-              className="cabInputs"
+              className="cabInputs "
               required
               placeholder="Phone Number"
               onChange={(e) => setData({ ...data, phoneNumber: e.target.value })}
@@ -177,8 +177,7 @@ const OneWay = () => {
           <button 
             type="submit"
             disabled={submitting}
-            className="cursor-pointer w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold py-3 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
-          >
+            className="col-span-2 w-full bg-[var(--bs-black)] text-[var(--bs-white)] hover:bg-gray-800/30 font-semibold py-3 rounded-lg  transition-colors"          >
             {submitting ? "Booking..." : "Book Now"}
           </button>
         </div>  

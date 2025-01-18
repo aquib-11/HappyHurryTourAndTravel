@@ -33,7 +33,7 @@ const MobileNav = () => {
       <div className="flex items-center justify-between">
         {isUser ? (
           <button
-            className=" flex items-center gap-2 w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold px-3 p-1 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
+            className=" flex items-center gap-2 w-full bg-black/25 text-[var(--bs-white)] font-semibold px-3 p-1 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
             onClick={() => {
               logout({
                 logoutParams: { returnTo: window.location.origin },

@@ -31,7 +31,7 @@ const Destination = () => {
 
   return (
     <div className="min-h-screen">
-      <div className="container  px-4">
+      <div className="container">
         {/* Header */}
         <div className="py-6 justify-between block md:flex">
           <h1 className="text-4xl font-bold text-white mb-2">

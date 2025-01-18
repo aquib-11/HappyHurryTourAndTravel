@@ -136,7 +136,7 @@ const fetchcabs = async () => {
       <label className="text-sm text-[var(--bs-400)] mb-2">
             Select car
           </label>
-      <select className="cabInputs" defaultValue={"select car"} required
+      <select className="cabSelect" defaultValue={"select car"} required
         onChange={(e) => setData({...data, selectCab: e.target.value})}
         >
           <option value="select car" disabled>
@@ -166,7 +166,7 @@ const fetchcabs = async () => {
                      />
         </div>
         {/* Search Button */}
-        <button type="submit" disabled={submitting} className="w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold py-3 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors">
+        <button type="submit" disabled={submitting} className="col-span-2 w-full bg-[var(--bs-black)] text-[var(--bs-white)] hover:bg-gray-800/30 font-semibold py-3 rounded-lg  transition-colors">
           {submitting ? "Booking..." : "Book Now"}
         </button>
       </div>
