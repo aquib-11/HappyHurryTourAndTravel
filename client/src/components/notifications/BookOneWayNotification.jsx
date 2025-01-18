@@ -4,11 +4,12 @@ import customFetch from "../../utils/customFetch";
 import DeleteModal from "../shared/DeleteModal";
 import {
   Trash2,
-  ChevronRight,
-  MessageSquare,
+  ChevronDown,
   MapPin,
   Clock,
-  ChevronDown,
+  Mail,
+  Navigation,
+  Phone
 } from "lucide-react";
 import { formatDistanceToNow } from "date-fns";
 
@@ -22,18 +23,13 @@ const BookOneWayNotification = ({ bookOneWay }) => {
     setActiveIndex(activeIndex === index ? null : index);
   };
 
-  const deleteOneWayBooking = async (id) => {
+  const deleteOneWayBooking = async () => {
     setIsDeleting(true);
     try {
-      const res = await customFetch.delete(`/bookings/one-way/${deleteId}`);
-      if (res.status === 200) {
-        setIsDeleting(false);
-        toast.success("Booking deleted successfully");
-        window.location.reload();
-      } else {
-        toast.error("Failed to delete booking");
-        setIsDeleting(false);
-      }
+      await customFetch.delete(`/bookOneWay/${deleteId}`);
+      setIsDeleting(false);
+      toast.success("Booking deleted successfully");
+      window.location.reload();
     } catch (error) {
       console.log(error);
       toast.error("Failed to delete booking");
@@ -45,13 +41,30 @@ const BookOneWayNotification = ({ bookOneWay }) => {
     setIsModalOpen(false);
   };
 
+  const formatIndianTime = (timeString) => {
+    // Convert 24-hour format to Indian time format
+    if (!timeString) return "";
+    
+    try {
+      const [hours, minutes] = timeString.split(':');
+      const hour = parseInt(hours);
+      
+      if (hour === 0) return `12:${minutes} AM`;
+      if (hour === 12) return `12:${minutes} PM`;
+      if (hour > 12) return `${hour - 12}:${minutes} PM`;
+      return `${hour}:${minutes} AM`;
+    } catch {
+      return timeString;
+    }
+  };
+
   return (
-    <div className="">
+    <div className="max-w-4xl mx-auto">
       <h4 className="text-xl font-semibold text-white mb-6 text-center">
         One Way Cab Notifications
       </h4>
 
-      <div className="space-y-2">
+      <div className="space-y-4">
         {bookOneWay.map((oneWay, index) => (
           <div
             key={oneWay._id}
@@ -59,87 +72,93 @@ const BookOneWayNotification = ({ bookOneWay }) => {
                      border border-gray-700/50 hover:border-blue-500/50 transition-all duration-300"
           >
             <div
-              className="flex items-start gap-4 p-2 cursor-pointer"
+              className="flex items-start gap-4 p-4 cursor-pointer"
               onClick={() => toggleAccordion(index)}
             >
-              {/* Avatar or Icon */}
               <img
-                className="w-6 h-6 md:w-10 md:h-10 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 flex items-center justify-center flex-shrink-0"
+                className="w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500"
                 src={`https://ui-avatars.com/api/?name=${encodeURIComponent(
                   oneWay.customerName || "Anonymous"
                 )}&background=random`}
-                alt="User Avatar"
+                alt={oneWay.customerName}
               />
 
-              {/* Content */}
               <div className="flex-1 min-w-0">
                 <div className="flex justify-between items-start">
                   <div>
-                    <h4 className="text-white font-medium text-sm md:text-xl font-sans">
+                    <h4 className="text-white font-medium text-lg">
                       {oneWay.customerName}
                     </h4>
-                    <p className="text-gray-400 text-xs sm:text-base mb-0">
-                      {oneWay.customerName} booked a {oneWay.selectCab.name} for
-                      destination {oneWay.dropLocation} for {oneWay.pickupDate}{" "}
-                      at {oneWay.pickupTime}
+                    <p className="text-gray-400 text-sm mt-1">
+                      One way booking from {oneWay.pickupLocation} to {oneWay.dropLocation}
                     </p>
-                    <span className="text-gray-400 text-xs">
-                      {formatDistanceToNow(new Date(oneWay.createdAt), {
-                        addSuffix: true,
-                      })}
-                    </span>
+                    <div className="flex items-center gap-2 mt-1">
+                      <Clock className="w-4 h-4 text-blue-400" />
+                      <span className="text-gray-400 text-xs">
+                        {formatDistanceToNow(new Date(oneWay.createdAt), {
+                          addSuffix: true,
+                        })}
+                      </span>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-3">
-                    {!activeIndex === index && (
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setIsModalOpen(true);
-                          setDeleteId(oneWay._id);
-                        }}
-                        className="px-4 py-1.5 text-sm font-medium text-red-400 bg-red-500/10 
-                                 hover:bg-red-500/20 rounded-md transition-colors"
-                      >
-                        Delete
-                      </button>
-                    )}
-                  </div>
+                  <ChevronDown
+                    className={`w-5 h-5 text-gray-400 transform transition-transform duration-300
+                      ${activeIndex === index ? "rotate-180" : ""}`}
+                  />
                 </div>
               </div>
-
-              {/* Expand/Collapse Icon */}
-              <ChevronDown
-                className={`w-5 h-5 text-gray-400 transform transition-transform duration-300
-                  ${activeIndex === index ? "rotate-180" : ""}`}
-              />
             </div>
+
             {activeIndex === index && (
-              <div className=" border-t border-gray-700/50 space-y-4 p-2">
-                <div className="flex items-center gap-4">
+              <div className="border-t border-gray-700/50 p-4 space-y-4">
+                <div className="flex flex-col md:flex-row items-start gap-4">
                   <img
                     src={oneWay.selectCab.image}
                     alt={oneWay.selectCab.name}
-                    className="w-20 h-20 object-cover rounded-md"
+                    className="w-24 h-24 object-cover rounded-lg"
                   />
                   <div>
-                    <h3 className="text-white font-medium">
+                    <h3 className="text-white font-medium text-lg">
                       {oneWay.selectCab.name}
                     </h3>
-                    <p className="text-gray-400 text-sm">{oneWay.pickupDate}</p>
-                  </div>
-                </div>
-                <div className="">
-                  <div className="flex items-center gap-2">
-                    <MapPin className="w-4 h-4 text-blue-400" />
-                    <span className="text-gray-300 text-sm md:text-xl ">
-                      To: {oneWay.dropLocation}
-                    </span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Clock className="w-4 h-4 text-blue-400" />
-                    <span className="text-gray-300  text-sm md:text-xl">
-                      At: {oneWay.pickupTime}
-                    </span>
+                    <div className="space-y-2 mt-2">
+                      <div className="flex items-center gap-2">
+                        <Mail className="w-4 h-4 text-blue-400" />
+                        <a
+                          href={`mailto:${oneWay.customerEmail}`}
+                          className="cursor-pointer text-sm underline text-blue-400"
+                        >
+                          {oneWay.customerEmail}
+                        </a>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Phone className="w-4 h-4 text-blue-400" />
+                        <a
+                          href={`tel:${oneWay.phoneNumber}`}
+                          className="cursor-pointer text-sm  text-blue-400"
+                        >
+                          {oneWay.phoneNumber}
+                        </a>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Navigation className="w-4 h-4 text-blue-400" />
+                        <span className="text-gray-300 text-sm">
+                          From: {oneWay.pickupLocation}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <MapPin className="w-4 h-4 text-blue-400" />
+                        <span className="text-gray-300 text-sm">
+                          To: {oneWay.dropLocation}
+                        </span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Clock className="w-4 h-4 text-blue-400" />
+                        <span className="text-gray-300 text-sm">
+                          Date: {oneWay.pickupDate} at {formatIndianTime(oneWay.pickupTime)}
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
 
@@ -150,11 +169,11 @@ const BookOneWayNotification = ({ bookOneWay }) => {
                     setDeleteId(oneWay._id);
                   }}
                   className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-red-400 
-                                   bg-red-500/10 hover:bg-red-500/20 rounded-md transition-colors"
+                           bg-red-500/10 hover:bg-red-500/20 rounded-md transition-colors w-full"
                   disabled={isDeleting}
                 >
                   <Trash2 size={16} />
-                  <span>Delete Notification</span>
+                  <span>Delete Booking</span>
                 </button>
               </div>
             )}
@@ -166,7 +185,7 @@ const BookOneWayNotification = ({ bookOneWay }) => {
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
         onConfirm={confirmDelete}
-        itemName="this notification"
+        itemName="this booking"
         isDeleting={isDeleting}
       />
     </div>

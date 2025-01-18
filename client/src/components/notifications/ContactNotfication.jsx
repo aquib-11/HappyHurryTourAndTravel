@@ -18,16 +18,11 @@ const ContactNotification = ({ contact }) => {
   const deleteContactNotification = async (id) => {
     setIsDeleting(true);
     try {
-      const res = await customFetch.delete(`/contacts/${id}`);
+      const res = await customFetch.delete(`/contact/${id}`);
 
-      if (res.status === 200) {
         setIsDeleting(false);
         toast.success("Contact notification deleted successfully");
         window.location.reload();
-      } else {
-        toast.error("Failed to delete contact notification");
-        setIsDeleting(false);
-      }
     } catch (error) {
       console.log(error);
       toast.error("Failed to delete contact notification");
@@ -67,9 +62,6 @@ const ContactNotification = ({ contact }) => {
                     <h4 className="text-white font-medium text-sm md:text-xl font-sans">
                       {singleContact.name}
                     </h4>
-                    <p className="text-gray-400 text-xs sm:text-base mb-0 line-clamp-1">
-                      {singleContact.message}
-                    </p>
                     <span className="text-gray-400 text-xs">
                       {formatDistanceToNow(new Date(singleContact.createdAt), {
                         addSuffix: true,
@@ -102,11 +94,16 @@ const ContactNotification = ({ contact }) => {
                 <div className="flex flex-col sm:flex-row  sm:gap-12">
                   <p>
                     Email:{" "}
+                    <a href={`mailto:${singleContact.email}`} className="underline text-blue-400 ">
                     <span className="text-gray-400">{singleContact.email}</span>
+                    </a>
                   </p>
+                  
                   <p>
                     Phone:{" "}
+                    <a href={`tel:${singleContact.phone}`} className=" text-blue-400">
                     <span className="text-gray-400">{singleContact.phone}</span>
+                    </a>
                   </p>
                 </div>
                 <p>
