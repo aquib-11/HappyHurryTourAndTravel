@@ -3,6 +3,8 @@ export { default as Footer } from "./shared/Footer";
 export { default as Header } from "./shared/Header";
 export { default as ImageSlider } from "./shared/ImageSlider";
 export { default as DeleteModal } from "./shared/DeleteModal";
+export {default as ListMapStyles} from "./shared/ListMapStyles"
+export { default as OverViewTile } from "./shared/OverViewTile"
 
 
 

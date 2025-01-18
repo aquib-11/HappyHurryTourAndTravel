@@ -1,23 +1,9 @@
-import React, { useEffect, useState } from "react";
-import customFetch from "../../utils/customFetch";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useHomeLayoutContext } from "../../outlets/HomeOutlet";
 
 const FeaturedHotels = () => {
-  const [hotels, setHotels] = useState([]);
-
-  const fetchHotels = async () => {
-    try {
-      const { data } = await customFetch.get("/hotel");
-      setHotels(data.hotels);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    fetchHotels();
-  }, []);
-  console.log(hotels);
+  const { user } = useHomeLayoutContext();
 
   return (
     <div className="container ">
@@ -26,7 +12,7 @@ const FeaturedHotels = () => {
       </h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        {hotels.map((hotel, index) => (
+        {user.hotels.map((hotel, index) => (
           <div key={index} className="relative">
             <div className="rounded-[20px] overflow-hidden">
               <img
