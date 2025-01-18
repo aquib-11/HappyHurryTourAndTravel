@@ -75,14 +75,14 @@ const AddDestinationImages = () => {
       </Form>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
         {data?.images?.map((image) => (
-          <div key={image.imageId}>
+          <div key={image.imageId} className="relative">
             <img
               src={image.image}
               alt="Destination"
               className="w-full h-64 object-cover"
             />
             <button
-              className="bg-red-500 text-white px-4 py-2 rounded-md"
+              className="bg-red-500 text-white p-2 text-sm rounded-md absolute bottom-2 right-2"
               onClick={() => handleDelete(image?.imageId)}
             >
               Delete

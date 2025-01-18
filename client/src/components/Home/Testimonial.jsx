@@ -59,7 +59,7 @@ const Testimonial = () => {
   const submitForm = async (e) => {
     e.preventDefault();
     if (!isAuthenticated) {
-      toast.error("Please login to book a cab");
+      toast.error("Please login to submit a review");
       return;
     }
     try {
@@ -119,86 +119,85 @@ const Testimonial = () => {
 
   return (
     <div className="relative container ">
-      <div>
-        <div className="flex justify-center items-center mb-8">
-          <div className="text-center">
-            <p className="text-[var(--bs-text)] uppercase font-sans text-sm tracking-wider mb-2">
-              TESTIMONIAL
-            </p>
-            <h1 className=" font-bold font-sans text-white">
-              What our client say
-            </h1>
-            <p className="text-gray-400 mt-2 font-sans">
-              Hear what our clients say about their experiences and the value we
-              deliver.{" "}
-            </p>
+      {alltestimonials.length !== 0 && (
+        <div>
+          <div className="flex justify-center items-center mb-8">
+            <div className="text-center">
+              <p className="text-[var(--bs-text)] uppercase font-sans text-sm tracking-wider mb-2">
+                TESTIMONIAL
+              </p>
+              <h1 className=" font-bold font-sans text-white">
+                What our client say
+              </h1>
+              <p className="text-gray-400 mt-2 font-sans">
+                Hear what our clients say about their experiences and the value
+                we deliver.{" "}
+              </p>
+            </div>
           </div>
-        </div>
 
-        <Splide options={splideOptions}>
-          {alltestimonials.map((testimonial, index) => (
-            <SplideSlide key={index} className="flex justify-center">
-              <div className="bg-[var(--bs-card-bg)] rounded-lg p-6 w-full h-full">
-                <div className="flex items-center mb-4">
-                  <div className="w-16 h-16 rounded-full bg-[var(--bs-text)] text-white font-bold text-3xl flex items-center justify-center">
-                    {/* {testimonial?.name
-                      .split(" ")
-                      .map((name) => name[0])
-                      .join("")} */}
-                  </div>
-                  <div className="ml-4 flex justify-between w-full">
-                    <div>
-                      <h3 className="text-white font-semibold text-lg">
-                        {testimonial.name}
-                      </h3>
-                      <p>
-                        {dayjs(testimonial.createdAt).format("MMM DD, YYYY")}
-                      </p>
-                    </div>
-
-                    {user?.email === testimonial?.email && (
-                      <div className="flex justify-center gap-4">
-                        <button
-                          onClick={() => {
-                            setTestimonialToDelete(testimonial._id);
-                            setIsDeleteModalOpen(true);
-                          }}
-                          className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
-                          disabled={isDeleting}
-                        >
-                          <Trash2 size={20} />
-                        </button>
+          <Splide options={splideOptions}>
+            {alltestimonials.map((testimonial, index) => (
+              <SplideSlide key={index} className="flex justify-center">
+                <div className="bg-[var(--bs-card-bg)] rounded-lg p-6 w-full h-full">
+                  <div className="flex items-center mb-4">
+                   
+                    <div className="ml-4 flex justify-between w-full">
+                      <div>
+                        <h2 className="text-white font-sans font-semibold text-lg">
+                          {testimonial?.name}
+                        </h2>
+                        <p>
+                          {dayjs(testimonial?.createdAt).format("MMM DD, YYYY")}
+                        </p>
                       </div>
-                    )}
+
+                      {user?.email === testimonial?.email && (
+                        <div className="flex justify-center gap-4">
+                          <button
+                            onClick={() => {
+                              setTestimonialToDelete(testimonial?._id);
+                              setIsDeleteModalOpen(true);
+                            }}
+                            className="flex items-center gap-1 text-red-600 hover:text-red-700 transition-colors"
+                            disabled={isDeleting}
+                          >
+                            <Trash2 size={20} />
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex mb-4">
-                  {[...Array(5)].map((_, i) => (
-                    <span
-                      key={i}
-                      className={`text-xl ${
-                        i < testimonial.rating
-                          ? "text-yellow-400"
-                          : "text-gray-600"
-                      }`}
-                    >
-                      ★
-                    </span>
-                  ))}
-                </div>
+                  <div className="flex mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <span
+                        key={i}
+                        className={`text-xl ${
+                          i < testimonial?.rating
+                            ? "text-yellow-400"
+                            : "text-gray-600"
+                        }`}
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
 
-                <p className="text-gray-300">{testimonial.message}</p>
-              </div>
-            </SplideSlide>
-          ))}
-        </Splide>
-      </div>
+                  <p className="text-gray-300">{testimonial?.message}</p>
+                </div>
+              </SplideSlide>
+            ))}
+          </Splide>
+        </div>
+      )}
 
       <div className="flex justify-center items-center">
         <button
           onClick={() => setIsModelOpen(true)}
-          className=" mt-4 bg-[--bs-blur-bg] transition-colors duration-200 hover:bg-purple-700 hover:text-white text-[var(--bs-text)] px-6 py-2 rounded-lg font-bold"
+          className={`${
+            alltestimonials.length === 0 ? "-mt-6 " : "mt-4"
+          } bg-[--bs-blur-bg] transition-colors duration-200 hover:bg-purple-700 hover:text-white text-[var(--bs-text)] px-6 py-2 rounded-lg font-bold`}
         >
           Share you experiences
         </button>
@@ -276,8 +275,9 @@ const Testimonial = () => {
                   >
                     Message
                   </label>
-                  <input
-                    type="text"
+                  <textarea
+                   minLength="20"
+                   maxLength="50"
                     id="message"
                     value={formdata.message}
                     onChange={(e) =>
