@@ -14,6 +14,7 @@ const bookOneWaySchema = mongoose.Schema(
     },
     cabName: String,
     cabImage: String,
+    phoneNumber: String,
     paymentMethod: String,
     paymentStatus: String,
   },

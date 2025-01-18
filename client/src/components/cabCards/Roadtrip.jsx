@@ -132,7 +132,11 @@ const fetchcabs = async () => {
             required
                      />
         </div>
-        <select className="cabInputs" defaultValue={"select car"} required
+      <div className="flex flex-col">
+      <label className="text-sm text-[var(--bs-400)] mb-2">
+            Select car
+          </label>
+      <select className="cabInputs" defaultValue={"select car"} required
         onChange={(e) => setData({...data, selectCab: e.target.value})}
         >
           <option value="select car" disabled>
@@ -148,6 +152,19 @@ const fetchcabs = async () => {
             })
           }
         </select>
+      </div>
+        <div className="flex flex-col">
+          <label className="text-sm text-[var(--bs-400)] mb-2">
+            Mobile
+          </label>
+          <input
+            type="tel"
+            placeholder="Phone Number"
+            className="cabInputs"
+            onChange={(e) => setData({...data, phoneNumber: e.target.value})}
+            required
+                     />
+        </div>
         {/* Search Button */}
         <button type="submit" disabled={submitting} className="w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold py-3 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors">
           {submitting ? "Booking..." : "Book Now"}

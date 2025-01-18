@@ -10,6 +10,7 @@ pickupDate: String,
 pickupTime: String,
 returnDate: String,
 returnTime: String,
+phoneNumber: String,
 selectCab:{
   type: mongoose.Types.ObjectId,
   ref: "cabs",

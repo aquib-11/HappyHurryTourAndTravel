@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { Bell, ChevronDown, Filter } from "lucide-react";
+import { Bell, } from "lucide-react";
 import customFetch from "../../../utils/customFetch";
 import {
   BookOneWayNotification,
@@ -33,6 +33,7 @@ export const notificationLoader = async () => {
 const Notification = () => {
   const data = useLoaderData();
   const [selectedFilter, setSelectedFilter] = useState("all");
+  console.log({data});
 
   // Calculate total notifications
   const totalNotifications =
@@ -124,7 +125,7 @@ const Notification = () => {
       {/* Notifications Container */}
       <div className="space-y-6">
         {/*One way Bookings Section */}
-        {showSection("bookOneWay") && (
+        {(showSection("bookOneWay") && data?.bookOneWay?.length > 0) && (
           <div
             className="bg-gradient-to-r from-gray-800/40 to-gray-900/40 rounded-xl p-2
                         backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 
@@ -134,7 +135,7 @@ const Notification = () => {
           </div>
         )}
 
-        {showSection("bookTwoWay") && (
+        {(showSection("bookTwoWay") && data?.bookTwoWay?.length > 0) && (
           <div
             className="bg-gradient-to-r from-gray-800/40 to-gray-900/40 rounded-xl p-2 
                         backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 
@@ -144,16 +145,7 @@ const Notification = () => {
           </div>
         )}
 
-        {/* Contacts Section */}
-        {showSection("contacts") && data?.contact?.length > 0 && (
-          <div
-            className="bg-gradient-to-r from-gray-800/40 to-gray-900/40 rounded-xl p-2
-                        backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 
-                        transition-all duration-300"
-          >
-            <ContactNotfication contact={data.contact} />
-          </div>
-        )}
+      
 
         {/* Packages Section */}
         {showSection("bookPackage") && data?.bookPackage?.length > 0 && (
@@ -163,6 +155,16 @@ const Notification = () => {
                         transition-all duration-300"
           >
             <PackageNotification bookPackage={data.bookPackage} />
+          </div>
+        )}
+          {/* Contacts Section */}
+          {showSection("contacts") && data?.contact?.length > 0 && (
+          <div
+            className="bg-gradient-to-r from-gray-800/40 to-gray-900/40 rounded-xl p-2
+                        backdrop-blur-sm border border-gray-700/50 hover:border-blue-500/50 
+                        transition-all duration-300"
+          >
+            <ContactNotfication contact={data.contact} />
           </div>
         )}
 

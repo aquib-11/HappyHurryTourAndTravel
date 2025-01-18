@@ -1,41 +1,63 @@
 import React, { useEffect, useState } from "react";
-import { ArrowLeftRight } from "lucide-react";
 import { useAuth0 } from "@auth0/auth0-react";
 import { toast } from "react-toastify";
 import customFetch from "../../utils/customFetch";
+
 const OneWay = () => {
-  const { user, isAuthenticated, loginWithRedirect, isLoading } = useAuth0();
+  const { user, isAuthenticated, loginWithRedirect } = useAuth0();
   const [data, setData] = useState({
     pickupLocation: "",
     dropLocation: "",
     pickupTime: "",
     pickupDate: "",
-    selectCab: "",
+    selectCab: "",  // This will store the full cab object
     customerName: user?.name,
     customerEmail: user?.email,
   });
   const [cabs, setCabs] = useState([]);
   const [submitting, setSubmitting] = useState(false);
+
   const fetchcabs = async () => {
-    setSubmitting(true);
     try {
       const { data } = await customFetch.get("/cab");
       setCabs(data.cabs);
     } catch (error) {
       console.log(error);
+      toast.error("Failed to fetch cabs");
     }
   };
-  const bookOneWay = async () => {
+
+  const bookOneWay = async (e) => {
+    e.preventDefault();
+    
     if (!isAuthenticated) {
       toast.error("Please login to book a cab");
+      loginWithRedirect();
       return;
     }
+
+    if (!data.selectCab || !data.pickupLocation || !data.dropLocation || !data.pickupDate || !data.pickupTime) {
+      toast.error("Please fill all fields");
+      return;
+    }
+
+    setSubmitting(true);
     try {
       await customFetch.post("/bookOneWay", data);
       toast.success("Cab Booked Successfully");
+      // Clear form
+      setData({
+        pickupLocation: "",
+        dropLocation: "",
+        pickupTime: "",
+        pickupDate: "",
+        selectCab: "",
+        customerName: user?.name,
+        customerEmail: user?.email,
+      });
     } catch (error) {
       console.log(error);
-      toast.error(error?.response?.data?.msg);
+      toast.error(error?.response?.data?.msg || "Booking failed");
     } finally {
       setSubmitting(false);
     }
@@ -45,20 +67,26 @@ const OneWay = () => {
     fetchcabs();
   }, []);
 
+  useEffect(() => {
+    if (user) {
+      setData(prev => ({
+        ...prev,
+        customerName: user.name,
+        customerEmail: user.email
+      }));
+    }
+  }, [user]);
+
   return (
-    <div className="max-w-3xl mx-auto  bg-[var(--bs-card-bg)]">
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          bookOneWay();
-        }}
-      >
+    <div className="max-w-3xl mx-auto bg-[var(--bs-card-bg)]">
+      <form onSubmit={bookOneWay}>
         {/* Location Inputs Row */}
         <div className="grid grid-cols-2 gap-4 items-center justify-center mb-4">
           {/* Pickup Location */}
           <div className="flex flex-col">
             <label className="text-sm text-[var(--bs-400)] mb-2">Pickup</label>
             <input
+              value={data.pickupLocation}
               onChange={(e) =>
                 setData({ ...data, pickupLocation: e.target.value })
               }
@@ -72,6 +100,7 @@ const OneWay = () => {
           <div className="flex flex-col">
             <label className="text-sm text-[var(--bs-400)] mb-2">Drop</label>
             <input
+              value={data.dropLocation}
               onChange={(e) =>
                 setData({ ...data, dropLocation: e.target.value })
               }
@@ -87,12 +116,12 @@ const OneWay = () => {
         <div className="grid grid-cols-2 gap-4 mb-4">
           {/* Pickup Date */}
           <div className="flex flex-col">
-            <label className="text-sm text-[var(--bs-400)]mb-2">
+            <label className="text-sm text-[var(--bs-400)] mb-2">
               Pickup Date
             </label>
             <input
+              value={data.pickupDate}
               type="date"
-              placeholder="Select Date"
               className="cabInputs"
               required
               onChange={(e) => setData({ ...data, pickupDate: e.target.value })}
@@ -101,41 +130,58 @@ const OneWay = () => {
 
           {/* Pickup Time */}
           <div className="flex flex-col">
-            <label className="text-sm text-[var(--bs-400)] ">Pickup time</label>
+            <label className="text-sm text-[var(--bs-400)] mb-2">Pickup time</label>
             <input
+              value={data.pickupTime}
               type="time"
-              placeholder="Select Date"
               className="cabInputs"
               required
               onChange={(e) => setData({ ...data, pickupTime: e.target.value })}
             />
           </div>
-          <select
-            className="cabInputs"
-            defaultValue={"select car"}
+        </div>
+
+        <div className="grid grid-cols-2 gap-4 mb-4">
+         <div className="flex flex-col">
+         <label className="text-sm text-[var(--bs-400)] mb-2">Select Car</label>
+         <select
+            className="cabInputs "
+            value={data.selectCab}
             required
-            onChange={(e) => setData({ ...data, selectCab: e.target.value })}
+            onChange={(e) => {
+              const selectedCab = cabs.find(cab => cab._id === e.target.value);
+              setData({ ...data, selectCab: selectedCab._id }); // Store full cab object
+            }}
           >
-            <option value="select car" disabled>
-              Select Car
-            </option>
-            {cabs.map((cab) => {
-              return (
-                <option value={cab._id} key={cab._id}>
-                  {cab.name}
-                </option>
-              );
-            })}
+            <option value="">Select Car</option>
+            {cabs.map((cab) => (
+              <option value={cab._id} key={cab._id}>
+                {cab.name}
+              </option>
+            ))}
           </select>
-          {/* Search Button */}
-          <button
+
+         </div>
+         <div className="flex flex-col">
+            <label className="text-sm text-[var(--bs-400)] mb-2">Mobile</label>
+            <input
+              value={data.mobile}
+              type="tel"
+              className="cabInputs"
+              required
+              placeholder="Phone Number"
+              onChange={(e) => setData({ ...data, phoneNumber: e.target.value })}
+            />
+          </div>
+          {/* Submit Button */}
+          <button 
             type="submit"
             disabled={submitting}
-            className="w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold py-3 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors"
+            className="cursor-pointer w-full bg-[var(--bs-black)] text-[var(--bs-white)] font-semibold py-3 rounded-lg border border-gray-800 hover:bg-gray-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            {submitting ? "Book Now" : "Booking..."}
+            {submitting ? "Booking..." : "Book Now"}
           </button>
-        </div>
+        </div>  
       </form>
     </div>
   );
