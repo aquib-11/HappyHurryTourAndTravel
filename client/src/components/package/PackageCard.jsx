@@ -44,7 +44,7 @@ const PackageCard = ({ _package }) => {
       <div className="relative">
         <img
           src={_package.image}
-          alt="Aerial view of beach"
+          alt={_package.name}
           className="w-full h-56 object-cover"
         />
 

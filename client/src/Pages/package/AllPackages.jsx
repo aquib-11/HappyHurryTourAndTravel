@@ -15,7 +15,22 @@ export const allPackageLoader = async () => {
 };
 const AllPackages = () => {
   const { packages } = useLoaderData();
-  console.log(packages);
+  if(packages.length === 0) {
+    return (
+      <div className="container text-center py-20">
+      <h1 className="text-4xl font-bold font-sans mb-4">No Packages Listed Yet</h1>
+      <p className="text-lg text-gray-500 mb-8">
+        There are currently no packages available. Please check back later or try refreshing the page.
+      </p>
+      <button
+        className="px-6 py-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition duration-300"
+        onClick={() => window.location.reload()}
+      >
+        Refresh
+      </button>
+      </div>
+    );
+}
   return (
     <main className="container space-y-4">
       <AllDestinaitonBanner
