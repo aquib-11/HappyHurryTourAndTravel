@@ -4,6 +4,7 @@ import { toast } from "react-toastify";
 import customFetch from "../../../utils/customFetch";
 import { FaPlus } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
+import { Car } from "lucide-react";
 
 export const addCabAction = async ({ request }) => {
   const formData = new FormData();
@@ -77,7 +78,14 @@ const AddCab = () => {
 
   return (
     <div>
-      <h2 className="text-center text-[var(--bs-white)] font-sans">Add Cab</h2>
+      <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-xl p-3 mb-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <Car className="w-6 h-6 text-blue-400" />
+            <h2 className="text-2xl font-bold text-white">Add Cab</h2>
+          </div>
+        </div>
+      </div>
       <Form method="post" encType="multipart/form-data" className="space-y-4">
         <div>
           <label>Cab Name:</label>

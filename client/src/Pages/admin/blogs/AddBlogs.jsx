@@ -3,7 +3,7 @@ import JoditEditor from "jodit-react";
 import customFetch from "../../../utils/customFetch";
 import { MdDelete } from "react-icons/md";
 import { toast } from "react-toastify";
-import { FaPlus } from "react-icons/fa6";
+import { FaBlog, FaPlus } from "react-icons/fa6";
 
 const AddBlogs = () => {
   const [title, setTitle] = useState("");
@@ -67,7 +67,14 @@ const AddBlogs = () => {
 
   return (
     <div className="max-w-4xl mx-auto ">
-      <h2 className="text-center text-[var(--bs-white)] font-sans">Add Blog</h2>
+      <div className="bg-gradient-to-r from-blue-900/30 to-purple-900/30 rounded-xl p-3 mb-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <FaBlog className="w-6 h-6 text-blue-400" />
+            <h2 className="text-2xl font-bold text-white">Add Blog</h2>
+          </div>
+        </div>
+      </div>
 
       {error && (
         <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
