@@ -140,12 +140,12 @@ const Testimonial = () => {
             <SplideSlide key={index} className="flex justify-center">
               <div className="bg-[var(--bs-card-bg)] rounded-lg p-6 w-full h-full">
                 <div className="flex items-center mb-4">
-                  {/* <div className="w-16 h-16 rounded-full bg-[var(--bs-text)] text-white font-bold text-3xl flex items-center justify-center">
-                    {testimonial?.name
+                  <div className="w-16 h-16 rounded-full bg-[var(--bs-text)] text-white font-bold text-3xl flex items-center justify-center">
+                    {/* {testimonial?.name
                       .split(" ")
                       .map((name) => name[0])
-                      .join("")}
-                  </div> */}
+                      .join("")} */}
+                  </div>
                   <div className="ml-4 flex justify-between w-full">
                     <div>
                       <h3 className="text-white font-semibold text-lg">
@@ -200,7 +200,7 @@ const Testimonial = () => {
           onClick={() => setIsModelOpen(true)}
           className=" mt-4 bg-[--bs-blur-bg] transition-colors duration-200 hover:bg-purple-700 hover:text-white text-[var(--bs-text)] px-6 py-2 rounded-lg font-bold"
         >
-          Review Us
+          Share you experiences
         </button>
 
         {isModelOpen && (
