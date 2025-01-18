@@ -2,6 +2,9 @@ import { StatusCodes } from "http-status-codes";
 import { NotFoundErr, UnauthorizedErr } from "../errors/customErors.js";
 import { verifyJWT } from "../utils/tokenUtils.js";
 import User from "../models/userModel.js";
+import Package from "../models/tourPackageModel.js";
+import Destination from "../models/destinationModel.js";
+import Hotel from "../models/hotelModel.js";
 import { formatImage } from "../middleware/multer.js";
   import cloudinary from "cloudinary";
 
@@ -9,16 +12,19 @@ export const getUserRole = async (req, res) => {
   let currentUserRole = "";
   const { token } = req.cookies;
   const adminDetails = await User.findOne({ role: "admin" }).select("-password -role");
+  const packages = await Package.find({}).sort({ updatedAt: -1 }).limit(4);
+  const destinations = await Destination.find({}).sort({ updatedAt: -1 }).limit(5);
+  const hotels = await Hotel.find({}).sort({ updatedAt: -1 }).limit(4);
 
   if (!token) {
     currentUserRole = "visitor";
-    return res.status(StatusCodes.OK).json({ userRole: currentUserRole, adminDetails });
+    return res.status(StatusCodes.OK).json({ userRole: currentUserRole, adminDetails, packages, destinations, hotels });
   }
 
   try {
     const { role } = verifyJWT(token);
     currentUserRole = role;
-    return res.status(StatusCodes.OK).json({ userRole: currentUserRole, adminDetails });
+    return res.status(StatusCodes.OK).json({ userRole: currentUserRole, adminDetails ,packages, destinations, hotels});
   } catch (error) {
     return res
       .status(StatusCodes.INTERNAL_SERVER_ERROR)
