@@ -20,7 +20,7 @@ const FeaturedHotels = () => {
                 alt={hotel?.name}
                 className="w-full md:h-[25rem] h-72  object-cover"
               />
-              <div className="absolute bottom-20 left-5">
+              <div className="absolute bottom-20 lg:bottom-28 left-5 ">
                 {[...Array(5)].map((_, i) => (
                   <span
                     key={i}

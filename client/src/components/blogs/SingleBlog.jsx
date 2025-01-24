@@ -24,7 +24,7 @@ const SingleBlog = () => {
       {/* Background Image */}
       <div className="w-full h-[400px] relative">
         <img
-          src={data.image}
+          src={data?.image}
           alt="Mountain landscape"
           className="w-full h-full object-cover rounded-xl"
         />
@@ -43,7 +43,7 @@ const SingleBlog = () => {
           </div>
 
           {/* Title */}
-          <h1 className="font-bold mb-4 font-sans ">{data.title}</h1>
+          <h1 className="font-bold mb-4 font-sans ">{data?.title}</h1>
 
           <div className="flex items-center text-sm md:text-base gap-2">
             <span className="text-gray-400">•</span>

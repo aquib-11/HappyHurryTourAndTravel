@@ -17,6 +17,9 @@ export { default as BlogsGrid } from "./blogs/BlogsGrid";
 // Auth
 
 export { default as LoginPage } from "./auth/LoginPage";
+export { default as SignUpPage } from "./auth/SignUpPage";
+export { default as ForgotPassword } from "./auth/forgotPassword";
+export { default as ChangePassword } from "./auth/ChangePassword";
 
 // Packages
 export { default as AllPackages } from "./package/AllPackages";

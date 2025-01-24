@@ -15,9 +15,10 @@ export const packageloader = async ({ params }) => {
 
 const Package = () => {
   const { _package } = useLoaderData();
+  console.log({ _package });
   return (
     <div className="container relative">
-      <AllDestinaitonBanner randomImages={[_package?.image]} />
+      <AllDestinaitonBanner image={[_package?.image]} type="package" />
 
       <div className="grid grid-cols-12 my-4 gap-4">
         <div className="col-span-12 md:col-span-8 ">
@@ -39,6 +40,21 @@ const Package = () => {
                   {link.name}
                 </NavLink>
               ))}
+              {(_package?.hotels.length !== 0 || _package?.destinations.length !== 0 )&& (
+                <NavLink
+                  to="more"
+                  end
+                  className={({ isActive }) =>
+                    `capitalize text-center px-4 py-2 rounded-md text-sm transition-colors duration-200 ${
+                      isActive
+                        ? "bg-violet-500 text-white"
+                        : "text-violet-400 hover:text-violet-300"
+                    }`
+                  }
+                >
+                  Destinations & Hotels{" "}
+                </NavLink>
+              )}
             </div>
           </div>
           <Outlet context={_package} />

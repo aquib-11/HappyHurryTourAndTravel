@@ -43,7 +43,7 @@ const Hotel = () => {
         {/* Header */}
         <div className="py-6 flex md:flex-row flex-col justify-between">
           <div className="">
-            <h1 className="text-4xl font-bold text-white mb-2">
+            <h1 className="text-4xl font-sans font-bold text-white mb-2">
               {hotels.name}
             </h1>
             <span
