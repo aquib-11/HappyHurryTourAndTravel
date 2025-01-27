@@ -8,31 +8,30 @@ import DeleteModal from "../shared/DeleteModal";
 
 const TableHeader = ({ cabs, searchTerm, onSearchChange }) => (
   <thead>
-    <tr className="bg-[var(--bs-gray-800)] rounded-xl text-[var(--bs-white)]">
-      <th className="py-4 px-6 text-left text-[var(--bs-white)] font-semibold rounded-tl-lg border-[#4a55684b] border">
+    <tr className="bg-[var(--bs-gray-800)] rounded-xl text-[var(--bs-white)] ">
+      <th className=" text-center p-4 text-[var(--bs-white)] font-semibold rounded-tl-lg border-[#4a55684b] border">
         Route
       </th>
       {cabs.map((cab) => (
         <th
           key={cab._id}
-          className="py-4 px-6 text-center text-[var(--bs-white)] font-semibold border-[#4a55684b] border"
+          className="text-nowrap p-4 capitalize text-center text-[var(--bs-white)] font-semibold border-[#4a55684b] border"
         >
-          {cab.name}
+          {cab.name.toLowerCase()}
         </th>
       ))}
-      <th className="py-4 px-6 text-center text-[var(--bs-white)] font-semibold rounded-tr-lg border-[#4a55684b] border">
+      <th className="p-4 text-nowrap text-center text-[var(--bs-white)] font-semibold rounded-tr-lg border-[#4a55684b] border">
         <label htmlFor="search" className="text-sm font-semibold">
           Search destination
         </label>
-        <div className="relative">
+        <div className="relative ">
           <input
             type="search"
             placeholder="Search..."
             value={searchTerm}
             onChange={(e) => onSearchChange(e.target.value)}
-            className="pl-10 pr-3 py-2 placeholder:font-thin w-full rounded-lg bg-[#4a55684b] border-none"
+            className="mt-1 px-4 py-1 placeholder:font-thin w-full rounded-lg bg-[#4a55684b] border-none"
           />
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
         </div>
       </th>
     </tr>
@@ -78,8 +77,8 @@ const TableRow = ({ destination, cabs, index, fetchDestinations }) => {
           : "bg-[var(--bs-gray-800)]/10"
       } hover:bg-[var(--bs-gray-800)]/50 transition-colors`}
     >
-      <td className="py-4 px-6 text-[var(--bs-gray-300)] border-b border-[#4a55684b] border-r">
-        {destination.route}
+      <td className="p-4 capitalize text-nowrap text-[var(--bs-gray-300)] border-b border-[#4a55684b] border-r">
+        {destination.route.toLowerCase()}
       </td>
       {cabs.map((cab) => (
         <td
@@ -108,9 +107,9 @@ const TableRow = ({ destination, cabs, index, fetchDestinations }) => {
             </button>
           </div>
         ) : (
-          <button className="bg-[#9288ec30] hover:bg-[#9288ec4d] text-[var(--bs-text)] px-4 py-2 rounded-md shadow transition-transform transform hover:scale-105">
+          <Link to={`/contact`} className="text-nowrap text-sm bg-[#9288ec30] hover:bg-[#9288ec4d] text-[var(--bs-text)] px-4 py-2 rounded-md shadow transition-transform transform hover:scale-105">
             Send Enquiry
-          </button>
+          </Link>
         )}
       </td>
       <DeleteModal
@@ -208,7 +207,7 @@ const MobileCard = ({
 
   return (
     <div
-      className={`rounded-lg overflow-hidden ${
+      className={`rounded-lg overflow-y-auto ${
         index % 2 === 0
           ? "bg-[var(--bs-gray-800)]/30"
           : "bg-[var(--bs-gray-800)]/10"
@@ -218,8 +217,8 @@ const MobileCard = ({
         onClick={toggleAccordion}
         className="w-full bg-[var(--bs-gray-800)] p-4 flex justify-between items-center"
       >
-        <h3 className="text-[var(--bs-white)] font-semibold">
-          {destination.route}
+        <h3 className="font-sans text-[var(--bs-white)] font-semibold  capitalize">
+          {destination.route.toLowerCase()}
         </h3>
         <svg
           className={`w-6 h-6 transform transition-transform duration-200 ${
@@ -240,10 +239,10 @@ const MobileCard = ({
       </button>
       <div
         className={`transition-all duration-200 ease-in-out ${
-          isOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0 overflow-hidden"
+          isOpen ? " opacity-100" : "max-h-0 opacity-0 overflow-hidden"
         }`}
       >
-        <div className="p-4 space-y-3 border border-[#4a55684b] border-t-0">
+        <div className="p-4 space-y-3 border border-[#4a55684b] border-t-0 overflow-y-auto">
           {cabs.map((cab) => (
             <div
               key={cab._id}
@@ -313,7 +312,7 @@ const DesktopTable = ({
 
   return (
     <div>
-      <table className="w-full min-w-[800px] border-collapse border-spacing-0 border-b border-[#4a55684b] border">
+      <table className="w-full min-w-[ border-collapse border-spacing-0 border-b border-[#4a55684b] border">
         <TableHeader
           cabs={cabs}
           searchTerm={searchTerm}
@@ -345,7 +344,7 @@ const DesktopTable = ({
 const MobileCards = ({ cabs, destinations, fetchDestinations }) => {
   const [openId, setOpenId] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+  const itemsPerPage = 6
 
   // Calculate pagination after filtering
   const totalPages = Math.ceil(destinations.length / itemsPerPage);

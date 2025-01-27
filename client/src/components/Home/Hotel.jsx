@@ -20,7 +20,7 @@ const FeaturedHotels = () => {
                 alt={hotel?.name}
                 className="w-full md:h-[25rem] h-72  object-cover"
               />
-              <div className="absolute bottom-20 left-5">
+              <div className="absolute bottom-20 lg:bottom-28 left-5 ">
                 {[...Array(5)].map((_, i) => (
                   <span
                     key={i}
@@ -37,9 +37,9 @@ const FeaturedHotels = () => {
             <div className="mt-3 ml-3">
               <Link
                 to={`/know-about-hotel/${hotel?._id}`}
-                className="text-xl font-semibold font-sans text-white"
+                className="text-xl capitalize font-semibold font-sans text-white line-clamp-1"
               >
-                {hotel?.name}
+                {hotel?.name.toLowerCase()}
               </Link>
               <div className="flex justify-between items-center mt-2">
                 <div>

@@ -1,5 +1,5 @@
 import destination from "../models/destinationModel.js";
-import TourPackage from '../models/tourPackageModel.js';
+import TourPackage from "../models/tourPackageModel.js";
 import { StatusCodes } from "http-status-codes";
 import { NotFoundErr, UnauthorizedErr } from "../errors/customErors.js";
 import { formatImage } from "../middleware/multer.js";
@@ -113,3 +113,4 @@ export const deleteDestination = async (req, res) => {
     return res.status(500).json({ message: 'Error deleting destination', error });
   }
 };
+// hello
