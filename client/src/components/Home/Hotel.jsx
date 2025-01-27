@@ -37,9 +37,9 @@ const FeaturedHotels = () => {
             <div className="mt-3 ml-3">
               <Link
                 to={`/know-about-hotel/${hotel?._id}`}
-                className="text-xl font-semibold font-sans text-white"
+                className="text-xl capitalize font-semibold font-sans text-white line-clamp-1"
               >
-                {hotel?.name}
+                {hotel?.name.toLowerCase()}
               </Link>
               <div className="flex justify-between items-center mt-2">
                 <div>

@@ -151,7 +151,7 @@ const CabHome = () => {
         <h1 className="text-center text-[var(--bs-white)] font-sans font-semibold my-8">
           Our Awesome Vehicles
         </h1>
-        <div className=" flex items-center justify-center flex-wrap gap-8  ">
+        <div className=" flex items-center justify-between flex-wrap gap-8  ">
           {cabs.map((cab, index) => (
             <CarCard key={index} cab={cab} />
           ))}{" "}

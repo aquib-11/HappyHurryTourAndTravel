@@ -41,9 +41,9 @@ const TravelPackages = () => {
             <div className="py-4 space-y-2 ">
               <Link
                 to={`/package/${pkg._id}`}
-                className="text-lg capitalize font-bold text-[var(--bs-white)] hover:text-indigo-400 font-sans  mb-2"
+                className="text-lg capitalize font-bold text-[var(--bs-white)] hover:text-indigo-400 font-sans  mb-2 line-clamp-1"
               >
-                {pkg.name}
+                {pkg.name.toLowerCase()}
               </Link>
               <div className="flex justify-between items-start text-xs font-bold text-green-400">
                 <div className="flex items-center">

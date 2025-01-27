@@ -89,7 +89,7 @@ const LoginPage = () => {
             </div>
           </div>
 
-          <div className="flex items-center justify-end gap-3">
+          {/* <div className="flex items-center justify-end gap-3">
             <a
               href="#"
               className="text-indigo-400 hover:text-indigo-300 text-sm"
@@ -102,7 +102,7 @@ const LoginPage = () => {
             >
               Change password?
             </a>
-          </div>
+          </div> */}
 
           <button
             type="submit"

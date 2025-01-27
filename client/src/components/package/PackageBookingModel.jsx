@@ -47,7 +47,7 @@ const PackageBookingModal = ({ showBookingModel, onClose, _package }) => {
       />
 
       {/* Modal Container - Updated for full-screen top-aligned layout */}
-      <div className="fixed top-0 rounded-lg left-0 right-0 bottom-0 z-50 flex flex-col w-full h-full bg-[var(--bs-card-bg)] overflow-hidden md:inset-x-1/2 md:w-full md:max-w-2xl md:-translate-x-1/2 md:h-full ">
+      <div className="fixed top-0 rounded-lg left-0 right-0 bottom-0 z-50 flex flex-col w-full  bg-[var(--bs-card-bg)] overflow-hidden md:inset-x-1/2 md:w-full md:max-w-2xl md:-translate-x-1/2 md:h-full ">
         {/* Modal Header */}
         <div className="flex-none bg-[var(--bs-card-bg)] backdrop-blur-sm border-b border-gray-700/50 p-4 ">
           <div className="flex justify-between items-center rounded-lg">
