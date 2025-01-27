@@ -7,7 +7,7 @@ const PackageOverview = () => {
   const formatPrice = (price) => {
     return new Intl.NumberFormat("en-US", {
       style: "currency",
-      currency: "USD",
+      currency: "INR",
     }).format(price);
   };
 
@@ -137,12 +137,6 @@ const PackageOverview = () => {
             <p className="text-gray-400 mb-2">Child Price</p>
             <p className="text-3xl font-bold text-white">
               {formatPrice(_package?.childPrice)}
-            </p>
-          </div>
-          <div className="bg-gray-900/50 border border-gray-700 p-6 rounded-lg">
-            <p className="text-gray-400 mb-2">Infant Price</p>
-            <p className="text-3xl font-bold text-white">
-              {formatPrice(_package?.infantPrice)}
             </p>
           </div>
         </div>
