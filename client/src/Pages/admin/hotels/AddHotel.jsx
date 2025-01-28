@@ -13,7 +13,6 @@ export const addHotelAction = async ({ request }) => {
   data.amenities = formData.getAll("amenities");
   try {
     const response = await customFetch.post("/hotel", data);
-    console.log({ response });
     toast.success("Hotel added successfully");
     return redirect("/admin/add-hotel-images/" + response.data.hotels._id);
   } catch (error) {

@@ -5,12 +5,6 @@ import img1 from "../../assets/images/bg6.jpg";
 const BookCab = () => {
   const [tripType, setTripType] = useState("oneway");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Handle form submission logic here
-    console.log(`Booking a ${tripType} trip`);
-  };
-
   return (
     <div className="container my-10   ">
       <h1 className="font-sans font-bold leading-tight text-center text-[var(--bs-white)] my-4 hidden md:block">

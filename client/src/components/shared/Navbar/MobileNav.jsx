@@ -22,7 +22,6 @@ const MobileNav = () => {
     toast.success("logged out");
   };
   const isUser = isAuthenticated && user;
-  console.log({ user });
   return (
     <nav className="container flex justify-between items-center py-2 text-[var(--bs-white)] h-20 lg:hidden  ">
       <img

@@ -21,7 +21,7 @@ export const addCabAction = async ({ request }) => {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log({ response });
+  
     toast.success("Cab added successfully");
     setTimeout(() => {
       window.location.reload();

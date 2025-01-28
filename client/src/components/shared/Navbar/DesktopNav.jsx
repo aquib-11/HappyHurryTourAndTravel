@@ -15,7 +15,6 @@ const DesktopNav = () => {
   const logOutMessage = () => {
     toast.success("logged out");
   };
-  console.log({ user });
   const isUser = isAuthenticated && user;
   return (
     <nav className="hidden container lg:flex justify-between items-center py-2 text-[var(--bs-white)] h-20 w-full bg-[var(--bs-body-bg)] z-50 sticky top-0 ">
