@@ -199,7 +199,7 @@ const AddTourPackage = () => {
           <input
             type="number"
             name="childPrice"
-            required
+            placeholder="optional"
             className="inputText"
             min="1"
           />
@@ -209,7 +209,7 @@ const AddTourPackage = () => {
           <input
             type="number"
             name="infantPrice"
-            required
+            placeholder="optional"
             className="inputText"
             min="1"
           />

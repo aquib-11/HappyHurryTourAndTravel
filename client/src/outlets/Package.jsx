@@ -15,7 +15,6 @@ export const packageloader = async ({ params }) => {
 
 const Package = () => {
   const { _package } = useLoaderData();
-  console.log({ _package });
   return (
     <div className="container relative">
       <AllDestinaitonBanner image={[_package?.image]} type="package" />
@@ -40,7 +39,8 @@ const Package = () => {
                   {link.name}
                 </NavLink>
               ))}
-              {(_package?.hotels.length !== 0 || _package?.destinations.length !== 0 )&& (
+              {(_package?.hotels.length !== 0 ||
+                _package?.destinations.length !== 0) && (
                 <NavLink
                   to="more"
                   end

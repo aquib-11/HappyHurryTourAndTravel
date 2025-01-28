@@ -52,12 +52,14 @@ const TravelPackages = () => {
                     ₹ {pkg.adultPrice}
                   </span>
                 </div>
-                <div className="flex items-center">
-                  Child Price:
-                  <span className="ml-1 text-gray-300 font-light">
-                    ₹ {pkg.childPrice}
-                  </span>
-                </div>
+                {pkg?.childPrice && (
+                  <div className="flex items-center">
+                    Child Price:
+                    <span className="ml-1 text-gray-300 font-light">
+                      ₹ {pkg.childPrice}
+                    </span>
+                  </div>
+                )}
               </div>
             </div>
           </div>
