@@ -15,7 +15,6 @@ import { Mail } from "lucide-react";
 
 const Footer = () => {
   const { user } = useHomeLayoutContext();
-  console.log(user);
   return (
     <footer className="bg-[var(--bs-black)] py-6  mt-4 ">
       <div className="container mx-auto px-2 space-y-4 ">

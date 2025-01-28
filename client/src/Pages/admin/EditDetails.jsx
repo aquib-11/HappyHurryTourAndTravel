@@ -18,7 +18,7 @@ export const editDetailsAction = async ({ request, params }) => {
 
 const EditDetails = () => {
   const { user } = useHomeLayoutContext();
-  console.log(user);
+ 
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
 

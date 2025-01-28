@@ -25,21 +25,21 @@ const About = () => {
           {/* Global Customers Stat */}
           <div className="flex items-center space-x-2 bg-[var(--bs-card-bg)] rounded-full px-6 py-3">
             <Globe className="w-5 h-5 text-blue-400" />
-            <span className="font-bold">14K+</span>
+            <span className="font-bold">2.4K+</span>
             <span className="text-gray-300">Global Customers</span>
           </div>
 
           {/* Happy Customers Stat */}
           <div className="flex items-center space-x-2 bg-[var(--bs-card-bg)] rounded-full px-6 py-3">
             <UserCheck className="w-5 h-5 text-yellow-400" />
-            <span className="font-bold">10K+</span>
+            <span className="font-bold">2.3K+</span>
             <span className="text-gray-300">Happy Customers</span>
           </div>
 
           {/* Subscribers Stat */}
           <div className="flex items-center space-x-2 bg-[var(--bs-card-bg)] rounded-full px-6 py-3">
             <Bell className="w-5 h-5 text-red-400" />
-            <span className="font-bold">1M+</span>
+            <span className="font-bold">10k+</span>
             <span className="text-gray-300">Visiters</span>
           </div>
         </div>

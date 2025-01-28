@@ -20,7 +20,7 @@ export const addTourpackageAction = async ({ request }) => {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log({ response });
+   
     toast.success("Tour Package added successfully");
     // return redirect("/admin/cab-home");
     return null;
@@ -46,7 +46,6 @@ export const addTourPackageLoader = async () => {
 };
 const AddTourPackage = () => {
   const data = useLoaderData();
-  console.log({ data });
   const navigation = useNavigation();
   const isSubmitting = navigation.state === "submitting";
   // highlights

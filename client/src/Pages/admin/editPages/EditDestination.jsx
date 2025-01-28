@@ -17,7 +17,7 @@ export const editDestinationAction = async ({ params, request }) => {
   data.highlights = formData.getAll("highlights");
   try {
     const response = await customFetch.patch(`/destination/${params.id}`, data);
-    console.log({ response });
+  
     toast.success("Destination updated successfully");
     return redirect("/all-destinations");
   } catch (error) {

@@ -13,7 +13,6 @@ import { DeleteModal } from "../../../components";
 
 export const uploadHotelImagesAction = async ({ params, request }) => {
   const formData = await request.formData();
-  console.log({ formData });
   try {
     await customFetch.post(`/hotel/${params.id}/images`, formData);
     toast.success("Image added successfully");

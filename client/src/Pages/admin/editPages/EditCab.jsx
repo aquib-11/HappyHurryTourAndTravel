@@ -34,7 +34,7 @@ export const editCabAction = async ({ params, request }) => {
         "Content-Type": "multipart/form-data",
       },
     });
-    console.log({ response });
+
     toast.success("Cab updated successfully");
     return redirect("/cab-home");
   } catch (error) {
