@@ -254,8 +254,12 @@ const EditBlog = () => {
           <JoditEditor
             value={formData.content}
             config={editorConfig}
-            // onChange={handleContentChange}
-            onBlur={handleContentChange}
+            onBlur={(newContent) => {
+              setFormData((prev) => ({
+                ...prev,
+                content: newContent,
+              }));
+            }}
           />
           {errors.content && (
             <p className="mt-1 text-sm text-red-500">{errors.content}</p>

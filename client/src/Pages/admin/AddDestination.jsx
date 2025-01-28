@@ -75,6 +75,7 @@ const AddDestination = () => {
               onChange={(e) => setHighlightInput(e.target.value)}
               placeholder="Add a highlight"
               className="inputText"
+              required
             />
             <button
               type="button"

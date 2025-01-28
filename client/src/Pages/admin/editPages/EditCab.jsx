@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import customFetch from "../../../utils/customFetch";
-import { Form, redirect, useLoaderData } from "react-router-dom";
+import { Form, redirect, useLoaderData, useNavigation } from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa";
 const cabFeatures = [
@@ -55,6 +55,7 @@ export const editCabLoader = async ({ params }) => {
 };
 
 const EditCab = () => {
+  const isSubmitting = useNavigation().state === "submitting";
   const { cabs } = useLoaderData();
   const [features, setFeatures] = useState(cabs.features);
   const [selectedFeature, setSelectedFeature] = useState("");
@@ -163,8 +164,8 @@ const EditCab = () => {
             <input type="hidden" name="features" value={feature} key={index} />
           ))}
         </div>
-        <button type="submit" className="submitButton">
-          Update Cab
+        <button type="submit" className="submitButton" disabled={isSubmitting}>
+          {isSubmitting ? "Updating Cab..." : "Update Cab"}
         </button>
       </Form>
     </div>

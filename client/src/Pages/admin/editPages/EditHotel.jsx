@@ -30,6 +30,8 @@ export const editHotelLoader = async ({ params }) => {
   }
 };
 const EditHotel = () => {
+  const isSubmitting = useNavigation().state === "submitting";
+
   const { hotels } = useLoaderData();
   console.log({ hotels });
   const [amenities, setAmenities] = useState(hotels.amenities);
@@ -140,8 +142,8 @@ const EditHotel = () => {
             <input type="hidden" name="amenities" value={amenity} key={index} />
           ))}
         </div>
-        <button type="submit" className="submitButton">
-          Update Destination
+        <button type="submit" className="submitButton" disabled={isSubmitting}>
+          {isSubmitting ? "Updating Hotel..." : "Update Hotel"}
         </button>
       </Form>
     </div>

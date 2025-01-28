@@ -1,7 +1,13 @@
 import React, { useState } from "react";
 import { toast } from "react-toastify";
 import customFetch from "../../../utils/customFetch";
-import { Form, redirect, useLoaderData, useNavigate } from "react-router-dom";
+import {
+  Form,
+  redirect,
+  useLoaderData,
+  useNavigate,
+  useNavigation,
+} from "react-router-dom";
 import { MdDelete } from "react-icons/md";
 import { FaPlus } from "react-icons/fa6";
 
@@ -30,6 +36,8 @@ export const editDestinationLoader = async ({ params }) => {
   }
 };
 const EditDestination = () => {
+  const isSubmitting = useNavigation().state === "submitting";
+
   const { destinations } = useLoaderData();
   const [highlights, setHighlights] = useState(destinations.highlights);
   const [highlightInput, setHighlightInput] = useState("");
@@ -122,8 +130,8 @@ const EditDestination = () => {
             />
           ))}
         </div>
-        <button type="submit" className="submitButton">
-          Update Destination
+        <button type="submit" className="submitButton" disabled={isSubmitting}>
+          {isSubmitting ? "Updating Destination..." : "Update Destination"}
         </button>
       </Form>
     </div>

@@ -68,7 +68,7 @@ const AddDestinationImages = () => {
     <div className="space-y-4">
       <h3 className="text-center">Add Destination Images</h3>
       <Form className="space-y-4" method="post" encType="multipart/form-data">
-        <input type="file" className="uploadImageInput" name="image" />
+        <input type="file" className="uploadImageInput" name="image" required />
         <button className="submitButton" type="submit" disabled={isSubmitting}>
           {isSubmitting ? "Uploading..." : "Upload"}
         </button>

@@ -87,7 +87,6 @@ const AddDestinationPricing = () => {
               type="number"
               value={cabsPricing[index]?.price}
               onChange={(event) => handlePricingChange(index, event)}
-              required
               className="inputText"
             />
           </div>
